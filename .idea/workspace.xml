@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d4610c7-707c-449f-a729-c491d08329e7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-config.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/foto-theme/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/foto-theme/functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/foto-theme/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/foto-theme/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp-content/themes/foto-theme/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/foto-theme/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/foto-theme/src/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/foto-theme/src/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/foto-theme/src/components/Portfolio.vue" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/foto-theme/src/components/Portfolio.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp-content/themes/foto-theme/src/components/SlidesPortfolio.vue" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/foto-theme/src/components/SlidesPortfolio.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/foto-theme/src/settings.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/foto-theme/src/settings.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,8 +46,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/foto-theme/src/App.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="690">
-              <caret line="48" column="10" selection-start-line="48" selection-start-column="10" selection-end-line="48" selection-end-column="10" />
+            <state relative-caret-position="828">
+              <caret line="42" column="53" selection-start-line="42" selection-start-column="53" selection-end-line="42" selection-end-column="53" />
               <folding>
                 <element signature="e#166#192#0" expanded="true" />
               </folding>
@@ -85,8 +76,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/foto-theme/src/components/SlidesPortfolio.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="16468">
-              <caret line="436" column="54" selection-start-line="436" selection-start-column="54" selection-end-line="436" selection-end-column="54" />
+            <state relative-caret-position="10396">
+              <caret line="226" selection-start-line="226" selection-end-line="226" />
             </state>
           </provider>
         </entry>
@@ -161,8 +152,8 @@
         <option value="$PROJECT_DIR$/wp-content/themes/foto-theme/webpack.config.js" />
         <option value="$PROJECT_DIR$/wp-content/themes/foto-theme/functions.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/foto-theme/package.json" />
-        <option value="$PROJECT_DIR$/wp-content/themes/foto-theme/src/components/SlidesPortfolio.vue" />
         <option value="$PROJECT_DIR$/wp-content/themes/foto-theme/src/bootstrap.js" />
+        <option value="$PROJECT_DIR$/wp-content/themes/foto-theme/src/components/SlidesPortfolio.vue" />
         <option value="$PROJECT_DIR$/wp-content/themes/foto-theme/src/App.vue" />
       </list>
     </option>
@@ -261,18 +252,18 @@
       <workItem from="1554046770303" duration="30000" />
       <workItem from="1554215445269" duration="6726000" />
       <workItem from="1554294196998" duration="8057000" />
-      <workItem from="1554379116379" duration="5801000" />
+      <workItem from="1554379116379" duration="9002000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30427000" />
+    <option name="totallyTimeSpent" value="33628000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="-2" width="3840" height="2162" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.104902476" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.104902476" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -553,15 +544,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/foto-theme/src/components/SlidesPortfolio.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16468">
-          <caret line="436" column="54" selection-start-line="436" selection-start-column="54" selection-end-line="436" selection-end-column="54" />
+        <state relative-caret-position="10396">
+          <caret line="226" selection-start-line="226" selection-end-line="226" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/foto-theme/src/App.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="48" column="10" selection-start-line="48" selection-start-column="10" selection-end-line="48" selection-end-column="10" />
+        <state relative-caret-position="828">
+          <caret line="42" column="53" selection-start-line="42" selection-start-column="53" selection-end-line="42" selection-end-column="53" />
           <folding>
             <element signature="e#166#192#0" expanded="true" />
           </folding>

@@ -40,6 +40,7 @@
 
         _.each(this.albums, album => {
           album.catalog = _.find(this.catalogs, ['id', album.catalog[0]]);
+          album.title.rendered = album.title.rendered.replace(/&#038;/g, '&');
 
           if (albumsByCatalog.hasOwnProperty(album.catalog.id)) {
             albumsByCatalog[album.catalog.id].albums.push(album);
@@ -47,16 +48,6 @@
             albumsByCatalog[album.catalog.id] = {catalog: album.catalog.id, albums: [album]};
           }
         });
-
-        // this.albums = _(albums).groupBy(x => x.catalog).value();
-
-        // _.each(albumsWithCatalog, album => {
-        //   if (albumsByCatalog.hasOwnProperty(album.catalog)) {
-        //     albumsByCatalog[album.catalog].albums.push(album);
-        //   } else {
-        //     albumsByCatalog[album.catalog] = {catalog: album.catalog, albums: [album]};
-        //   }
-        // });
 
         this.albumsByCatalogs = _.values(albumsByCatalog);
         _.each(this.albumsByCatalogs, catalog => {
