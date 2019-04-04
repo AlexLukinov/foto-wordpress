@@ -7,16 +7,24 @@
 </template>
 
 <script>
+  import axios from 'axios';
+  import SETTINGS from "./settings";
+
   export default {
     data() {
-      return {}
+      return {
+        catalogs: [],
+        albums: [],
+        albumsByCatalogs: [],
+        isCatalogsUploaded: false,
+        isAlbumsUploaded: false
+      }
     },
     methods: {
       onWheel(event) {
         var delta = event.deltaY;
         var routes = this.$router.options.routes;
         var idx = routes.findIndex(item => item.path === this.$route.path);
-
 
         if (routes[idx].path != '/portfolio') {
           if (delta > 0 && idx < routes.length - 1) {
@@ -26,8 +34,71 @@
             this.$router.push(routes[idx - 1])
           }
         }
+      },
+      setCatalog() {
+        let albumsByCatalog = {};
+
+        _.each(this.albums, album => {
+          album.catalog = _.find(this.catalogs, ['id', album.catalog[0]]);
+
+          if (albumsByCatalog.hasOwnProperty(album.catalog.id)) {
+            albumsByCatalog[album.catalog.id].albums.push(album);
+          } else {
+            albumsByCatalog[album.catalog.id] = {catalog: album.catalog.id, albums: [album]};
+          }
+        });
+
+        // this.albums = _(albums).groupBy(x => x.catalog).value();
+
+        // _.each(albumsWithCatalog, album => {
+        //   if (albumsByCatalog.hasOwnProperty(album.catalog)) {
+        //     albumsByCatalog[album.catalog].albums.push(album);
+        //   } else {
+        //     albumsByCatalog[album.catalog] = {catalog: album.catalog, albums: [album]};
+        //   }
+        // });
+
+        this.albumsByCatalogs = _.values(albumsByCatalog);
+        _.each(this.albumsByCatalogs, catalog => {
+          catalog.catalog = _.find(this.catalogs, ['id', catalog.catalog]);
+        });
+
+        window.catalogs = this.albumsByCatalogs;
+        window.albums = this.albums;
       }
     },
+    mounted() {
+      axios
+              .get(
+                  SETTINGS.API_BASE_PATH + "catalog?per_page=100"
+              )
+              .then(response => {
+                  this.isCatalogsUploaded = true;
+                  this.catalogs = response.data;
+              })
+              .catch(e => {
+                console.log(e);
+              });
+
+      axios
+              .get(
+                  SETTINGS.API_BASE_PATH + "album?per_page=100"
+              )
+              .then(response => {
+                this.isAlbumsUploaded = true;
+                this.albums = response.data;
+              })
+              .catch(e => {
+                console.log(e);
+              });
+
+      let checkIsUploaded = setInterval(() => {
+        if (this.isCatalogsUploaded && this.isAlbumsUploaded) {
+          this.setCatalog();
+          clearInterval(checkIsUploaded);
+        }
+      }, 100);
+    }
   }
 </script>
 
@@ -37,6 +108,7 @@
     animation-delay: .5s;
     opacity: 0;
   }
+
   .router-anim-leave-to {
     animation: coming 2s;
   }
@@ -52,6 +124,7 @@
     }
 
   }
+
   /*@keyframes coming {
       from {
           transform: translateX(-210px);

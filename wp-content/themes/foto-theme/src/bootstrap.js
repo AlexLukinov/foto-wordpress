@@ -1,5 +1,7 @@
 import axios from "axios";
 
+var _ = require('lodash');
+
 try {
   axios.defaults.headers.common = {
     "X-CSRF-TOKEN":

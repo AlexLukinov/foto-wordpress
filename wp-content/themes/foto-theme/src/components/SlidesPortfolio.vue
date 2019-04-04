@@ -7,15 +7,6 @@
                     <img :src="data.portfolioSlides[currentNumber].header.photo" :key="'headPhoto' + currentNumber">
                 </transition>
             </div>
-<!--            <div class="slide-container" :class="$mq">-->
-<!--                <swiper :options="swiperOption">-->
-<!--                    <transition name="text-anim" mode="out-in">-->
-<!--                        <swiper-slide>-->
-<!--                            <span class="slides_text" :class="$mq" :key="'headText' + currentNumber">{{ data.portfolioSlides[currentNumber].header.backgroundText }}</span>-->
-<!--                        </swiper-slide>-->
-<!--                    </transition>-->
-<!--                </swiper>-->
-<!--            </div>-->
             <div class="arrow-box" :class="$mq">
                 <div class="arrow-around arrow-rotate" @click="prev">
                     <div class="div-around"></div>
@@ -63,7 +54,6 @@
                     <div class="catalog-name" :class="$mq">{{photo.catalog}}</div>
                     <div class="photo-name" :class="$mq">{{photo.name}}</div>
                 </div>
-                <!--<vue-gallery-slideshow :images="data.images" :index="data.index" @close="data.index = null"></vue-gallery-slideshow>-->
             </div>
         </div>
         <div class="arrow-box arrow-box-footer" :class="$mq">
@@ -88,15 +78,6 @@
     export default {
         data() {
             return {
-                // swiperOption: {
-                //     slidesPerView: 'auto',
-                //     centeredSlides: true,
-                //     spaceBetween: 30,
-                //     pagination: {
-                //         el: '.swiper-pagination',
-                //         clickable: true
-                //     }
-                // },
                 data: {
                     portfolioSlides: [
                         {
@@ -455,79 +436,6 @@
                                     catalog: 'БУКЕТЫ И КОМПОЗИЦИИ',
                                     name: 'Съемка для каталога свадебного салона  Marylin. Отель Превысоковъ'
                                 },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/5.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h5.jpg',
-                                    catalog: 'БУКЕТЫ И КОМПОЗИЦИИ',
-                                    name: 'Ольга. Оттенки багряного'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/6.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h6.jpg',
-                                    catalog: 'БУКЕТЫ И КОМПОЗИЦИИ',
-                                    name:  'Анастасия. Silk & gold'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/10.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h10.jpg',
-                                    catalog: 'БУКЕТЫ И КОМПОЗИЦИИ',
-                                    name:  'Композиции. Подборка'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/11.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h11.jpg',
-                                    catalog: 'БУКЕТЫ И КОМПОЗИЦИИ',
-                                    name:  'Лебединая песнь'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/12.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h12.jpg',
-                                    catalog: 'БУКЕТЫ И КОМПОЗИЦИИ',
-                                    name:  'Слава. Snowball'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/25.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h25.jpg',
-                                    catalog: 'БУКЕТЫ И КОМПОЗИЦИИ',
-                                    name:  'Мария. Bohemian morning'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/26.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h26.jpg',
-                                    catalog: 'БУКЕТЫ И КОМПОЗИЦИИ',
-                                    name:  'Наталья. Sweet peony'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/27.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h27.jpg',
-                                    catalog: 'БУКЕТЫ И КОМПОЗИЦИИ',
-                                    name:  'Диляна. Wild & gentle.'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/37.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h37.jpg',
-                                    catalog: 'БУКЕТЫ И КОМПОЗИЦИИ',
-                                    name:  'Букет невесты. Подборка'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/38.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h38.jpg',
-                                    catalog: 'БУКЕТЫ И КОМПОЗИЦИИ',
-                                    name:  'Букеты. Подборка'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/39.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h39.jpg',
-                                    catalog: 'БУКЕТЫ И КОМПОЗИЦИИ',
-                                    name:  'Татьяна. Вместе навсегда'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/51.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h51.jpg',
-                                    catalog: 'БУКЕТЫ И КОМПОЗИЦИИ',
-                                    name:  'Рождественская и новогодняя флористика'
-                                }
-
                             ],
                             info: {
                                 header: 'header text',
@@ -547,163 +455,6 @@
                                     catalog: 'СВАДЕБНАЯ ФЛОРИСТИКА И ДЕКОР',
                                     name: 'Иван & Даша. Балаклавский Эдем'
                                 },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/2.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h2.jpg',
-                                    catalog: 'СВАДЕБНАЯ ФЛОРИСТИКА И ДЕКОР',
-                                    name: 'Дмитрий & Виктория. Коктебель'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/3.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h3.jpg',
-                                    catalog: 'СВАДЕБНАЯ ФЛОРИСТИКА И ДЕКОР',
-                                    name: 'Дмитрий & Виктория. Осеннее вдохновение'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/7.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h7.jpg',
-                                    catalog: 'СВАДЕБНАЯ ФЛОРИСТИКА И ДЕКОР',
-                                    name: 'Валерий & Надежда. Новый Свет'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/8.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h8.jpg',
-                                    catalog: 'СВАДЕБНАЯ ФЛОРИСТИКА И ДЕКОР',
-                                    name: 'Александр & Валерия. Алые паруса'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/9.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h9.jpg',
-                                    catalog: 'СВАДЕБНАЯ ФЛОРИСТИКА И ДЕКОР',
-                                    name: 'Дмитрий & Александра. Английский сад'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/13.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h13.jpg',
-                                    catalog: 'СВАДЕБНАЯ ФЛОРИСТИКА И ДЕКОР',
-                                    name: 'Дмитрий & Дарья. Партенит'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/14.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h14.jpg',
-                                    catalog: 'СВАДЕБНАЯ ФЛОРИСТИКА И ДЕКОР',
-                                    name: 'Дарья & Юрий. Артиллерийская бухта'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/15.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h15.jpg',
-                                    catalog: 'СВАДЕБНАЯ ФЛОРИСТИКА И ДЕКОР',
-                                    name: 'Андрей & Мила. Форос'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/19.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h19.jpg',
-                                    catalog: 'СВАДЕБНАЯ ФЛОРИСТИКА И ДЕКОР',
-                                    name: 'Даниил & Анна. Свадьба в яблоневом саду'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/20.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h20.jpg',
-                                    catalog: 'СВАДЕБНАЯ ФЛОРИСТИКА И ДЕКОР',
-                                    name: 'Николай & Снежана. Долина Гор'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/21.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h21.jpg',
-                                    catalog: 'СВАДЕБНАЯ ФЛОРИСТИКА И ДЕКОР',
-                                    name: 'Олег & Евгения. Цитрусовая свадьба'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/31.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h31.jpg',
-                                    catalog: 'СВАДЕБНАЯ ФЛОРИСТИКА И ДЕКОР',
-                                    name:  'Вадим & Анастасия'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/32.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h32.jpg',
-                                    catalog: 'СВАДЕБНАЯ ФЛОРИСТИКА И ДЕКОР',
-                                    name:  'Владимир & Олеся. Крымская Ривьера'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/33.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h33.jpg',
-                                    catalog: 'СВАДЕБНАЯ ФЛОРИСТИКА И ДЕКОР',
-                                    name:  'Дмитрий & Яна. Воронцовский дворец'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/34.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h34.jpg',
-                                    catalog: 'СВАДЕБНАЯ ФЛОРИСТИКА И ДЕКОР',
-                                    name:  'Дарья & Даниил. Кружево'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/35.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h35.jpg',
-                                    catalog: 'СВАДЕБНАЯ ФЛОРИСТИКА И ДЕКОР',
-                                    name:  'Иван & Юлия. Power of love'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/36.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h36.jpg',
-                                    catalog: 'СВАДЕБНАЯ ФЛОРИСТИКА И ДЕКОР',
-                                    name:  'Алексей & Ольга. Где ты, там я'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/40.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h40.jpg',
-                                    catalog: 'СВАДЕБНАЯ ФЛОРИСТИКА И ДЕКОР',
-                                    name:  'Антон & Елена. Одной дорогой'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/41.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h41.jpg',
-                                    catalog: 'СВАДЕБНАЯ ФЛОРИСТИКА И ДЕКОР',
-                                    name:  'Павел & Юлия. Ялта'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/42.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h42.jpg',
-                                    catalog: 'СВАДЕБНАЯ ФЛОРИСТИКА И ДЕКОР',
-                                    name:  'Константин & Юлия. Меллас'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/43.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h43.jpg',
-                                    catalog: 'СВАДЕБНАЯ ФЛОРИСТИКА И ДЕКОР',
-                                    name:  'Алексей & Яна. Александрия'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/44.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h44.jpg',
-                                    catalog: 'СВАДЕБНАЯ ФЛОРИСТИКА И ДЕКОР',
-                                    name: 'Сергей & Мария. Hidden Garden'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/45.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h45.jpg',
-                                    catalog: 'СВАДЕБНАЯ ФЛОРИСТИКА И ДЕКОР',
-                                    name: 'Сергей & Валерия. Полотна гобелена'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/46.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h46.jpg',
-                                    catalog: 'СВАДЕБНАЯ ФЛОРИСТИКА И ДЕКОР',
-                                    name: 'Евгений & Наталья. Юсуповский дворец'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/47.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h47.jpg',
-                                    catalog: 'СВАДЕБНАЯ ФЛОРИСТИКА И ДЕКОР',
-                                    name: 'Алена & Виталий. Озеро грез'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/48.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h48.jpg',
-                                    catalog: 'СВАДЕБНАЯ ФЛОРИСТИКА И ДЕКОР',
-                                    name: 'Игорь & Татьяна. Балаклава'
-                                },
-
                             ],
                             info: {
                                 header: 'header text',
@@ -722,30 +473,6 @@
                                     hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h16.jpg',
                                     catalog: 'ОФОРМЛЕНИЕ МЕРОПРИЯТИЙ',
                                     name: 'День Рождения. Южная терраса'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/17.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h17.jpg',
-                                    catalog: 'ОФОРМЛЕНИЕ МЕРОПРИЯТИЙ',
-                                    name: 'Закрытая презентация тихих вин «АртВин»'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/18.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h18.jpg',
-                                    catalog: 'ОФОРМЛЕНИЕ МЕРОПРИЯТИЙ',
-                                    name: 'Запуск кометы. Морпорт'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/22.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h22.jpg',
-                                    catalog: 'ОФОРМЛЕНИЕ МЕРОПРИЯТИЙ',
-                                    name: 'Севастопольский бал'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/23.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h23.jpg',
-                                    catalog: 'ОФОРМЛЕНИЕ МЕРОПРИЯТИЙ',
-                                    name: 'Открытие салона «Галерея интерьера»'
                                 },
                             ],
                             info: {
@@ -766,37 +493,6 @@
                                     catalog: 'ОТЕЛИ И КОРПОРАТИВНЫЕ КЛИЕНТЫ',
                                     name:  'Гостевой дом УЗУНДЖА. Новогоднее оформление'
                                 },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/29.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h29.jpg',
-                                    catalog: 'ОТЕЛИ И КОРПОРАТИВНЫЕ КЛИЕНТЫ',
-                                    name:  '???'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/30.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h30.jpg',
-                                    catalog: 'ОТЕЛИ И КОРПОРАТИВНЫЕ КЛИЕНТЫ',
-                                    name:  'Гостевой дом «VoyageSV». Новогоднее оформление'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/49.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h49.jpg',
-                                    catalog: 'ОТЕЛИ И КОРПОРАТИВНЫЕ КЛИЕНТЫ',
-                                    name:  'Aquamarine Resort & SPA'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/50.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h50.jpg',
-                                    catalog: 'ОТЕЛИ И КОРПОРАТИВНЫЕ КЛИЕНТЫ',
-                                    name:  'Sevastopol Hotel & SPA'
-                                },
-                                {
-                                    src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/51.jpg',
-                                    hoverSrc: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/h51.jpg',
-                                    catalog: 'ОТЕЛИ И КОРПОРАТИВНЫЕ КЛИЕНТЫ',
-                                    name:  'Открытие «Russian Beauty Academy» копия'
-                                },
-
                             ],
                             info: {
                                 header: 'header text',
@@ -902,7 +598,9 @@
         mounted() {
             EventBus.$on('close', () => {
                 this.showInfo = false;
-            })
+            });
+
+            console.log(window.albums);
         }
     }
 
