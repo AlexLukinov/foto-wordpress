@@ -4,7 +4,7 @@
         <div class="horizontal-divider" :class="$mq"></div>
         <div class="album-content" :class="$mq">
             <div class="album_name" :class="$mq">
-                {{album.nameAlbum}}
+                {{album.title.rendered}}
             </div>
             <div class="photographer" :class="$mq">Ph:
                 <span class="photographer" :class="$mq">
@@ -12,9 +12,10 @@
                 </span>
             </div>
             <div class="album-photo" :class="$mq">
-                <div v-for="photo in album.photos"
-                     :class="[photo.isHorizontal ? 'horizontal-photo' : 'photo-item', $mq]">
-                    <img :src="photo.src">
+                <div v-for="photo in album.photoes"
+                     :class="$mq"
+                     :ref="photo.ID">
+                    <img :src="photo.guid">
                 </div>
             </div>
         </div>
@@ -24,139 +25,7 @@
     export default {
         data() {
             return {
-                albums: [
-                    {
-                        id: 'Previsokov',
-                        photographer: 'Slava Vladzimirskaya',
-                        nameAlbum: 'Съемка для каталога свадебного салона  Marylin. Отель Превысоковъ',
-                        photos: [
-                            {
-                                src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/Previsokov/1.jpg',
-                                isHorizontal: false
-                            },
-                            {
-                                src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/Previsokov/2.jpg',
-                                isHorizontal: false
-                            },
-                            {
-                                src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/Previsokov/3.jpg',
-                                isHorizontal: false
-                            },
-                            {
-                                src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/Previsokov/4.jpg',
-                                isHorizontal: false
-                            },
-                            {
-                                src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/Previsokov/5.jpg',
-                                isHorizontal: false
-                            },
-                            {
-                                src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/Previsokov/6.jpg',
-                                isHorizontal: false
-                            },
-                            {
-                                src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/Previsokov/7.jpg'
-                            },
-                            {
-                                src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/Previsokov/8.jpg',
-                                isHorizontal: false
-                            },
-                            {
-                                src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/Previsokov/9.jpg',
-                                isHorizontal: false
-                            },
-                            {
-                                src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/Previsokov/10.jpg',
-                                isHorizontal: false
-                            },
-                            {
-                                src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/Previsokov/11.jpg',
-                                isHorizontal: false
-                            },
-                            {
-                                src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/Previsokov/12.jpg',
-                                isHorizontal: false
-                            },
-                            {
-                                src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/Previsokov/13.jpg',
-                                isHorizontal: false
-                            },
-                            {
-                                src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/Previsokov/14.jpg',
-                                isHorizontal: false
-                            },
-                            {
-                                src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/Previsokov/15.jpg',
-                                isHorizontal: true
-                            },
-                        ]
-                    },
-                    {
-                        id: 'CompoziciiPodborka',
-                        photographer: 'Olga Karpova',
-                        nameAlbum: 'Композиции. Подборка',
-                        photos: [
-                            {
-                                src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/CompoziciiPodborka/1.jpg',
-                                isHorizontal: false
-                            },
-                            {
-                                src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/CompoziciiPodborka/2.jpg',
-                                isHorizontal: false
-                            },
-                            {
-                                src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/CompoziciiPodborka/3.jpg',
-                                isHorizontal: false
-                            },
-                            {
-                                src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/CompoziciiPodborka/4.jpg',
-                                isHorizontal: false
-                            },
-                            {
-                                src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/CompoziciiPodborka/5.jpg',
-                                isHorizontal: false
-                            },
-                            {
-                                src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/CompoziciiPodborka/6.jpg',
-                                isHorizontal: false
-                            },
-                            {
-                                src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/CompoziciiPodborka/7.jpg',
-                                isHorizontal: false
-                            },
-                            {
-                                src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/CompoziciiPodborka/8.jpg',
-                                isHorizontal: false
-                            },
-                            {
-                                src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/CompoziciiPodborka/9.jpg',
-                                isHorizontal: false
-                            },
-                            {
-                                src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/CompoziciiPodborka/10.jpg',
-                                isHorizontal: false
-                            },
-                            {
-                                src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/CompoziciiPodborka/11.jpg',
-                                isHorizontal: false
-                            },
-                            {
-                                src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/CompoziciiPodborka/12.jpg',
-                                isHorizontal: false
-                            },
-                            {
-                                src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/CompoziciiPodborka/13.jpg',
-                                isHorizontal: false
-                            },
-                            {
-                                src: '/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/CompoziciiPodborka/14.jpg',
-                                isHorizontal: false
-                            },
-
-                        ]
-                    },
-                ],
-                album: ''
+                album: window.albums[0]
             };
         },
         methods: {
@@ -164,13 +33,21 @@
         },
         mounted() {
             EventBus.$on('ALBUM_CLICKED', albumId => {
-                let albumArray = this.albums.filter(album => {
+                this.album = window.albums.filter(album => {
                     return album.id === albumId;
-                });
+                })[0];
 
-                if (albumArray) {
-                    this.album = albumArray[0];
-                }
+                setTimeout(()=> {
+                    _.each(this.album.photoes, photo => {
+                        let photoDiv = this.$refs[photo['ID']][0];
+
+                        if (photoDiv.clientWidth > photoDiv.clientHeight) {
+                            photoDiv.classList.add('horizontal-photo');
+                        } else {
+                            photoDiv.classList.add('photo-item');
+                        }
+                    });
+                }, 0);
             });
         }
     }

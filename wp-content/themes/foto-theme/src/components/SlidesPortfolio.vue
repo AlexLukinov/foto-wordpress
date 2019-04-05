@@ -195,8 +195,8 @@
                 }
                 EventBus.$emit('SLIDE_CHANGED', this.currentNumber);
             },
-            onAlbumClick: function (album) {
-                EventBus.$emit('ALBUM_CLICKED', album);
+            onAlbumClick: function (albumId) {
+                EventBus.$emit('ALBUM_CLICKED', albumId);
                 this.showAlbum = true;
             },
             scrollMeTo(refName) {

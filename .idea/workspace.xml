@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d4610c7-707c-449f-a729-c491d08329e7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/foto-theme/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/foto-theme/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wp-content/themes/foto-theme/src/components/Album.vue" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/foto-theme/src/components/Album.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp-content/themes/foto-theme/src/components/SlidesPortfolio.vue" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/foto-theme/src/components/SlidesPortfolio.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,11 +43,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/foto-theme/src/App.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="828">
-              <caret line="42" column="53" selection-start-line="42" selection-start-column="53" selection-end-line="42" selection-end-column="53" />
+            <state relative-caret-position="4186">
+              <caret line="91" column="4" selection-start-line="91" selection-start-column="4" selection-end-line="91" selection-end-column="4" />
               <folding>
                 <element signature="e#166#192#0" expanded="true" />
               </folding>
@@ -76,8 +76,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/foto-theme/src/components/SlidesPortfolio.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10396">
-              <caret line="226" selection-start-line="226" selection-end-line="226" />
+            <state relative-caret-position="8004">
+              <caret line="198" column="54" selection-start-line="198" selection-start-column="54" selection-end-line="198" selection-end-column="54" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/wp-content/themes/foto-theme/src/components/Album.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1288">
+              <caret line="49" column="19" selection-start-line="49" selection-start-column="19" selection-end-line="49" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -105,6 +114,7 @@
       <find>ArnoProCaption</find>
       <find>START | Update is_icd_captured_for_2018,is_hcc_captured_for_2018  |</find>
       <find>Update is_icd_captured_for_2018</find>
+      <find>ALBUM_CLICKED</find>
     </findStrings>
     <replaceStrings>
       <replace>./components</replace>
@@ -153,13 +163,14 @@
         <option value="$PROJECT_DIR$/wp-content/themes/foto-theme/functions.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/foto-theme/package.json" />
         <option value="$PROJECT_DIR$/wp-content/themes/foto-theme/src/bootstrap.js" />
-        <option value="$PROJECT_DIR$/wp-content/themes/foto-theme/src/components/SlidesPortfolio.vue" />
         <option value="$PROJECT_DIR$/wp-content/themes/foto-theme/src/App.vue" />
+        <option value="$PROJECT_DIR$/wp-content/themes/foto-theme/src/components/SlidesPortfolio.vue" />
+        <option value="$PROJECT_DIR$/wp-content/themes/foto-theme/src/components/Album.vue" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1920" />
+  <component name="ProjectFrameBounds" extendedState="4">
+    <option name="x" value="3840" />
     <option name="y" value="-2" />
     <option name="width" value="1920" />
     <option name="height" value="2162" />
@@ -252,12 +263,12 @@
       <workItem from="1554046770303" duration="30000" />
       <workItem from="1554215445269" duration="6726000" />
       <workItem from="1554294196998" duration="8057000" />
-      <workItem from="1554379116379" duration="9002000" />
+      <workItem from="1554379116379" duration="13093000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33628000" />
+    <option name="totallyTimeSpent" value="37719000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="-2" width="3840" height="2162" extended-state="6" />
@@ -542,20 +553,27 @@
     <entry file="file://$PROJECT_DIR$/wp-content/uploads/2019/04/1-14-768x512.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/foto-theme/src/components/SlidesPortfolio.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10396">
-          <caret line="226" selection-start-line="226" selection-end-line="226" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/foto-theme/src/App.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="828">
-          <caret line="42" column="53" selection-start-line="42" selection-start-column="53" selection-end-line="42" selection-end-column="53" />
+        <state relative-caret-position="4186">
+          <caret line="91" column="4" selection-start-line="91" selection-start-column="4" selection-end-line="91" selection-end-column="4" />
           <folding>
             <element signature="e#166#192#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/foto-theme/src/components/SlidesPortfolio.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8004">
+          <caret line="198" column="54" selection-start-line="198" selection-start-column="54" selection-end-line="198" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/foto-theme/src/components/Album.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1288">
+          <caret line="49" column="19" selection-start-line="49" selection-start-column="19" selection-end-line="49" selection-end-column="19" />
         </state>
       </provider>
     </entry>
