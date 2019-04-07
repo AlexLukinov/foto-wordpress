@@ -1,7 +1,7 @@
 <template>
     <transition name="menu-anim" mode="out-in">
         <div class="page page-menu" :class="$mq">
-            <headerMenuMobile></headerMenuMobile>
+            <header-menu-mobile></header-menu-mobile>
                <div class="menu-list" :class="$mq">
                    <div class="menu-left-column" :class="$mq">
                        <div class="menu-header" :class="$mq">
@@ -17,18 +17,18 @@
                            </router-link>
                            <router-link to="/">
                                <router-link to="/portfolio">
-                               <button>
-                                   <span class="nav-item"
-                                         :class="$mq"
-                                         @click="toggleIsActive('services')">наши услуги
-                                       <span class="nav-item-span">
-                                         <span @click="toggleIsActive('services')"
-                                               class="vertical-line" :style="lineServicesHeight">
-                                         </span>
-                                         <span  class="horizontal-line"></span>
+                                   <button>
+                                       <span class="nav-item"
+                                             :class="$mq"
+                                             @click="toggleIsActive('services')">наши услуги
+                                           <span class="nav-item-span">
+                                             <span @click="toggleIsActive('services')"
+                                                   class="vertical-line" :style="lineServicesHeight">
+                                             </span>
+                                             <span  class="horizontal-line"></span>
+                                           </span>
                                        </span>
-                                   </span>
-                               </button>
+                                   </button>
                                </router-link>
                            </router-link>
                            <transition name="roll" mode="out-in">
@@ -160,7 +160,7 @@
                        <img src="/wp-content/themes/foto-theme/src/assets/img/close.png"
                             :class="$mq"
                             class="menu-close"
-                            @click="$emit('close')"
+                            @click="closeClicked"
                             alt="Букетное бюро">
                        <div class="arrow-around arrow-rotate"
                             :class="$mq"
@@ -236,6 +236,9 @@
                      this.isActiveDevelopers = !this.isActiveDevelopers;
                      break;
              }
+         },
+         closeClicked: function () {
+             EventBus.$emit('close');
          }
      },
      computed: {

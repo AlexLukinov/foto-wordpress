@@ -1,15 +1,15 @@
 <template>
-    <div class="page album_page">
-        <headerWidthBack></headerWidthBack>
+    <div class="page album-page">
+        <header-with-back></header-with-back>
         <div class="horizontal-divider" :class="$mq"></div>
         <div class="album-content" :class="$mq">
-            <div class="album_name" :class="$mq">
+            <div class="album-name" :class="$mq">
                 {{album.title.rendered}}
             </div>
             <div class="photographer" :class="$mq">Ph:
                 <span class="photographer" :class="$mq">
-                {{album.photographer}}
-                </span>
+            {{album.photographer}}
+            </span>
             </div>
             <div class="album-photo" :class="$mq">
                 <div v-for="photo in album.photoes"
@@ -19,23 +19,52 @@
                 </div>
             </div>
         </div>
+
+        <div class="arrow-box" :class="$mq">
+            <div class="arrow-around arrow-rotate" @click="prev">
+                <div class="div-around"></div>
+                <img class="arrow arrow-left" src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Буектное бюро">
+            </div>
+            <router-link v-if="postId" :to="'/post/' + postId">
+                <button :class="$mq">Смотреть статью</button>
+            </router-link>
+            <div class="arrow-around arrow-rotate" @click="next">
+                <img class="arrow arrow-right" src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
+                <div class="div-around"></div>
+            </div>
+        </div>
+        <div class="footer-img" :class="$mq">
+            <img src="/wp-content/themes/foto-theme/src/assets/img/preview.png" :class="$mq" alt="Буектное бюро">
+        </div>
     </div>
 </template>
 <script>
     export default {
         data() {
             return {
-                album: window.albums[0]
+                album: {
+                    title: {
+                        rendered: ''
+                    },
+                    photographer: '',
+                    photoes: []
+                },
+                postId: ''
             };
         },
         methods: {
+            prev: function () {
 
-        },
-        mounted() {
-            EventBus.$on('ALBUM_CLICKED', albumId => {
+            },
+            next: function () {
+
+            },
+            setAlbum: function () {
                 this.album = window.albums.filter(album => {
-                    return album.id === albumId;
+                    return album.id == this.$route.params.albumId;
                 })[0];
+
+                this.postId = this.album.post_id;
 
                 setTimeout(()=> {
                     _.each(this.album.photoes, photo => {
@@ -48,14 +77,30 @@
                         }
                     });
                 }, 0);
-            });
+            },
+            initGlobalVars: function () {
+                let checkIsUploaded = setInterval(() => {
+                    if (window.albums && window.catalogs && window.albums.length && window.catalogs.length) {
+                        clearInterval(checkIsUploaded);
+                        this.setAlbum();
+                    }
+                }, 20);
+            }
+        },
+        watch: {
+            '$route' (to, from) {
+                this.initGlobalVars();
+            }
+        },
+        mounted() {
+            this.initGlobalVars();
         }
     }
 </script>
 
 <style lang="scss" scoped>
     @import "../assets/scss/variables";
-    .album_page {
+    .album-page {
         background-color: #fcfcfc;
         z-index: 10;
         height: auto;
@@ -86,7 +131,7 @@
             margin-top: 3vh;
         }
     }
-    .album_name {
+    .album-name {
         font-family: 'Merriweather-Regular';
         font-size: 1.1vw;
         color: #333333;

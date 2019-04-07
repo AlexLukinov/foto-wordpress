@@ -1,22 +1,18 @@
 <template>
     <div class="page portfolio_page">
-        <headerWidthBack></headerWidthBack>
+        <header-with-back></header-with-back>
         <div class="horizontal-divider" :class="$mq"></div>
-        <slidesPortfolio></slidesPortfolio>
+        <slides-portfolio></slides-portfolio>
         <div class="media-block-columns columns-border-top" :class="$mq">
             <img src="/wp-content/themes/foto-theme/src/assets/img/preview.png" :class="$mq" alt="Буектное бюро">
         </div>
     </div>
 </template>
 <script>
-
     export default {
         data () {
             return{}
         },
-        mounted() {
-
-        }
     }
 </script>
 

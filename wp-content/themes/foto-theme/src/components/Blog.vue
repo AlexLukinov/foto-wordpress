@@ -1,6 +1,6 @@
 <template>
     <div class="page blog-page">
-        <headerWidthBack></headerWidthBack>
+        <header-with-back></header-with-back>
             <h3 class="h3-border-bottom blog-h3" :class="$mq">НАШИ ИСТОРИИ И ДРУГИЕ СТАТЬИ</h3>
             <div class="gallery" id="gallery-blog">
                 <div @click="onAlbumClick(photo.id)" class="image"

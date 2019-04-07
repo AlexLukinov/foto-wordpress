@@ -7,12 +7,16 @@
                 <img :src="data.slides[currentNumber-1]">
             </div>
         </transition>
-        <transition name="myanim" mode="out-in">
-            <div class="slides-body" :class="$mq"
-                 v-for="number in [currentNumber]" v-bind:key="number">
-                <div class="name-page" :class="$mq">Home</div>
 
-                <h2 class="slides_text" :class="$mq">{{data.slides_text[currentNumber-1]}}</h2>
+            <div class="slides-body" :class="$mq"
+                 v-for="number in [currentNumber]">
+                <div class="name-page" :class="$mq">Home</div>
+                <transition name="myanim" mode="out-in">
+                <h2 class="slides_text"
+                    v-bind:key="number"
+                    :class="$mq">{{data.slides_text[currentNumber-1]}}
+                </h2>
+                </transition>
 
                 <h3 class="slides_text_description" :class="$mq">Добро пожаловать в студию флористики
                     и декора БУКЕТНОЕ БЮРО
@@ -25,7 +29,7 @@
                     </div>
                 </router-link>
             </div>
-        </transition>
+
 
         <div class="slide_line" :class="$mq">
             <span class="slide_line_span" @click="prev">0{{currentNumber}}</span>

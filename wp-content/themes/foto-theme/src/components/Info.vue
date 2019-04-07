@@ -1,6 +1,6 @@
 <template>
     <div class="page info_page" :class="$mq">
-        <headerWidthBack></headerWidthBack>
+        <header-with-back></header-with-back>
         <div v-if="isPortfolio" class="info-block" :class="$mq">sadfasdf</div>
         <div v-if="isFlowers" class="info-block" :class="$mq">
             <div class="info-content-left" :class="$mq">

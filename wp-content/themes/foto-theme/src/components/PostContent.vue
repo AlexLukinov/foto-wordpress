@@ -1,77 +1,17 @@
 <template>
-    <div class="page post-page article" :class="$mq">
-        <header-with-back></header-with-back>
-
-<!--        <post-content :content="content"></post-content>-->
-        <component :is="{template: content}"></component>
-
-        <div class="arrow-box" :class="$mq">
-            <div class="arrow-around arrow-rotate" @click="prev">
-                <div class="div-around"></div>
-                <img class="arrow arrow-left" src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Буектное бюро">
-            </div>
-            <router-link :to="'/album/' + post.album_id">
-                <button :class="$mq">Смотреть больше фото</button>
-            </router-link>
-            <div class="arrow-around arrow-rotate" @click="next">
-                <img class="arrow arrow-right" src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
-                <div class="div-around"></div>
-            </div>
-        </div>
-        <div class="footer-img" :class="$mq">
-            <img src="/wp-content/themes/foto-theme/src/assets/img/preview.png" :class="$mq" alt="Буектное бюро">
-        </div>
-    </div>
+    <component :is="content && {template: content}"></component>
 </template>
 <script>
-    import PostContent from './PostContent.vue';
-
     export default {
-        components: {
-            PostContent
+        props: {
+            content: String
         },
         data() {
             return {
-                post: {
-                    album_id: ''
-                },
-                content: ''
-            }
+            };
         },
-        methods: {
-            prev: function () {
-
-            },
-            next: function () {
-
-            },
-            setPost: function () {
-                this.post = window.posts.filter(post => {
-                    return post.id == this.$route.params.postId;
-                })[0];
-                this.content = this.post.content.rendered;
-            },
-            initGlobalVars: function () {
-                let checkIsUploaded = setInterval(() => {
-                    if (window.posts &&
-                        window.posts.length) {
-                        clearInterval(checkIsUploaded);
-                        this.setPost();
-                    }
-                }, 20);
-            }
-        },
-        watch: {
-            '$route' (to, from) {
-                this.initGlobalVars();
-            }
-        },
-        mounted() {
-            this.initGlobalVars();
-        }
     }
 </script>
-
 <style lang="scss" scoped>
     @import "../assets/scss/variables";
     .post-page {
@@ -330,7 +270,7 @@
         }
     }
     .container-img {
-       justify-content: space-evenly;
+        justify-content: space-evenly;
         flex-direction: row;
         align-items: flex-end;
     }

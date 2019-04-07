@@ -36,6 +36,11 @@
 
             }
         },
+        mounted() {
+            EventBus.$on('close', () => {
+                this.showTopMenu = false;
+            });
+        }
     }
 </script>
 

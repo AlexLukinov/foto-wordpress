@@ -1,7 +1,7 @@
 <template>
     <div class="page about-us_page">
         <div class="about-page-block">
-            <headerWidthBack></headerWidthBack>
+            <header-with-back></header-with-back>
             <div class="page-slides" :class="$mq">
                 <div class="horizontal-divider" :class="$mq"></div>
                 <div class="name-page name-page-mobile" :class="$mq">ABOUT</div>

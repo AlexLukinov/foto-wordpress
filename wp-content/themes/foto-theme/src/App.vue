@@ -15,9 +15,11 @@
       return {
         catalogs: [],
         albums: [],
+        posts: [],
         albumsByCatalogs: [],
         isCatalogsUploaded: false,
-        isAlbumsUploaded: false
+        isAlbumsUploaded: false,
+        isPostsUploaded: false,
       }
     },
     methods: {
@@ -56,6 +58,7 @@
 
         window.catalogs = this.albumsByCatalogs;
         window.albums = this.albums;
+        window.posts = this.posts;
       }
     },
     mounted() {
@@ -82,9 +85,20 @@
               .catch(e => {
                 console.log(e);
               });
+      axios
+              .get(
+                      SETTINGS.API_BASE_PATH + "article?per_page=100"
+              )
+              .then(response => {
+                this.isPostsUploaded = true;
+                this.posts = response.data;
+              })
+              .catch(e => {
+                console.log(e);
+              });
 
       let checkIsUploaded = setInterval(() => {
-        if (this.isCatalogsUploaded && this.isAlbumsUploaded) {
+        if (this.isCatalogsUploaded && this.isAlbumsUploaded && this.isPostsUploaded) {
           this.setCatalog();
           clearInterval(checkIsUploaded);
         }

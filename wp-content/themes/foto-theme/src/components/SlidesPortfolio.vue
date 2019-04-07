@@ -1,10 +1,10 @@
 <template>
     <div class="slides-portfolio">
         <div class="page-slides" :class="$mq">
-            <h3 class="portfolio-caption" :class="$mq">{{ data.portfolioSlides[currentNumber].header.caption }}</h3>
+            <h3 class="portfolio-caption" :class="$mq">{{ portfolioSlides[currentNumber].header.caption }}</h3>
             <div class="image-slides" :class="$mq">
                 <transition class="slider-body" name="myanim" mode="out-in">
-                    <img :src="data.portfolioSlides[currentNumber].header.photo" :key="'headPhoto' + currentNumber">
+                    <img :src="portfolioSlides[currentNumber].header.photo" :key="'headPhoto' + currentNumber">
                 </transition>
             </div>
             <div class="arrow-box" :class="$mq">
@@ -41,16 +41,19 @@
             </div>
             <h3 class="portfolio-h3 h3-border-bottom"
                 ref="porto"
-                :class="$mq">{{ data.portfolioSlides[currentNumber].header.caption }}</h3>
+                :class="$mq">{{ portfolioSlides[currentNumber].header.caption }}</h3>
             <div class="gallery" id="gallery-portfolio">
                 <div @click="onAlbumClick(album.id)" class="image"
                      :class="$mq"
-                     v-for="album in data.portfolioSlides[currentNumber].albums">
-                    <img @mouseover="mouseOnPhoto(album.id)"
-                         @mouseleave="mouseLeavePhoto(album.id)"
-                         :src="album.main_cover.guid"
-                         :ref="album.id"
-                         class="fadeImg">
+                     v-for="album in portfolioSlides[currentNumber].albums">
+<!--                    <router-link :to="{ path: 'album', params: {albumId: album.id } }">-->
+                    <router-link :to="'/album/' + album.id">
+                        <img @mouseover="mouseOnPhoto(album.id)"
+                             @mouseleave="mouseLeavePhoto(album.id)"
+                             :src="album.main_cover.guid"
+                             :ref="album.id"
+                             class="fadeImg">
+                    </router-link>
                     <div class="catalog-name" :class="$mq">{{album.catalog.name}}</div>
                     <div class="photo-name" :class="$mq">{{album.title.rendered}}</div>
                 </div>
@@ -78,94 +81,20 @@
     export default {
         data() {
             return {
-                data: {
-                    portfolioSlides: [
-                        {
-                            header: {
-                                caption: 'Весь каталог наших работ',
-                                photo: '/wp-content/themes/foto-theme/src/assets/img/portfolio-slider1.jpg',
-                                backgroundText: 'Portfolio'
-                            },
-                            albums: window.albums,
-                            info: {
-                                header: 'header text',
-                                mainText: 'main text',
-                            }
+                portfolioSlides: [
+                    {
+                        header: {
+                            caption: '',
+                            photo: '',
+                            backgroundText: ''
                         },
-                        {
-                            header: {
-                                caption: 'Букеты и композиции',
-                                photo: '/wp-content/themes/foto-theme/src/assets/img/portfolio-slider2.jpg',
-                                backgroundText: 'Flowers'
-                            },
-                            albums: _.find(window.catalogs, ['catalog.name', 'Букеты и композиции']).albums,
-                            info: {
-                                header: 'header text',
-                                mainText: 'main text',
-                            }
-                        },
-                        {
-                            header: {
-                                caption: 'Свадебная флористика и декор',
-                                photo: '/wp-content/themes/foto-theme/src/assets/img/portfolio-slider3.jpg',
-                                backgroundText: 'Weddings'
-                            },
-                            albums: _.find(window.catalogs, ['catalog.name', 'Свадебная флористика и декор']).albums,
-                            info: {
-                                header: 'header text',
-                                mainText: 'main text',
-                            }
-                        },
-                        {
-                            header: {
-                                caption: 'Оформление мероприятий',
-                                photo: '/wp-content/themes/foto-theme/src/assets/img/portfolio-slider4.jpg',
-                                backgroundText: 'Events'
-                            },
-                            albums: _.find(window.catalogs, ['catalog.name', 'Оформление мероприятий']).albums,
-                            info: {
-                                header: 'header text',
-                                mainText: 'main text',
-                            }
-                        },
-                        {
-                            header: {
-                                caption: 'Отели и корпоративные клиенты',
-                                photo: '/wp-content/themes/foto-theme/src/assets/img/portfolio-slider5.jpg',
-                                backgroundText: 'Corporate'
-                            },
-                            albums: _.find(window.catalogs, ['catalog.name', 'Отели и корпоративные клиенты']).albums,
-                            info: {
-                                header: 'header text',
-                                mainText: 'main text',
-                            }
-                        },
-                        {
-                            header: {
-                                caption: 'Ритуальная флористика',
-                                photo: '/wp-content/themes/foto-theme/src/assets/img/portfolio-slider6.jpg',
-                                backgroundText: 'Funeral'
-                            },
-                            albums: _.find(window.catalogs, ['catalog.name', 'Ритуальная флористика']).albums,
-                            info: {
-                                header: 'header text',
-                                mainText: 'main text',
-                            }
-                        },
-                        {
-                            header: {
-                                caption: 'Мастер-классы',
-                                photo: '/wp-content/themes/foto-theme/src/assets/img/portfolio-slider6.jpg',
-                                backgroundText: 'Workshops'
-                            },
-                            albums: [],
-                            info: {
-                                header: 'header text',
-                                mainText: 'main text',
-                            }
-                        },
-                    ],
-                },
+                        albums: [],
+                        info: {
+                            header: '',
+                            mainText: '',
+                        }
+                    }
+                ],
                 currentNumber: 0,
                 timer: null,
                 showInfo: false,
@@ -180,7 +109,7 @@
                 this.$refs[albumId][0].src = _.find(window.albums, ['id', albumId]).main_cover.guid;
             },
             next: function () {
-                if (this.currentNumber < this.data.portfolioSlides.length - 1) {
+                if (this.currentNumber < this.portfolioSlides.length - 1) {
                     this.currentNumber += 1
                 } else {
                     this.currentNumber = 0
@@ -191,19 +120,117 @@
                 if (this.currentNumber > 0) {
                     this.currentNumber -= 1
                 } else {
-                    this.currentNumber = this.data.portfolioSlides.length - 1
+                    this.currentNumber = this.portfolioSlides.length - 1
                 }
                 EventBus.$emit('SLIDE_CHANGED', this.currentNumber);
             },
             onAlbumClick: function (albumId) {
-                EventBus.$emit('ALBUM_CLICKED', albumId);
-                this.showAlbum = true;
+                // EventBus.$emit('ALBUM_CLICKED', albumId);
+                console.log(albumId);
+                // router.push({ name: 'album', params: { id: albumId } })
+                // this.showAlbum = true;
             },
             scrollMeTo(refName) {
                 var element = this.$refs[refName];
                 var top = element.offsetTop;
 
                 window.scrollTo(0, top);
+            },
+            initGlobalVars: function () {
+                let checkIsUploaded = setInterval(() => {
+                    if (window.albums && window.catalogs && window.albums.length && window.catalogs.length) {
+                        clearInterval(checkIsUploaded);
+                        this.setAlbums();
+                    }
+                }, 20);
+            },
+            setAlbums: function () {
+                this.portfolioSlides = [
+                    {
+                        header: {
+                            caption: 'Весь каталог наших работ',
+                            photo: '/wp-content/themes/foto-theme/src/assets/img/portfolio-slider1.jpg',
+                            backgroundText: 'Portfolio'
+                        },
+                        albums: window.albums,
+                        info: {
+                            header: 'header text',
+                            mainText: 'main text',
+                        }
+                    },
+                    {
+                        header: {
+                            caption: 'Букеты и композиции',
+                            photo: '/wp-content/themes/foto-theme/src/assets/img/portfolio-slider2.jpg',
+                            backgroundText: 'Flowers'
+                        },
+                        albums: _.find(window.catalogs, ['catalog.name', 'Букеты и композиции']).albums,
+                        info: {
+                            header: 'header text',
+                            mainText: 'main text',
+                        }
+                    },
+                    {
+                        header: {
+                            caption: 'Свадебная флористика и декор',
+                            photo: '/wp-content/themes/foto-theme/src/assets/img/portfolio-slider3.jpg',
+                            backgroundText: 'Weddings'
+                        },
+                        albums: _.find(window.catalogs, ['catalog.name', 'Свадебная флористика и декор']).albums,
+                        info: {
+                            header: 'header text',
+                            mainText: 'main text',
+                        }
+                    },
+                    {
+                        header: {
+                            caption: 'Оформление мероприятий',
+                            photo: '/wp-content/themes/foto-theme/src/assets/img/portfolio-slider4.jpg',
+                            backgroundText: 'Events'
+                        },
+                        albums: _.find(window.catalogs, ['catalog.name', 'Оформление мероприятий']).albums,
+                        info: {
+                            header: 'header text',
+                            mainText: 'main text',
+                        }
+                    },
+                    {
+                        header: {
+                            caption: 'Отели и корпоративные клиенты',
+                            photo: '/wp-content/themes/foto-theme/src/assets/img/portfolio-slider5.jpg',
+                            backgroundText: 'Corporate'
+                        },
+                        albums: _.find(window.catalogs, ['catalog.name', 'Отели и корпоративные клиенты']).albums,
+                        info: {
+                            header: 'header text',
+                            mainText: 'main text',
+                        }
+                    },
+                    {
+                        header: {
+                            caption: 'Ритуальная флористика',
+                            photo: '/wp-content/themes/foto-theme/src/assets/img/portfolio-slider6.jpg',
+                            backgroundText: 'Funeral'
+                        },
+                        albums: _.find(window.catalogs, ['catalog.name', 'Ритуальная флористика']).albums,
+                        info: {
+                            header: 'header text',
+                            mainText: 'main text',
+                        }
+                    },
+                    {
+                        header: {
+                            caption: 'Мастер-классы',
+                            photo: '/wp-content/themes/foto-theme/src/assets/img/portfolio-slider6.jpg',
+                            backgroundText: 'Workshops'
+                        },
+                        albums: [],
+                        info: {
+                            header: 'header text',
+                            mainText: 'main text',
+                        }
+                    },
+                ]
             }
         },
         computed: {
@@ -224,6 +251,8 @@
             EventBus.$on('close', () => {
                 this.showInfo = false;
             });
+
+            this.initGlobalVars();
         }
     }
 
@@ -269,11 +298,12 @@
         }
     }
     .image-slides {
-        width: 30%;
+        width: 24.7%;
         height: 65vh;
-        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         margin-top: 1vh;
-        transition: all 0.3s ease;
         &.mobile {
             width: 50%;
             height: 40vh;
@@ -310,12 +340,6 @@
             top: 72vh;
         }
     }
-    .myanim-enter-active {
-        animation: myanim cubic-bezier(.8,.8,1,1) 2s;
-    }
-    .myanim-leave-active {
-        animation: myanimout cubic-bezier(.8,.8,1,1) 2s;
-    }
     a.slide-a {
         display: flex;
         justify-content: center;
@@ -331,43 +355,58 @@
             height: 40px;
         }
     }
+    .myanim-enter-active {
+        animation: myanim ease-out 0.5s;
+    }
+    .myanim-leave-active {
+        animation: myanimout ease-out 0.5s;
+    }
     @keyframes myanim {
-        0% {
-            -webkit-clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
-            clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
-            transform: scale(1.2);
-        }
-        100% {
-            -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-            transform: scale(1);
 
+        from {
+            transform: translateX(200%);
+        }
+        to {
+            transform: translateX(0);
         }
     }
     @keyframes myanimout {
-        0% {
-            -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-            transform: scale(1);
+
+        from {
+            transform: translateX(0);
         }
-        100% {
-            -webkit-clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-            clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-            transform: scale(1.2);
+        to {
+            transform: translateX(-300%);
         }
+    }
+    .text-anim-enter-active {
+        animation: text-anim linear 0.5s;
+    }
+    .text-anim-leave-active {
+        animation: text-anim-out linear 0.5s;
     }
     @keyframes text-anim {
-       0% {
-
-       }
-
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
     }
-    .pageanim-enter-active {
-        animation: pageanim ease 1s;
+    @keyframes text-anim-out {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
     }
-    .pageanim-leave-active {
-        animation: pageanimout ease 1s;
-    }
+    /*.pageanim-enter-active {*/
+    /*animation: pageanim ease 1s;*/
+    /*}*/
+    /*.pageanim-leave-active {*/
+    /*animation: pageanimout ease 1s;*/
+    /*}*/
     .portfolio-footer {
         display: flex;
         justify-content: space-between;
@@ -384,7 +423,7 @@
     }
     .see-album {
         position: absolute;
-        top: 77vh;
+        top: 77.5vh;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -395,18 +434,18 @@
             top: 80vh;
         }
     }
-   .see-album button {
+    .see-album button {
         width: 140px;
         height: 140px;
         border-radius: 100%;
         border: 1px solid #dacfb1;
-       font-size: 14px;
-       &.mobile {
-           width: 100px;
-           height: 100px;
-           font-size: 11px;
-           line-height: 1.4;
-       }
+        font-size: 12px;
+        &.mobile {
+            width: 100px;
+            height: 100px;
+            font-size: 11px;
+            line-height: 1.4;
+        }
     }
     .see-album-line {
         display: flex;
@@ -415,7 +454,7 @@
         align-items: center;
         height: 110px;
         width: 5px;
-        margin-top: -20px;
+        margin-top: -30px;
         &.mobile {
             margin-top: 5vh;
         }
@@ -429,8 +468,8 @@
         }
     }
     .see-album-circle {
-        width: 5px;
-        height: 5px;
+        width: 6px;
+        height: 6px;
         border: 1px solid #333333;
         background-color: transparent;
         border-radius: 100%;

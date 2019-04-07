@@ -5,6 +5,8 @@ import Services from  './components/Services.vue'
 import Portfolio from  './components/Portfolio.vue'
 import Contacts from  './components/Сontacts.vue'
 import Blog from  './components/Blog.vue'
+import Album from './components/Album.vue'
+import Post from './components/Post.vue'
 
 export default new VueRouter ({
         routes: [
@@ -25,6 +27,14 @@ export default new VueRouter ({
                 component: Portfolio
             },
             {
+                path: '/album/:albumId',
+                component: Album
+            },
+            {
+                path: '/post/:postId',
+                component: Post
+            },
+            {
                 path: '/contacts',
                 component: Contacts
             },
@@ -33,5 +43,5 @@ export default new VueRouter ({
                 component: Blog
             },
             ],
-        mode: 'history',
+        mode: 'history'
 })
