@@ -15,16 +15,20 @@ export default new VueRouter ({
                 component: Home
             },
             {
+                path: '/portfolio',
+                component: Portfolio
+            },
+            {
                 path: '/aboutUs',
                 component: AboutUs
             },
             {
-                path: '/services',
-                component: Services
+                path: '/blog',
+                component: Blog
             },
             {
-                path: '/portfolio',
-                component: Portfolio
+                path: '/contacts',
+                component: Contacts
             },
             {
                 path: '/album/:albumId',
@@ -34,14 +38,7 @@ export default new VueRouter ({
                 path: '/post/:postId',
                 component: Post
             },
-            {
-                path: '/contacts',
-                component: Contacts
-            },
-            {
-                path: '/blog',
-                component: Blog
-            },
+
             ],
         mode: 'history'
 })

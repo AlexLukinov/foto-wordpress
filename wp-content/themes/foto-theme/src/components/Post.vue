@@ -1,6 +1,6 @@
 <template>
     <div class="page post-page article" :class="$mq">
-        <header-with-back></header-with-back>
+        <!--<header-with-back></header-with-back>-->
 
 <!--        <post-content :content="content"></post-content>-->
         <component :is="{template: content}"></component>
@@ -11,7 +11,7 @@
                 <img class="arrow arrow-left" src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Буектное бюро">
             </div>
             <router-link :to="'/album/' + post.album_id">
-                <button :class="$mq">Смотреть больше фото</button>
+                <button class="article-button" :class="$mq">Смотреть больше фото</button>
             </router-link>
             <div class="arrow-around arrow-rotate" @click="next">
                 <img class="arrow arrow-right" src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
@@ -256,7 +256,6 @@
     .scroll-element .text-element {
         color: #000000;
     }
-
     .footer-img {
         width: 82%;
         height: 70%;
@@ -265,7 +264,7 @@
         justify-content: space-between;
         align-items: center;
         border-top: 1px solid #dacfb1;
-        &.sm {
+        &.mobile {
             width: 90%;
         }
     }

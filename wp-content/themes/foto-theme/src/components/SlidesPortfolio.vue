@@ -7,6 +7,11 @@
                     <img :src="portfolioSlides[currentNumber].header.photo" :key="'headPhoto' + currentNumber">
                 </transition>
             </div>
+            <div class="slide-container" :class="$mq">
+                <transition name="text-anim" mode="out-in">
+                    <span class="slides_text" :class="$mq" :key="'headText' + currentNumber">{{ portfolioSlides[currentNumber].header.backgroundText }}</span>
+                </transition>
+            </div>
             <div class="arrow-box" :class="$mq">
                 <div class="arrow-around arrow-rotate" @click="prev">
                     <div class="div-around"></div>
@@ -19,7 +24,7 @@
             </div>
             <div class="portfolio-footer" :class="$mq">
                 <div class="text-element" :class="$mq">
-                    <span class="pagination-slide">0{{currentNumber+1}}</span>/07
+                    <span class="pagination-slide">0{{currentNumber+1}}</span>/05
                 </div>
                 <div class="info text-element"
                      :class="$mq"
@@ -206,30 +211,30 @@
                             mainText: 'main text',
                         }
                     },
-                    {
-                        header: {
-                            caption: 'Ритуальная флористика',
-                            photo: '/wp-content/themes/foto-theme/src/assets/img/portfolio-slider6.jpg',
-                            backgroundText: 'Funeral'
-                        },
-                        albums: _.find(window.catalogs, ['catalog.name', 'Ритуальная флористика']).albums,
-                        info: {
-                            header: 'header text',
-                            mainText: 'main text',
-                        }
-                    },
-                    {
-                        header: {
-                            caption: 'Мастер-классы',
-                            photo: '/wp-content/themes/foto-theme/src/assets/img/portfolio-slider6.jpg',
-                            backgroundText: 'Workshops'
-                        },
-                        albums: [],
-                        info: {
-                            header: 'header text',
-                            mainText: 'main text',
-                        }
-                    },
+                    // {
+                    //     header: {
+                    //         caption: 'Ритуальная флористика',
+                    //         photo: '/wp-content/themes/foto-theme/src/assets/img/portfolio-slider6.jpg',
+                    //         backgroundText: 'Funeral'
+                    //     },
+                    //     albums: _.find(window.catalogs, ['catalog.name', 'Ритуальная флористика']).albums,
+                    //     info: {
+                    //         header: 'header text',
+                    //         mainText: 'main text',
+                    //     }
+                    // },
+                    // {
+                    //     header: {
+                    //         caption: 'Мастер-классы',
+                    //         photo: '/wp-content/themes/foto-theme/src/assets/img/portfolio-slider6.jpg',
+                    //         backgroundText: 'Workshops'
+                    //     },
+                    //     albums: [],
+                    //     info: {
+                    //         header: 'header text',
+                    //         mainText: 'main text',
+                    //     }
+                    // },
                 ]
             }
         },
@@ -337,7 +342,7 @@
         justify-content: space-between;
         width: 90%;
         &.mobile {
-            top: 72vh;
+            top: 77vh;
         }
     }
     a.slide-a {
@@ -416,7 +421,7 @@
         &.mobile {
             flex-direction: column-reverse;
             width: 20%;
-            height: 50vh;
+            height: 55vh;
             position: absolute;
             top: 25vh;
         }
@@ -431,7 +436,7 @@
         width: 20%;
         height: auto;
         &.mobile {
-            top: 80vh;
+            top: 85vh;
         }
     }
     .see-album button {

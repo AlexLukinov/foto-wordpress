@@ -553,7 +553,7 @@
         }
     }
     .bcg-image {
-        background-image: url('../assets/img/flowerbcg.png');
+        background-image: url('/wp-content/themes/foto-theme/src/assets/img/flowerbcg.png');
         background-repeat: no-repeat;
         background-position: center;
         background-size: 16%;

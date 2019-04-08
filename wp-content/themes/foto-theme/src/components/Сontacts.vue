@@ -244,7 +244,7 @@
         align-items: center;
         &.mobile {
             height: auto;
-            margin-top: 6vh;
+            margin-top: 8vh;
             flex-direction: column;
         }
     }
@@ -465,12 +465,14 @@
         &.mobile {
             flex-direction: column;
             width: 100%;
+            justify-content: center;
         }
     }
     .info-column .contacts-block-p {
         width: 29%;
         margin-right: 5%;
         &.mobile {
+            justify-content: center;
             width: 70%;
             margin: auto;
         }
@@ -638,7 +640,6 @@
             position: absolute;
             height: 1px;
             background-color: #dacfb1;
-            margin-top: 2vh;
             margin-bottom: 2vh;
         }
     }

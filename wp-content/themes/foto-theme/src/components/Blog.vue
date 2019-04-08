@@ -1,5 +1,5 @@
 <template>
-    <div class="page blog-page">
+    <div class="page blog-page article">
         <header-with-back></header-with-back>
             <h3 class="h3-border-bottom blog-h3" :class="$mq">НАШИ ИСТОРИИ И ДРУГИЕ СТАТЬИ</h3>
             <div class="gallery" id="gallery-blog">
@@ -932,7 +932,7 @@
         width: 76%;
         text-align: center;
         &.mobile {
-            margin-top: 45vh;
+            margin-top: 6vh;
         }
     }
     .h3-border-bottom {

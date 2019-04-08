@@ -1,6 +1,6 @@
 <template>
   <div id="app" @wheel="onWheel">
-    <transition name="router-anim">
+    <transition name="router-anim" mode="out-in">
       <router-view></router-view>
     </transition>
   </div>
@@ -108,38 +108,23 @@
 </script>
 
 <style lang="scss" scoped>
+
   .router-anim-enter-active {
     animation: going 2s;
-    animation-delay: .5s;
-    opacity: 0;
   }
-
   .router-anim-leave-to {
-    animation: coming 2s;
+    animation: coming 1s;
   }
 
   @keyframes going {
     0% {
-      -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-      clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+      opacity: 0;
     }
     100% {
-      -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      opacity: 1;
     }
 
   }
-
-  /*@keyframes coming {
-      from {
-          transform: translateX(-210px);
-          opacity: 0;
-      }
-      to {
-          transform: translateX(0);
-          opacity: 1;
-      }
-  }*/
   @keyframes coming {
     0% {
       -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
@@ -150,5 +135,4 @@
       clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
     }
   }
-
 </style>
