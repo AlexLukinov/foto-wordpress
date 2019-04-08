@@ -11,8 +11,38 @@
 <script>
     export default {
         data () {
-            return{}
+            return{
+                initialHeight: window.innerHeight + window.scrollY,
+                isScrolledAlready: false
+            }
         },
+        mounted () {
+            var routes = this.$router.options.routes;
+            var idx = routes.findIndex(item => item.path === this.$route.path);
+
+            window.onscroll = () => {
+                let positionY = window.innerHeight + window.scrollY;
+
+                if (!this.isScrolledAlready && positionY > this.initialHeight) {
+                    this.isScrolledAlready = true;
+                }
+
+                let scrollHeight = document.body.scrollHeight;
+
+                if (positionY >= scrollHeight) {
+                    this.$router.push(routes[idx + 1])
+                }
+                
+                // let bottomOfWindow = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) + window.innerHeight === document.documentElement.offsetHeight;
+                //
+                // if (bottomOfWindow && this.isScrolledAlready) {
+                //     this.$router.push(routes[idx - 1])
+                // }
+                if (positionY <= this.initialHeight && this.isScrolledAlready) {
+                    this.$router.push(routes[idx - 1])
+                }
+            };
+        }
     }
 </script>
 
