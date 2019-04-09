@@ -1,8 +1,7 @@
 <template>
     <div class="page post-page article" :class="$mq">
-        <!--<header-with-back></header-with-back>-->
+        <header-with-back></header-with-back>
 
-<!--        <post-content :content="content"></post-content>-->
         <component :is="{template: content}"></component>
 
         <div class="arrow-box" :class="$mq">

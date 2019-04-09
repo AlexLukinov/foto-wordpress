@@ -296,28 +296,7 @@
             };
         },
         methods: {
-            scrolledToBottom() {
-                var routes = this.$router.options.routes;
-                var idx = routes.findIndex(item => item.path === this.$route.path);
-
-                if (routes[idx].path != '/portfolio') {
-                    if (idx > 0) {
-                        this.$router.push(routes[idx - 1])
-                    }
-                }
-            }
         },
-        mounted() {
-            var routes = this.$router.options.routes;
-            var idx = routes.findIndex(item => item.path === this.$route.path);
-
-            window.onscroll = () => {
-                console.log(document.body.offsetHeight)
-                // if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
-                //     this.$router.push(routes[idx + 1])
-                // }
-            };
-        }
     }
 </script>
 

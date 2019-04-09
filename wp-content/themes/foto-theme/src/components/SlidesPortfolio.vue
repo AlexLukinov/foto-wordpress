@@ -78,8 +78,8 @@
             </div>
         </div>
 
-        <info v-show="showInfo" class="animated fadeIn"></info>
-        <album v-show="showAlbum"></album>
+<!--        <info v-show="showInfo" class="animated fadeIn"></info>-->
+<!--        <album v-show="showAlbum"></album>-->
     </div>
 </template>
 <script>
@@ -128,12 +128,6 @@
                     this.currentNumber = this.portfolioSlides.length - 1
                 }
                 EventBus.$emit('SLIDE_CHANGED', this.currentNumber);
-            },
-            onAlbumClick: function (albumId) {
-                // EventBus.$emit('ALBUM_CLICKED', albumId);
-                console.log(albumId);
-                // router.push({ name: 'album', params: { id: albumId } })
-                // this.showAlbum = true;
             },
             scrollMeTo(refName) {
                 var element = this.$refs[refName];
