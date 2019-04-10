@@ -104,20 +104,20 @@
 
           // if overall deltaY more than 150px then switch component
           if (Math.abs(this.deltaY) > 150) {
-            // if (!this.scrollableRoutePaths.includes(this.currentRoutePath)) {
-            if (delta > 0 && this.routeIndex < this.routes.length - 1) {
-              this.nextRoute();
-            }
-            if (delta < 0 && this.routeIndex > 0) {
-              this.prevRoute();
-            }
+            if (!this.scrollableRoutePaths.includes(this.currentRoutePath)) {
+                if (delta > 0 && this.routeIndex < this.routes.length - 1) {
+                  this.nextRoute();
+                }
+                if (delta < 0 && this.routeIndex > 0) {
+                  this.prevRoute();
+                }
 
-            // if just scrolled than set isJustScrolled to true
-            // and then set to false with 100ms delay
-            this.isJustScrolled = true;
-            setTimeout(() => { this.isJustScrolled = false }, 100);
-            this.deltaY = 0;
-            // }
+                // if just scrolled than set isJustScrolled to true
+                // and then set to false with 100ms delay
+                this.isJustScrolled = true;
+                setTimeout(() => { this.isJustScrolled = false }, 100);
+                this.deltaY = 0;
+            }
           }
         }
       },
