@@ -24,6 +24,20 @@ import Info from './components/Info.vue'
 import Album from './components/Album.vue'
 import Vue2TouchEvents from 'vue2-touch-events'
 
+router.beforeEach(function (to, from, next) {
+  setTimeout(() => {
+    window.scrollTo(0, 0);
+  }, 100);
+
+  if (to.path == '/') {
+    document.body.style['overflow-y'] = "hidden";
+  } else {
+    document.body.style['overflow-y'] = "scroll";
+  }
+
+  next();
+});
+
 Vue.use(Vue2TouchEvents);
 Vue.use(VueRouter);
 Vue.use(VueMq, {

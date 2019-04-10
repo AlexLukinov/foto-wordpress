@@ -25,7 +25,7 @@
                 <div class="div-around"></div>
                 <img class="arrow arrow-left" src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Буектное бюро">
             </div>
-            <router-link v-if="postId" :to="'/post/' + postId">
+            <router-link v-if="postId.length" :to="'/post/' + postId">
                 <button :class="$mq">Смотреть статью</button>
             </router-link>
             <div class="arrow-around arrow-rotate" @click="next">

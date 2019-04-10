@@ -48,10 +48,9 @@
                 ref="porto"
                 :class="$mq">{{ portfolioSlides[currentNumber].header.caption }}</h3>
             <div class="gallery" id="gallery-portfolio">
-                <div @click="onAlbumClick(album.id)" class="image"
+                <div class="image"
                      :class="$mq"
                      v-for="album in portfolioSlides[currentNumber].albums">
-<!--                    <router-link :to="{ path: 'album', params: {albumId: album.id } }">-->
                     <router-link :to="'/album/' + album.id">
                         <img @mouseover="mouseOnPhoto(album.id)"
                              @mouseleave="mouseLeavePhoto(album.id)"

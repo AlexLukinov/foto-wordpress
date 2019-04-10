@@ -25,6 +25,9 @@
         isArticlesCategoriesUploaded: false,
         initialHeight: window.innerHeight + window.scrollY,
         isScrolledAlready: false,
+        isJustScrolled: false,
+        isAtThePageTop: true,
+        deltaY: 0,
         scrollableRoutePaths: [
           '/portfolio',
           '/blog',
@@ -74,14 +77,47 @@
         }
       },
       onWheel(event) {
-        var delta = event.deltaY;
+        // if (this.scrollableRoutePaths.includes(this.currentRoutePath)) {
+        //   let positionY = window.innerHeight + window.scrollY;
+        //
+        //   if (!this.isScrolledAlready && positionY > this.initialHeight) {
+        //     this.isScrolledAlready = true;
+        //   }
+        //
+        //   let scrollHeight = document.body.scrollHeight;
+        //
+        //   if (positionY >= scrollHeight) {
+        //     this.nextRoute();
+        //   }
+        //
+        //   if (positionY <= this.initialHeight && this.isScrolledAlready) {
+        //     this.prevRoute();
+        //   }
+        // }
 
-        if (!this.scrollableRoutePaths.includes(this.currentRoutePath)) {
-          if (delta > 60 && this.routeIndex < this.routes.length - 1) {
+        // fire only if not just scrolled (for purposes of good UX on
+        // switching components on scroll)
+        if (!this.isJustScrolled) {
+          // get delta of scroll event and add it to aggregate property deltaY
+          let delta = event.deltaY;
+          this.deltaY += parseInt(delta);
+
+          // if overall deltaY more than 150px then switch component
+          if (Math.abs(this.deltaY) > 150) {
+            // if (!this.scrollableRoutePaths.includes(this.currentRoutePath)) {
+            if (delta > 0 && this.routeIndex < this.routes.length - 1) {
               this.nextRoute();
-          }
-          if (delta < 60 && this.routeIndex > 0) {
+            }
+            if (delta < 0 && this.routeIndex > 0) {
               this.prevRoute();
+            }
+
+            // if just scrolled than set isJustScrolled to true
+            // and then set to false with 100ms delay
+            this.isJustScrolled = true;
+            setTimeout(() => { this.isJustScrolled = false }, 100);
+            this.deltaY = 0;
+            // }
           }
         }
       },
@@ -192,25 +228,25 @@
         }, 100);
       },
       setSwitchingComponentsListeners() {
-        window.onscroll = () => {
-          if (this.scrollableRoutePaths.includes(this.currentRoutePath)) {
-            let positionY = window.innerHeight + window.scrollY;
-
-            if (!this.isScrolledAlready && positionY > this.initialHeight) {
-              this.isScrolledAlready = true;
-            }
-
-            let scrollHeight = document.body.scrollHeight;
-
-            if (positionY >= scrollHeight) {
-              this.nextRoute();
-            }
-
-            if (positionY <= this.initialHeight && this.isScrolledAlready) {
-              this.prevRoute();
-            }
-          }
-        };
+        // window.onscroll = () => {
+        //   if (this.scrollableRoutePaths.includes(this.currentRoutePath)) {
+        //     let positionY = window.innerHeight + window.scrollY;
+        //
+        //     if (!this.isScrolledAlready && positionY > this.initialHeight) {
+        //       this.isScrolledAlready = true;
+        //     }
+        //
+        //     let scrollHeight = document.body.scrollHeight;
+        //
+        //     if (positionY >= scrollHeight) {
+        //       this.nextRoute();
+        //     }
+        //
+        //     if (positionY <= this.initialHeight && this.isScrolledAlready) {
+        //       this.prevRoute();
+        //     }
+        //   }
+        // };
       }
     },
     computed: {
@@ -221,8 +257,12 @@
         return this.routes.findIndex(item => item.path === this.$route.path);
       },
       currentRoutePath: function () {
-        return this.routes[this.routeIndex].path;
-      }
+        if (this.routes[this.routeIndex]) {
+          return this.routes[this.routeIndex].path;
+        }
+
+        return '';
+      },
     },
     mounted() {
 

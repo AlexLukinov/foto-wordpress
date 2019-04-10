@@ -1,6 +1,6 @@
 <template>
     <div class="header" :class="$mq">
-        <div @click="closeEvent" class="text-element text-element-back" :class="$mq">
+        <div @click="backClicked" class="text-element text-element-back" :class="$mq">
             BACK
         </div>
         <router-link to="/" class="logo-wrap" :class="$mq">
@@ -9,7 +9,7 @@
             <div class="menu-icon">
                 <div class="toggleTopMenu">
                         <div class="main-item menu text-element"
-                             @click="showTopMenu = !showTopMenu" v-if="!showTopMenu" :class="$mq">
+                             @click="showTopMenu = !showTopMenu" :class="$mq">
                            MENU
                         </div>
                 </div>
@@ -26,11 +26,8 @@
             };
         },
         methods: {
-            onCloseClicked: function () {
-                this.showTopMenu = false;
+            backClicked: function () {
                 this.$router.go(-1);
-            },
-            closeEvent: function () {
                 EventBus.$emit('close');
             }
         },

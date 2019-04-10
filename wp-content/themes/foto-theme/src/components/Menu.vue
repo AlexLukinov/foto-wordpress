@@ -258,6 +258,7 @@
         justify-content: flex-start;
     }
     .page-menu {
+        z-index: 100;
         width: 100%;
         height: 100vh;
         background-color: rgba(243, 240, 234, 0.7);
@@ -266,7 +267,6 @@
         align-items: flex-end;
         top: 0;
         left: 0;
-        z-index: 5;
         &.mobile {
             height: 91vh;
             position: fixed;
