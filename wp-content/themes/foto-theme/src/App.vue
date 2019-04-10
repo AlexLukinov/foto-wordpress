@@ -27,6 +27,7 @@
         isScrolledAlready: false,
         isJustScrolled: false,
         isAtThePageTop: true,
+        isAtThePageBottom: false,
         deltaY: 0,
         scrollableRoutePaths: [
           '/portfolio',
@@ -47,54 +48,36 @@
       setInitialScrollData() {
         this.isScrolledAlready = false;
         this.initialHeight = window.innerHeight + window.scrollY;
+        this.isAtThePageTop = true;
+        this.isAtThePageBottom = false;
+
+        // if just scrolled than set isJustScrolled to true
+        // and then set to false with 100ms delay
+        this.isJustScrolled = true;
+        setTimeout(() => { this.isJustScrolled = false }, 100);
+        this.deltaY = 0;
       },
-      nextRoute() {
-        let nextRoute = this.routes[this.routeIndex + 1].path;
+      switchRoute(where, comparePathIndex) {
+        let route = this.routes[this.routeIndex + where].path;
 
         if (
-          this.switchableRoutePaths.includes(this.currentRoutePath) &&
-          this.currentRoutePath != this.switchableRoutePaths[this.switchableRoutePaths.length - 1] &&
-          this.switchableRoutePaths.includes(nextRoute)
+            this.switchableRoutePaths.includes(this.currentRoutePath) &&
+            this.currentRoutePath != this.switchableRoutePaths[comparePathIndex] &&
+            this.switchableRoutePaths.includes(route)
         ) {
           setTimeout(() => {
-            this.$router.push(nextRoute);
-          }, 100);
-          this.setInitialScrollData();
-        }
-      },
-      prevRoute() {
-        let prevRoute = this.routes[this.routeIndex - 1].path;
-
-        if (
-          this.switchableRoutePaths.includes(this.currentRoutePath) &&
-          this.currentRoutePath != this.switchableRoutePaths[0] &&
-          this.switchableRoutePaths.includes(prevRoute)
-        ) {
-          setTimeout(() => {
-            this.$router.push(prevRoute);
+            this.$router.push(route);
           }, 0);
           this.setInitialScrollData();
         }
       },
+      nextRoute() {
+        this.switchRoute(1, (this.switchableRoutePaths.length - 1));
+      },
+      prevRoute() {
+        this.switchRoute(-1, 0);
+      },
       onWheel(event) {
-        // if (this.scrollableRoutePaths.includes(this.currentRoutePath)) {
-        //   let positionY = window.innerHeight + window.scrollY;
-        //
-        //   if (!this.isScrolledAlready && positionY > this.initialHeight) {
-        //     this.isScrolledAlready = true;
-        //   }
-        //
-        //   let scrollHeight = document.body.scrollHeight;
-        //
-        //   if (positionY >= scrollHeight) {
-        //     this.nextRoute();
-        //   }
-        //
-        //   if (positionY <= this.initialHeight && this.isScrolledAlready) {
-        //     this.prevRoute();
-        //   }
-        // }
-
         // fire only if not just scrolled (for purposes of good UX on
         // switching components on scroll)
         if (!this.isJustScrolled) {
@@ -102,21 +85,44 @@
           let delta = event.deltaY;
           this.deltaY += parseInt(delta);
 
+          let positionY = window.innerHeight + window.scrollY;
+          let scrollHeight = document.body.scrollHeight;
+
+          // we at the top of the page
+          if (positionY <= this.initialHeight) {
+            this.isAtThePageTop = true;
+          }
+
+          // if delta positive it's mean that we definitely not at the top of the page
+          if (delta > 0) {
+            this.isAtThePageTop = false;
+          }
+
+          // we at the bottom of the page
+          if (positionY >= scrollHeight) {
+            this.isAtThePageBottom = true;
+          }
+
           // if overall deltaY more than 150px then switch component
           if (Math.abs(this.deltaY) > 150) {
-            if (!this.scrollableRoutePaths.includes(this.currentRoutePath)) {
-                if (delta > 0 && this.routeIndex < this.routes.length - 1) {
-                  this.nextRoute();
-                }
-                if (delta < 0 && this.routeIndex > 0) {
-                  this.prevRoute();
-                }
+            // if we on scrollable page then switch if we at the bottom or at the top
+            // else switch on sign of delta
+            if (this.scrollableRoutePaths.includes(this.currentRoutePath)) {
+              if (delta < 0 && this.isAtThePageTop) {
+                this.prevRoute();
+              }
 
-                // if just scrolled than set isJustScrolled to true
-                // and then set to false with 100ms delay
-                this.isJustScrolled = true;
-                setTimeout(() => { this.isJustScrolled = false }, 100);
-                this.deltaY = 0;
+              if (delta > 0 && this.isAtThePageBottom) {
+                this.nextRoute();
+              }
+            } else {
+              if (delta > 0 && this.routeIndex < this.routes.length - 1) {
+                this.nextRoute();
+              }
+
+              if (delta < 0 && this.routeIndex > 0) {
+                this.prevRoute();
+              }
             }
           }
         }
@@ -227,27 +233,6 @@
           }
         }, 100);
       },
-      setSwitchingComponentsListeners() {
-        // window.onscroll = () => {
-        //   if (this.scrollableRoutePaths.includes(this.currentRoutePath)) {
-        //     let positionY = window.innerHeight + window.scrollY;
-        //
-        //     if (!this.isScrolledAlready && positionY > this.initialHeight) {
-        //       this.isScrolledAlready = true;
-        //     }
-        //
-        //     let scrollHeight = document.body.scrollHeight;
-        //
-        //     if (positionY >= scrollHeight) {
-        //       this.nextRoute();
-        //     }
-        //
-        //     if (positionY <= this.initialHeight && this.isScrolledAlready) {
-        //       this.prevRoute();
-        //     }
-        //   }
-        // };
-      }
     },
     computed: {
       routes: function () {
@@ -272,8 +257,6 @@
       this.getArticlesCategories();
 
       this.checkIsAllDataUploaded();
-
-      this.setSwitchingComponentsListeners();
     }
   }
 </script>
