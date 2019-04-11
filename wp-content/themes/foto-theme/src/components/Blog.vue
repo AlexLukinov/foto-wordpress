@@ -10,7 +10,10 @@
                         <img :src="post.article_photo.guid"
                              :ref="index"
                              class="fadeImg">
-                        <div class="catalog-name" :class="$mq">{{post.article_category.name}}</div>
+                        <div class="catalog-name" :class="$mq">
+                            {{post.article_category.name}}
+                            <span class="article-date"> 17 января 2015</span>
+                        </div>
                         <div class="photo-name" :class="$mq">{{post.title.rendered}}</div>
                     </router-link>
                 </div>
@@ -24,7 +27,7 @@
             <span class="slide_line_span" >07</span>
         </div>
         <div class="scroll-element" :class="$mq">
-            <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
+            <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
             <div class="text-element">SCROLL</div>
         </div>
     </div>
@@ -137,7 +140,8 @@
         font-size: 1.12vw;
         color: #333333;
         line-height: 1.5;
-        margin-block-end: 1.5em;
+        margin: auto;
+        margin-bottom: 3vh;
         width: 90%;
         letter-spacing: 1px;
         &.mobile {
@@ -209,5 +213,8 @@
     .scroll-element .text-element {
         color: #000000;
     }
-
+    .article-date {
+        border-left: 1px solid;
+        padding-left: 2%;
+    }
 </style>

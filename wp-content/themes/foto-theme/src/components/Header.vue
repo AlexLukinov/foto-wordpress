@@ -51,12 +51,12 @@
         display: flex;
         justify-content: space-between;
         width: 90.6%;
-        height: 7vh;
+        height: 10vh;
         color: white;
         margin: auto;
         align-items: center;
         position: absolute;
-        top: 2vh;
+        top: 3vh;
         &.mobile {
             flex-direction: row-reverse;
             width: 100%;

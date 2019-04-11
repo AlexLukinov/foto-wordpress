@@ -71,15 +71,6 @@
                     </router-link>
                 </div>
             </div>
-            <div class="slide_line" :class="$mq">
-                <span class="slide_line_span">02</span>
-                <div class="slide-progress"></div>
-                <span class="slide_line_span" >05</span>
-            </div>
-            <div class="scroll-element" :class="$mq">
-                <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
-                <div class="text-element">SCROLL</div>
-            </div>
         </div>
         <div class="about-page-block bcg-image" :class="$mq">
             <div class="content-left" :class="$mq">
@@ -108,76 +99,69 @@
                     Внимание к деталям и перфекционизм в исполнении - это о нас.
                 </p>
             </div>
-                <div class="slide_line" :class="$mq">
-                    <span class="slide_line_span">03</span>
-                    <div class="slide-progress"></div>
-                    <span class="slide_line_span" >05</span>
-                </div>
-            <div class="scroll-element" :class="$mq">
-                <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
-                <div class="text-element">SCROLL</div>
-            </div>
         </div>
         <div class="about-page-block" :class="$mq">
             <div class="content-left" :class="$mq">
                 <h2 class="caption" :class="$mq">
                     Оправдываем ваше доверие
                 </h2>
-                <div class="content-block about-link" :class="$mq">
+                <a href="#" class="content-block about-link" :class="$mq">
                     <p class="p-link" :class="$mq">
                         БУКЕТНОЕ БЮРО - ежегодный официальный флорист
                         Большого Севастопольского Благотворительного Офицерского бала
                     </p>
-                    <router-link to="/contacts" class="nav-link" :class="$mq">
+                    <div class="nav-link" :class="$mq">
                         <div class="arrow-around arrow-rotate">
                             <img class="arrow arrow-right"
                                  :class="$mq"
                                  src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
                             <div class="div-around" :class="$mq"></div>
                         </div>
-                    </router-link>
-                </div>
-                <div class="content-block about-link" :class="$mq">
+                    </div>
+                </a>
+                <a href="https://flowwow.com/sevastopol/shop/buketnoe-byurof-8818/"
+                   class="content-block about-link" :class="$mq">
                     <p class="p-link" :class="$mq">
                         Партнер международной службы доставки цветов FLOWWOW
                     </p>
-                    <router-link to="/contacts" class="nav-link" :class="$mq">
+                    <div class="nav-link" :class="$mq">
                         <div class="arrow-around arrow-rotate">
                             <img class="arrow arrow-right"
                                  :class="$mq"
                                  src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
                             <div class="div-around" :class="$mq"></div>
                         </div>
-                    </router-link>
-                </div>
-                <div class="content-block about-link" :class="$mq">
+                    </div>
+                </a>
+                <a href="#"
+                    class="content-block about-link" :class="$mq">
                     <p class="p-link" :class="$mq">
                         Обладатель сертификата Moscow Flower School
                         “II ступень курса свадебных декораторов”
                     </p>
-                    <router-link to="/contacts" class="nav-link" :class="$mq">
+                    <div class="nav-link" :class="$mq">
                         <div class="arrow-around arrow-rotate">
                             <img class="arrow arrow-right"
                                  :class="$mq"
                                  src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
                             <div class="div-around" :class="$mq"></div>
                         </div>
-                    </router-link>
-                </div>
-                <div class="content-block about-link" :class="$mq">
+                    </div>
+                </a>
+                <a href="#" class="content-block about-link" :class="$mq">
                     <p class="p-link" :class="$mq">
                         Участники MK Gregor Lersch /Германия/, Стаса Зубова /Москва/,
                         Лоры Белобровик-Садовской /Белоруссия/ и др.
                     </p>
-                    <router-link to="/contacts" class="nav-link" :class="$mq">
+                    <div class="nav-link" :class="$mq">
                         <div class="arrow-around arrow-rotate">
                             <img class="arrow arrow-right"
                                  :class="$mq"
                                  src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
                             <div class="div-around" :class="$mq"></div>
                         </div>
-                    </router-link>
-                </div>
+                    </div>
+                </a>
             </div>
             <div class="content-right otstup" :class="$mq">
                 <div class="empty-div" :class="$mq">
@@ -185,68 +169,62 @@
                         Оправдываем ваше доверие
                     </h2>
                 </div>
-                <div class="content-block about-link" :class="$mq">
+                <a href="#" class="content-block about-link" :class="$mq">
                     <p class="p-link" :class="$mq">
                         Обладатель сертификата ARAIK GALSTYAN<br> Moscow International Floral
                         Design School<br> “Wedding design”
                     </p>
-                    <router-link to="/contacts" class="nav-link" :class="$mq">
+                    <div class="nav-link" :class="$mq">
                         <div class="arrow-around arrow-rotate">
                             <img class="arrow arrow-right"
                                  :class="$mq"
                                  src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
                             <div class="div-around" :class="$mq"></div>
                         </div>
-                    </router-link>
-                </div>
-                <div class="content-block about-link" :class="$mq">
+                    </div>
+                </a>
+                <a href="http://www.365crimea.ru/2016/08/koronu-miss-yalta-2016-zavoevala-dar-ya-snigir/"
+                   class="content-block about-link" :class="$mq">
                     <p class="p-link" :class="$mq">
                         Партнер международного конкурса красоты «Мисс Ялта» в “Mriya Resort & SPA”
                     </p>
-                    <router-link to="/contacts" class="nav-link" :class="$mq">
+                    <div class="nav-link" :class="$mq">
                         <div class="arrow-around arrow-rotate">
                             <img class="arrow arrow-right"
                                  :class="$mq"
                                  src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
                             <div class="div-around" :class="$mq"></div>
                         </div>
-                    </router-link>
-                </div>
-                <div class="content-block about-link" :class="$mq">
+                    </div>
+                </a>
+                <a href="https://www.zankyou.ru/f/buketnoe-byuro-489183"
+                   class="content-block about-link" :class="$mq">
                     <p class="p-link" :class="$mq">
                         Нас рекомендует: Международный Свадебный портал Zankyou
                     </p>
-                    <router-link to="/contacts" class="nav-link" :class="$mq">
+                    <div class="nav-link" :class="$mq">
                         <div class="arrow-around arrow-rotate">
                             <img class="arrow arrow-right"
                                  :class="$mq"
                                  src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
                             <div class="div-around" :class="$mq"></div>
                         </div>
-                    </router-link>
-                </div>
-                <div class="content-block about-link" :class="$mq">
+                    </div>
+                </a>
+                <a  href="https://sevastopol.wed-expert.com/profiles/buketnoe-byuro"
+                    class="content-block about-link" :class="$mq">
                     <p class="p-link" :class="$mq">
                         Нас рекомендует: Всероссийский Свадебный портал СВАДЕБНЫЙ ЭКСПЕРТ
                     </p>
-                    <router-link to="/contacts" class="nav-link" :class="$mq">
+                    <div class="nav-link" :class="$mq">
                         <div class="arrow-around arrow-rotate">
                             <img class="arrow arrow-right"
                                  :class="$mq"
                                  src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
                             <div class="div-around" :class="$mq"></div>
                         </div>
-                    </router-link>
-                </div>
-            </div>
-            <div class="slide_line" :class="$mq">
-                <span class="slide_line_span">04</span>
-                <div class="slide-progress"></div>
-                <span class="slide_line_span" >05</span>
-            </div>
-            <div class="scroll-element" :class="$mq">
-                <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
-                <div class="text-element">SCROLL</div>
+                    </div>
+                </a>
             </div>
         </div>
         <div class="about-page-block column-reverse" :class="$mq">
@@ -276,15 +254,6 @@
             </div>
             <div class="content-left text-why" :class="$mq">
                 <div class="text-about text-why" :class="$mq">Why us?</div>
-            </div>
-            <div class="slide_line" :class="$mq">
-                <span class="slide_line_span">05</span>
-                <div class="slide-progress"></div>
-                <span class="slide_line_span" >05</span>
-            </div>
-            <div class="scroll-element" :class="$mq">
-                <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Буектное бюро">
-                <div class="text-element">TO TOP</div>
             </div>
         </div>
     </div>
@@ -448,7 +417,7 @@
         justify-content: space-between;
         align-items: center;
         height: 20%;
-        position: absolute;
+        position: fixed;
         left: 4%;
         width: 20px;
         &.mobile {
@@ -592,7 +561,7 @@
         justify-content: space-around;
         align-items: center;
         transform: rotate(90deg);
-        position: absolute;
+        position: fixed;
         right: 0;
         bottom: 10vh;
         height: max-content;

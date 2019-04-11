@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="footer-img" :class="$mq">
-            <img src="/wp-content/themes/foto-theme/src/assets/img/preview.png" :class="$mq" alt="Буектное бюро">
+            <img src="/wp-content/themes/foto-theme/src/assets/img/preview.png" :class="$mq" alt="Букетное бюро">
         </div>
     </div>
 </template>

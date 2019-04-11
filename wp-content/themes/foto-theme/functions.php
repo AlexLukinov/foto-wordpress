@@ -26,7 +26,3 @@ function load_vue_scripts() {
 	);
 }
 add_action( 'wp_enqueue_scripts', 'load_vue_scripts', 100 );
-
-add_action('init', function () {
-    add_rewrite_rule('^/(.+)/?', 'index.php', 'top');
-});
