@@ -1,61 +1,62 @@
 <template>
-    <div class="page services_page">
-        <div class="page-nav">
-            <div class="page-nav-number">
-                <span class="number-big" :class="$mq">03/</span>
-                <span class="number-small" :class="$mq">07</span>
-            </div>
-            <div class="page-nav-text" :class="$mq">services</div>
+    <div class="page portfolio_page">
+        <header-with-back></header-with-back>
+        <div class="horizontal-divider" :class="$mq"></div>
+        <slides-portfolio></slides-portfolio>
+        <div class="media-block-columns columns-border-top" :class="$mq">
+            <img src="/wp-content/themes/foto-theme/src/assets/img/preview.png" :class="$mq" alt="Буектное бюро">
         </div>
-        <my-footer></my-footer>
     </div>
-
 </template>
 <script>
     export default {
-
+        data () {
+            return{
+            }
+        },
     }
 </script>
 
 <style lang="scss" scoped>
     @import "../assets/scss/variables";
-    .page-nav {
+    .portfolio_page {
+        overflow: hidden;
+        height: auto;
+    }
+    .media-block-columns {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: flex-end;
-        color: white;
-        position: absolute;
-        top: 50%;
-        right: 5%;
+        align-items: center;
+        width: 85%;
+        height: 30%;
+        &.mobile {
+            height: 100%;
+        }
     }
-    .page-nav-number {
-        display: flex;
-        justify-content: center;
-        align-items: flex-end;
+    .columns-border-top {
+        border-top: 1px solid #dacfb1;
+        &.mobile {
+            margin-top: 5vh;
+        }
     }
-    span.number-big {
-        font-family: $font-h2;
-        font-size: 50px;
-        line-height: 1;
-    &.mobile {
-         font-size: 30px;
-     }
+    .columns-border-top img {
+        width: 15%;
+        margin: 4%;
+        &.mobile {
+            width: 35%;
+            margin: 3%;
+        }
     }
-    span.number-small {
-        font-family: $font-h2;
-        font-size: 25px;
-        line-height: 1;
-    &.mobile {
-         font-size: 15px;
-     }
-    }
-    .page-nav-text {
-        font-size: 18px;
-        font-family: $font-h2;
-        letter-spacing: 2px;
-    &.mobile {
-         font-size: 12px;
-     }
+    .horizontal-divider {
+        display: none;
+        &.mobile {
+            display: block;
+            width: 111%;
+            margin-top: 7vh;
+            margin-bottom: 2vh;
+            height: 1px;
+            background-color: #dacfb1;
+        }
     }
 </style>

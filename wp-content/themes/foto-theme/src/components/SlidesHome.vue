@@ -21,7 +21,7 @@
                 <h3 class="slides_text_description" :class="$mq">Добро пожаловать в студию флористики
                     и декора БУКЕТНОЕ БЮРО
                 </h3>
-                <router-link to="/portfolio" class="nav-link" :class="$mq">
+                <router-link to="/services/portfolio" class="nav-link" :class="$mq">
                     <span class="nav-link-text">Портфолио</span>
                     <div class="arrow-around arrow-rotate">
                         <img class="arrow arrow-right" src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">

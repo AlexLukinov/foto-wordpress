@@ -30,14 +30,14 @@
         isAtThePageBottom: false,
         deltaY: 0,
         scrollableRoutePaths: [
-          '/portfolio',
+          '/services',
           '/blog',
           '/contacts',
           '/aboutUs'
         ],
         switchableRoutePaths: [
           '/',
-          '/portfolio',
+          '/services',
           '/aboutUs',
           '/blog',
           '/contacts',

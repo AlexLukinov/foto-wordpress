@@ -5,7 +5,7 @@ import "./assets/css/styles.css";
 import './assets/scss/index.scss'
 import Vue from 'vue'
 import App from './App.vue'
-import Portfolio from "./components/Portfolio.vue";
+import Services from "./components/Services.vue";
 import SlidesPortfolio from './components/SlidesPortfolio.vue'
 import HeaderWithBack from './components/HeaderWithBack.vue'
 import SlidesHome from './components/SlidesHome.vue'
@@ -56,7 +56,7 @@ Vue.component('post', Post);
 Vue.component('post-content', PostContent);
 Vue.component('album', Album);
 Vue.component('slides-portfolio', SlidesPortfolio);
-Vue.component('portfolio', Portfolio);
+Vue.component('services', Services);
 Vue.component('slides-home', SlidesHome);
 Vue.component('modal-order', ModalOrder);
 Vue.component('my-menu', Menu);

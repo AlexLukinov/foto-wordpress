@@ -251,6 +251,22 @@
             });
 
             this.initGlobalVars();
+            switch (this.$route.params.service) {
+                case 'portfolio': this.currentNumber = 0;
+                    break;
+                case 'bouquets': this.currentNumber = 1;
+                    break;
+                case 'weddings': this.currentNumber = 2;
+                    break;
+                case 'events': this.currentNumber = 3;
+                    break;
+                case 'corporate': this.currentNumber = 4;
+                    break;
+                case 'funerals': this.currentNumber = 5;
+                    break;
+                case 'master-class': this.currentNumber = 6;
+                    break;
+            }
         }
     }
 

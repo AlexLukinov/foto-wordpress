@@ -1,7 +1,7 @@
 import VueRouter from 'vue-router'
 import Home from  './components/Home.vue'
 import AboutUs from  './components/AboutUs.vue'
-import Portfolio from  './components/Portfolio.vue'
+import Services from  './components/Services.vue'
 import Contacts from  './components/Сontacts.vue'
 import Blog from  './components/Blog.vue'
 import Album from './components/Album.vue'
@@ -17,8 +17,9 @@ export default new VueRouter ({
             component: Home
         },
         {
-            path: '/portfolio',
-            component: Portfolio
+            // path: '/services/:service',
+            path: '/services',
+            component: Services
         },
         {
             path: '/aboutUs',
