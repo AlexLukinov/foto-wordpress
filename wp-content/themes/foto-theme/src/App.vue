@@ -30,14 +30,16 @@
         isAtThePageBottom: false,
         deltaY: 0,
         scrollableRoutePaths: [
-          '/services',
+          '/services/:service',
+          '/services/portfolio',
           '/blog',
           '/contacts',
           '/aboutUs'
         ],
         switchableRoutePaths: [
           '/',
-          '/services',
+          '/services/:service',
+          '/services/portfolio',
           '/aboutUs',
           '/blog',
           '/contacts',
@@ -47,29 +49,42 @@
     methods: {
       setInitialScrollData() {
         this.isScrolledAlready = false;
-        this.initialHeight = window.innerHeight + window.scrollY;
         this.isAtThePageTop = true;
         this.isAtThePageBottom = false;
 
         // if just scrolled than set isJustScrolled to true
-        // and then set to false with 100ms delay
+        // and then set to false with delay
         this.isJustScrolled = true;
-        setTimeout(() => { this.isJustScrolled = false }, 100);
+        setTimeout(() => {
+          this.isJustScrolled = false;
+          this.initialHeight = window.innerHeight + window.scrollY;
+        }, 1000);
         this.deltaY = 0;
       },
       switchRoute(where, comparePathIndex) {
+        this.setInitialScrollData();
         let route = this.routes[this.routeIndex + where].path;
 
-        if (
-            this.switchableRoutePaths.includes(this.currentRoutePath) &&
-            this.currentRoutePath != this.switchableRoutePaths[comparePathIndex] &&
-            this.switchableRoutePaths.includes(route)
-        ) {
+        if (where == 1 && route == '/services/:service') {
           setTimeout(() => {
-            this.$router.push(route);
+            this.$router.push('/services/portfolio');
+            // this.initialHeight = window.innerHeight + window.scrollY;
+            this.initialHeight = document.body.scrollHeight;
           }, 0);
-          this.setInitialScrollData();
+        } else {
+          if (
+                  this.switchableRoutePaths.includes(this.currentRoutePath) &&
+                  this.currentRoutePath != this.switchableRoutePaths[comparePathIndex] &&
+                  this.switchableRoutePaths.includes(route)
+          ) {
+            setTimeout(() => {
+              this.$router.push(route);
+              // this.initialHeight = window.innerHeight + window.scrollY;
+              this.initialHeight = document.body.scrollHeight;
+            }, 0);
+          }
         }
+
       },
       nextRoute() {
         this.switchRoute(1, (this.switchableRoutePaths.length - 1));
@@ -81,11 +96,13 @@
         // fire only if not just scrolled (for purposes of good UX on
         // switching components on scroll)
         if (!this.isJustScrolled) {
+
           // get delta of scroll event and add it to aggregate property deltaY
           let delta = event.deltaY;
           this.deltaY += parseInt(delta);
 
           let positionY = window.innerHeight + window.scrollY;
+
           let scrollHeight = document.body.scrollHeight;
 
           // we at the top of the page
@@ -98,13 +115,19 @@
             this.isAtThePageTop = false;
           }
 
+          console.log('--------------')
+          console.log(positionY)
+          console.log(this.initialHeight)
+          console.log(scrollHeight)
+          console.log('--------------')
+
           // we at the bottom of the page
           if (positionY >= scrollHeight) {
             this.isAtThePageBottom = true;
           }
 
           // if overall deltaY more than 150px then switch component
-          if (Math.abs(this.deltaY) > 150) {
+          if (Math.abs(this.deltaY) > 250) {
             // if we on scrollable page then switch if we at the bottom or at the top
             // else switch on sign of delta
             if (this.scrollableRoutePaths.includes(this.currentRoutePath)) {
@@ -145,7 +168,7 @@
         _.each(this.albumsByCatalogs, catalog => {
           catalog.catalog = _.find(this.catalogs, ['id', catalog.catalog]);
         });
-        
+
         window.catalogs = this.albumsByCatalogs;
         window.albums = this.albums;
       },
@@ -239,14 +262,16 @@
         return this.$router.options.routes;
       },
       routeIndex: function () {
-        return this.routes.findIndex(item => item.path === this.$route.path);
+        let routeIndex = this.routes.findIndex(item => item.path === this.$route.path);
+        let response = routeIndex == -1 ? this.routes.findIndex(item => item.path === '/services/:service') : routeIndex;
+        return response;
       },
       currentRoutePath: function () {
         if (this.routes[this.routeIndex]) {
           return this.routes[this.routeIndex].path;
         }
 
-        return '';
+        return '/services/:service';
       },
     },
     mounted() {
@@ -258,6 +283,7 @@
 
       this.checkIsAllDataUploaded();
     }
+
   }
 </script>
 
@@ -266,6 +292,7 @@
   .router-anim-enter-active {
     animation: going 2s;
   }
+
   .router-anim-leave-to {
     animation: coming 1s;
   }
@@ -279,6 +306,7 @@
     }
 
   }
+
   @keyframes coming {
     0% {
       -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);

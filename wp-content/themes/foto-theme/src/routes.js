@@ -8,17 +8,13 @@ import Album from './components/Album.vue'
 import Post from './components/Post.vue'
 
 export default new VueRouter ({
-    scrollBehavior() {
-        return { x: 0, y: 0 };
-    },
     routes: [
         {
             path: '/',
             component: Home
         },
         {
-            // path: '/services/:service',
-            path: '/services',
+            path: '/services/:service',
             component: Services
         },
         {

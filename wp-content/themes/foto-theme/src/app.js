@@ -27,7 +27,7 @@ import Vue2TouchEvents from 'vue2-touch-events'
 router.beforeEach(function (to, from, next) {
   setTimeout(() => {
     window.scrollTo(0, 0);
-  }, 100);
+  }, 1000);
 
   if (to.path == '/') {
     document.body.style['overflow-y'] = "hidden";
