@@ -102,40 +102,38 @@
                                 <span class="nav-item" :class="$mq">о нас</span>
                             </button>
                         </router-link>
-                        <router-link to="/blog">
-                            <button>
-                                   <span class="nav-item"
-                                         :class="$mq"
-                                         @click="toggleIsActive('blog')">блог
-                                       <span class="nav-item-span">
-                                         <span class="vertical-line" :style="lineBlogHeight"></span>
-                                         <span @click="toggleIsActive('blog')" class="horizontal-line"></span>
-                                       </span>
-                                   </span>
-                            </button>
-                        </router-link>
+                        <button>
+                            <span class="nav-item"
+                                  :class="$mq"
+                                  @click="toggleIsActive('blog')">блог
+                                <span class="nav-item-span">
+                                    <span class="vertical-line" :style="lineBlogHeight"></span>
+                                    <span @click="toggleIsActive('blog')" class="horizontal-line"></span>
+                                </span>
+                            </span>
+                        </button>
                         <transition name="roll" mode="out-in">
                             <div v-if="isActiveBlog">
-                                <router-link to="/">
+                                <router-link to="/blog/our-histories">
                                     <button>
-                                   <span class="nav-item nav-item-inner" :class="$mq">
-                                       <span class="nav-item-span">
-                                         <span class="vertical-line" :class="$mq"></span>
-                                         <span class="horizontal-line" :class="$mq"></span>
-                                       </span>
-                                       Наши истории
-                                   </span>
+                                        <span class="nav-item nav-item-inner" :class="$mq">
+                                            <span class="nav-item-span">
+                                                <span class="vertical-line" :class="$mq"></span>
+                                                <span class="horizontal-line" :class="$mq"></span>
+                                            </span>
+                                            Наши истории
+                                        </span>
                                     </button>
                                 </router-link>
-                                <router-link to="/">
+                                <router-link to="/blog/other-articles">
                                     <button>
-                                   <span class="nav-item nav-item-inner" :class="$mq">
-                                       <span class="nav-item-span">
-                                        <span class="vertical-line" :class="$mq"></span>
-                                         <span class="horizontal-line" :class="$mq"></span>
-                                       </span>
-                                       Другие статьи
-                                   </span>
+                                        <span class="nav-item nav-item-inner" :class="$mq">
+                                            <span class="nav-item-span">
+                                                <span class="vertical-line" :class="$mq"></span>
+                                                <span class="horizontal-line" :class="$mq"></span>
+                                            </span>
+                                            Другие статьи
+                                        </span>
                                     </button>
                                 </router-link>
                             </div>

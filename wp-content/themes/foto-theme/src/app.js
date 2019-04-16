@@ -23,11 +23,12 @@ import VueMq from 'vue-mq'
 import Info from './components/Info.vue'
 import Album from './components/Album.vue'
 import Vue2TouchEvents from 'vue2-touch-events'
+import switchByScroll from './SwitchComponentsByScrollMixin'
 
 router.beforeEach(function (to, from, next) {
   setTimeout(() => {
     window.scrollTo(0, 0);
-  }, 1000);
+  }, 0);
 
   if (to.path == '/') {
     document.body.style['overflow-y'] = "hidden";
@@ -69,6 +70,7 @@ Vue.component('preview', Preview);
 
 const app = new Vue({
   el: '#app',
+  mixins: [switchByScroll],
   render: h => h(App),
   router: router
 });
