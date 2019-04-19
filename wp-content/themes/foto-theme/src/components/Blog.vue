@@ -107,7 +107,6 @@
     .blog-page {
         height: auto;
     }
-
     .image {
         display: flex;
         flex-direction: column;
@@ -120,7 +119,6 @@
         &.mobile {
             width: 48%;
         }
-
     }
     .image img {
         width: 100%;

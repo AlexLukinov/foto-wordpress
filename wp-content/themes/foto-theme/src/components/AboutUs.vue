@@ -5,14 +5,14 @@
             <div class="slide-progress"></div>
             <span class="slide_line_span">0{{ blocksCount }}</span>
         </div>
-        <div :key="key">
-            <div class="scroll-element" v-if="!isAtTheBottom">
+        <div>
+            <div class="scroll-element" :class="$mq" v-if="!isAtTheBottom">
                 <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
                 <div class="text-element">SCROLL</div>
             </div>
-            <div class="scroll-element" v-if="isAtTheBottom" @click="scrollToTop">
+            <div class="scroll-element" :class="$mq" v-if="isAtTheBottom" @click="scrollToTop">
                 <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Букетное бюро">
-                <div class="text-element">TO TOP</div>
+                <div class="text-element to-top">TO TOP</div>
             </div>
         </div>
         <div class="about-page-block">
@@ -248,7 +248,9 @@
                 </div>
                 <div class="content-block" :class="$mq">
                     <span class="span-text" :class="$mq">
-                        <a class="nav-link-text" href="#" :class="$mq">Даниил и Анна</a> -
+                        <router-link to="/post/812" class="nav-link-text" :class="$mq">
+                            Даниил и Анна
+                        </router-link> -
                         жених и невеста, клиенты студии БУКЕТНОЕ БЮРО
                     </span>
                     <router-link to="/blog/our-stories" class="nav-link">
@@ -328,6 +330,7 @@
         }
     }
     .slides-body .name-page {
+        margin-left: 0;
         &.mobile {
             display: none;
         }

@@ -41,42 +41,42 @@ export default Vue.mixin({
     },
     methods: {
         onSwipeUp() {
-            var routes = this.$router.options.routes;
-            var idx = routes.findIndex(item => item.path === this.$route.path);
-
-            if (routes[idx].path != '/portfolio') {
-                if (idx < routes.length - 1) {
-                    this.$router.push(routes[idx + 1])
-                }
-            }
-            // // get delta of scroll event and add it to aggregate property deltaY
-            // let delta = event.deltaY;
-            // this.deltaY += parseInt(delta);
-            //
-            // // height of screen
-            // let innerHeight = window.innerHeight;
-            //
-            // // current Y position
-            // let positionY = innerHeight + window.scrollY;
-            //
-            // // height of document
-            // let scrollHeight = document.body.scrollHeight;
-            // console.log('--------------')
-            // console.log(delta)
-            // console.log(innerHeight)
-            // console.log(positionY)
-            // console.log(scrollHeight)
-            // console.log('--------------')
+            // if (this.currentRoutePath === '/') {
+            //     if (this.routeIndex < this.routes.length - 1) {
+            //         this.$router.push(this.routes[this.routeIndex + 1])
+            //     }
+            // }
+            // // // get delta of scroll event and add it to aggregate property deltaY
+            // // let delta = event.deltaY;
+            // // this.deltaY += parseInt(delta);
+            // //
+            // // // height of screen
+            // // let innerHeight = window.innerHeight;
+            // //
+            // // // current Y position
+            // // let positionY = innerHeight + window.scrollY;
+            // //
+            // // // height of document
+            // // let scrollHeight = document.body.scrollHeight;
+            // // console.log('--------------')
+            // // console.log(delta)
+            // // console.log(innerHeight)
+            // // console.log(positionY)
+            // // console.log(scrollHeight)
+            // // console.log('--------------')
+            // if (this.isAtThePageBottom) {
+            //     if (this.routeIndex < this.routes.length - 1) {
+            //         this.$router.push(this.routes[this.routeIndex - 1])
+            //     }
+            // }
         },
         onSwipeDown() {
-            var routes = this.$router.options.routes;
-            var idx = routes.findIndex(item => item.path === this.$route.path);
+            // if (this.isAtThePageTop) {
+            //     if (this.routeIndex > 0) {
+            //         this.$router.push(this.routes[this.routeIndex - 1])
+            //     }
+            // }
 
-            if (routes[idx].path != '/portfolio') {
-                if (idx > 0) {
-                    this.$router.push(routes[idx - 1])
-                }
-            }
             // // get delta of scroll event and add it to aggregate property deltaY
             // let delta = event.deltaY;
             // this.deltaY += parseInt(delta);
@@ -140,10 +140,6 @@ export default Vue.mixin({
             // fire only if not just switched (for purposes of good UX on
             // switching components on scroll)
             if (!this.isJustSwitched) {
-                // get delta of scroll event and add it to aggregate property deltaY
-                let delta = event.deltaY;
-                this.deltaY += parseInt(delta);
-
                 // height of screen
                 let innerHeight = window.innerHeight;
 
@@ -154,36 +150,30 @@ export default Vue.mixin({
                 let scrollHeight = document.body.scrollHeight;
 
                 // we at the top of the page
-                // if (positionY <= innerHeight) {
-                //     this.isAtThePageTop = true;
-                // } else {
-                //     this.isAtThePageTop = false;
-                // }
-                this.isAtThePageTop = positionY <= innerHeight;
+                let oldIsAtThePageTop = this.isAtThePageTop;
 
-                // // if delta positive it's mean that we definitely not at the top of the page
-                // if (delta > 0) {
-                //     this.isAtThePageTop = false;
-                // }
+                // get delta of scroll event and add it to aggregate property deltaY
+                let delta = event.deltaY;
+
+                // if isAtThePageTop changed it's mean that we need to reset deltaY for new calculation
+                // else we add positionY to deltaY for accumulate and switch component at saturation
+                this.isAtThePageTop = positionY <= innerHeight;
+                oldIsAtThePageTop === this.isAtThePageTop ? this.deltaY += parseInt(delta) : this.deltaY = 0;
 
                 // we at the bottom of the page
-                this.isAtThePageBottom = positionY >= scrollHeight;
-                EventBus.$emit('IS_SCROLLED_TO_BOTTOM', this.isAtThePageBottom);
-                // if (positionY >= scrollHeight) {
-                //     // if (this.currentRoutePath == '/album' || this.currentRoutePath == '/post') {
-                //     //     if (positionY >= document.body.scrollHeight) {
-                //     //         this.isAtThePageBottom = true;
-                //     //     }
-                //     // }
-                //
-                //     this.isAtThePageBottom = true;
-                // } else {
-                //     this.isAtThePageBottom = false;
-                // }
+                let oldIsAtThePageBottom = this.isAtThePageBottom;
 
-                // if overall deltaY more than 150px then switch component
+                // if isAtThePageBottom changed it's mean that we need to reset deltaY for new calculation
+                // else we add positionY to deltaY for accumulate and switch component at saturation
+                this.isAtThePageBottom = positionY >= scrollHeight;
+                oldIsAtThePageBottom === this.isAtThePageBottom ? this.deltaY += parseInt(delta) : this.deltaY = 0;
+
+                // emit isAtThePageBottom to handle it in PositionSwitchOnScrollMixin
+                EventBus.$emit('IS_SCROLLED_TO_BOTTOM', this.isAtThePageBottom);
+
+                // if overall deltaY more than saturation value then switch component
                 if (
-                    Math.abs(this.deltaY) > 550 &&
+                    Math.abs(this.deltaY) > 2500 &&
                     this.currentRoutePath !== '/post' &&
                     this.currentRoutePath !== '/album'
                 ) {

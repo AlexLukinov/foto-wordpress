@@ -66,6 +66,7 @@
   .name-page {
     margin-left: 0;
     &.mobile {
+      margin-top: 6vh;
       font-size: 1.5vh;
     }
   }
@@ -101,6 +102,7 @@
     letter-spacing: 1px;
     &.mobile {
       font-size: 2vh;
+      width: 60%;
     }
   }
   .quote-info {

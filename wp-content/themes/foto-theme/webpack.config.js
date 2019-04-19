@@ -85,14 +85,14 @@ module.exports = {
         }
       },
       {
-        test: /\.(png|jpg|gif|svg|otf)$/,
+        test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]?[hash]'
         }
       },
       {
-        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        test: /\.(eot|svg|ttf|woff|woff2|otf)$/,
         use: [
           {
             loader: 'file-loader?name=./wp-content/themes/foto-theme/src/fonts/[name].[ext]'

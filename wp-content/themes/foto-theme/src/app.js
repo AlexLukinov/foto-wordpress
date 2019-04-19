@@ -24,7 +24,9 @@ import Info from './components/Info.vue'
 import Album from './components/Album.vue'
 import Vue2TouchEvents from 'vue2-touch-events'
 import switchByScroll from './SwitchComponentsByScrollMixin'
+import vueTopprogress from 'vue-top-progress'
 
+Vue.use(vueTopprogress)
 Vue.use(Vue2TouchEvents);
 Vue.use(VueRouter);
 Vue.use(VueMq, {
@@ -50,7 +52,7 @@ router.beforeEach(function (to, from, next) {
   }
 
   // if (to.path.includes('post') || to.path.includes('album')) {
-  //   EventBus.$emit('NEED_SET_INITIAL_SCROLL_PARAMS');
+  EventBus.$emit('ROUTE_CHANGED');
   // }
 
   next();
@@ -72,7 +74,7 @@ Vue.component('my-footer', Footer);
 Vue.component('preview', Preview);
 
 
-const app = new Vue({
+window.MainApp = new Vue({
   el: '#app',
   mixins: [switchByScroll],
   render: h => h(App),

@@ -264,7 +264,6 @@
         top: 0;
         left: 0;
         &.mobile {
-            height: 91vh;
             position: fixed;
         }
     }
@@ -292,7 +291,7 @@
         margin-left: 16%;
         &.mobile {
             margin-left: 0%;
-            height: 75%;
+            height: 60%;
             border-left: 1px solid #dacfb1;
             justify-content: center;
         }
@@ -351,7 +350,7 @@
         &.mobile {
             position: absolute;
             width: 82%;
-            top: 85vh;
+            top: 88vh;
             left: 8%;
         }
     }
@@ -648,9 +647,12 @@
         margin-top: 0;
     }
     .arrow-rotate {
-    &.mobile {
-        transform: rotate(180deg);
+        &.mobile {
+            transform: rotate(180deg);
+        }
     }
+    .menu-close {
+        cursor: pointer;
     }
 
 </style>
