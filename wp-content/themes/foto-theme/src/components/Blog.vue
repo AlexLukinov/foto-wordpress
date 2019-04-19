@@ -28,6 +28,11 @@
                 <div class="div-around"></div>
             </div>
         </div>
+        <div class="media-block" :class="$mq">
+            <div class="media-block-columns columns-border-top" :class="$mq">
+                <img src="/wp-content/themes/foto-theme/src/assets/img/preview.png" :class="$mq" alt="Букетное бюро">
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -197,9 +202,9 @@
         justify-content: space-between;
         align-items: center;
         height: 20%;
-        position: absolute;
-        left: 4%;
-        top: 50vh;
+        position: fixed;
+        left: 3%;
+        top: 42vh;
         width: 20px;
         &.mobile {
             display: none;

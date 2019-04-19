@@ -1,19 +1,17 @@
 <template>
     <div class="page contacts-page" :class="$mq">
         <header-with-back></header-with-back>
-
         <div class="slide_line" :class="$mq">
             <span class="slide_line_span">0{{ currentBlockNumber }}</span>
             <div class="slide-progress"></div>
             <span class="slide_line_span">0{{ blocksCount }}</span>
         </div>
-
-        <div class="scroll-element" :class="$mq" :key="key">
-            <div v-if="!isAtTheBottom">
+        <div :key="key">
+            <div class="scroll-element" v-if="!isAtTheBottom">
                 <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
                 <div class="text-element">SCROLL</div>
             </div>
-            <div v-if="isAtTheBottom" @click="scrollToTop">
+            <div class="scroll-element" v-if="isAtTheBottom" @click="scrollToTop">
                 <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Букетное бюро">
                 <div class="text-element">TO TOP</div>
             </div>
@@ -283,8 +281,9 @@
         align-items: center;
         height: 20%;
         position: fixed;
-        left: 4%;
+        left: 3%;
         width: 20px;
+        top: 42vh;
         &.mobile {
             display: none;
         }
@@ -303,14 +302,14 @@
         padding: 5px;
     }
     .scroll-element {
-        width: 9%;
+        width: 8%;
         display: flex;
         justify-content: space-around;
         align-items: center;
         transform: rotate(90deg);
         position: fixed;
         right: 0;
-        bottom: 10vh;
+        top: 85vh;
         height: max-content;
         &.mobile {
             display: none;
