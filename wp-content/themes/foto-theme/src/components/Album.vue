@@ -84,7 +84,7 @@
                             photoDiv.classList.add('photo-item');
                         }
                     });
-                }, 100);
+                }, 1000);
             },
             initGlobalVars: function () {
                 let checkIsUploaded = setInterval(() => {

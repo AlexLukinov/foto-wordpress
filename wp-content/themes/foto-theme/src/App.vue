@@ -1,5 +1,7 @@
 <template>
     <div id="app" v-touch:swipe.top="onSwipeUp" v-touch:swipe.bottom="onSwipeDown" @wheel="onWheel">
+        <div class="loading-background" v-if="isLoading"></div>
+        <vue-topprogress ref="topProgress" color="#dacfb1"></vue-topprogress>
         <transition name="router-anim" mode="out-in">
             <router-view></router-view>
         </transition>
@@ -14,6 +16,7 @@
         data() {
             return {
                 catalogs: [],
+                isLoading: true,
                 albums: [],
                 posts: [],
                 categories: [],
@@ -132,8 +135,23 @@
                     }
                 }, 100);
             },
+            handleLoading() {
+                this.$refs.topProgress.start();
+                this.isLoading = true;
+
+                setTimeout(() => {
+                    this.$refs.topProgress.done();
+                    this.isLoading = false;
+                }, 2000)
+            }
         },
         mounted() {
+            this.handleLoading();
+
+            EventBus.$on('ROUTE_CHANGED', () => {
+                this.handleLoading();
+            });
+
             this.getCatalogs();
             this.getAlbums();
             this.getPosts();

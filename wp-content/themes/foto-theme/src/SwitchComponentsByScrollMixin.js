@@ -140,10 +140,6 @@ export default Vue.mixin({
             // fire only if not just switched (for purposes of good UX on
             // switching components on scroll)
             if (!this.isJustSwitched) {
-                // get delta of scroll event and add it to aggregate property deltaY
-                let delta = event.deltaY;
-                this.deltaY += parseInt(delta);
-
                 // height of screen
                 let innerHeight = window.innerHeight;
 
@@ -154,36 +150,32 @@ export default Vue.mixin({
                 let scrollHeight = document.body.scrollHeight;
 
                 // we at the top of the page
-                // if (positionY <= innerHeight) {
-                //     this.isAtThePageTop = true;
-                // } else {
-                //     this.isAtThePageTop = false;
-                // }
-                this.isAtThePageTop = positionY <= innerHeight;
+                let oldIsAtThePageTop = this.isAtThePageTop;
 
-                // // if delta positive it's mean that we definitely not at the top of the page
-                // if (delta > 0) {
-                //     this.isAtThePageTop = false;
-                // }
+                // get delta of scroll event and add it to aggregate property deltaY
+                let delta = event.deltaY;
+
+                // if isAtThePageTop changed it's mean that we need to reset deltaY for new calculation
+                // else we add positionY to deltaY for accumulate and switch component at saturation
+                this.isAtThePageTop = positionY <= innerHeight;
+                oldIsAtThePageTop === this.isAtThePageTop ? this.deltaY += parseInt(delta) : this.deltaY = 0;
 
                 // we at the bottom of the page
+                let oldIsAtThePageBottom = this.isAtThePageBottom;
+
+                // if isAtThePageBottom changed it's mean that we need to reset deltaY for new calculation
+                // else we add positionY to deltaY for accumulate and switch component at saturation
                 this.isAtThePageBottom = positionY >= scrollHeight;
+                oldIsAtThePageBottom === this.isAtThePageBottom ? this.deltaY += parseInt(delta) : this.deltaY = 0;
+
+                // emit isAtThePageBottom to handle it in PositionSwitchOnScrollMixin
                 EventBus.$emit('IS_SCROLLED_TO_BOTTOM', this.isAtThePageBottom);
-                // if (positionY >= scrollHeight) {
-                //     // if (this.currentRoutePath == '/album' || this.currentRoutePath == '/post') {
-                //     //     if (positionY >= document.body.scrollHeight) {
-                //     //         this.isAtThePageBottom = true;
-                //     //     }
-                //     // }
-                //
-                //     this.isAtThePageBottom = true;
-                // } else {
-                //     this.isAtThePageBottom = false;
-                // }
+
+                console.log(this.deltaY)
 
                 // if overall deltaY more than 150px then switch component
                 if (
-                    Math.abs(this.deltaY) > 550 &&
+                    Math.abs(this.deltaY) > 2500 &&
                     this.currentRoutePath !== '/post' &&
                     this.currentRoutePath !== '/album'
                 ) {
