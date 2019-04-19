@@ -13,7 +13,7 @@
                 <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
                 <div class="text-element">SCROLL</div>
             </div>
-            <div v-if="isAtTheBottom">
+            <div v-if="isAtTheBottom" @click="scrollToTop">
                 <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Букетное бюро">
                 <div class="text-element">TO TOP</div>
             </div>

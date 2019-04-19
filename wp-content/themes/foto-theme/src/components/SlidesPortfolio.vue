@@ -77,7 +77,7 @@
             </div>
         </div>
 
-<!--        <info v-show="showInfo" class="animated fadeIn"></info>-->
+        <info v-show="showInfo" @returnBack="showInfo = false" class="animated fadeIn"></info>
 <!--        <album v-show="showAlbum"></album>-->
     </div>
 </template>

@@ -35,6 +35,8 @@ export default Vue.mixin({
                 '/aboutUs',
                 '/contacts',
             ],
+            currentRoutePath: '/',
+            // routeIndex: 0
         };
     },
     methods: {
@@ -181,7 +183,7 @@ export default Vue.mixin({
 
                 // if overall deltaY more than 150px then switch component
                 if (
-                    Math.abs(this.deltaY) > 250 &&
+                    Math.abs(this.deltaY) > 550 &&
                     this.currentRoutePath !== '/post' &&
                     this.currentRoutePath !== '/album'
                 ) {
@@ -207,6 +209,36 @@ export default Vue.mixin({
                 }
             }
         },
+        setCurrentRoutePath: function () {
+            let currentUrl = window.location.pathname;
+
+            if (currentUrl.includes('services')) {
+                this.currentRoutePath = '/services/:service';
+            } else if (currentUrl.includes('album')) {
+                this.currentRoutePath = '/album';
+            } else if (currentUrl.includes('post')) {
+                this.currentRoutePath = '/post';
+            } else if (currentUrl.includes('blog')) {
+                this.currentRoutePath = '/blog/:category';
+            } else if (this.routes[this.routeIndex]) {
+                this.currentRoutePath = this.routes[this.routeIndex].path;
+            }
+        },
+        setRouteIndex: function () {
+            let routeIndex = this.routes.findIndex(item => item.path === this.$route.path);
+
+            if (routeIndex === -1) {
+                let currentUrl = window.location.pathname;
+
+                if (currentUrl.includes('services')) {
+                    return this.routes.findIndex(item => item.path === '/services/:service')
+                } else if (currentUrl.includes('blog')) {
+                    return this.routes.findIndex(item => item.path === '/blog/:category')
+                }
+            }
+
+            this.routeIndex = routeIndex;
+        }
     },
     computed: {
         routes: function () {
@@ -227,32 +259,15 @@ export default Vue.mixin({
 
             return routeIndex;
         },
-        currentRoutePath: function () {
-            let currentUrl = window.location.pathname;
-
-            if (currentUrl.includes('services')) {
-                return '/services/:service';
-            } else if (currentUrl.includes('album')) {
-                return '/album';
-            } else if (currentUrl.includes('post')) {
-                return '/post';
-            } else if (currentUrl.includes('blog')) {
-                return '/blog/:category';
-            } else if (this.routes[this.routeIndex]) {
-                return this.routes[this.routeIndex].path;
-            }
-        },
     },
-    // watch:{
-    //     $route (to, from){
-    //         if (to.path.includes('post') || to.path.includes('album')) {
-    //             setTimeout(() => {
-    //                 this.isAtThePageBottom = false;
-    //             }, 0);
-    //         }
-    //     }
-    // }
-    // mounted() {
-    //     EventBus.$on('NEED_SET_INITIAL_SCROLL_PARAMS', () => {this.setInitialScrollData()});
-    // }
+    watch:{
+        $route (to, from){
+            this.setCurrentRoutePath();
+            // this.setRouteIndex();
+        }
+    },
+    mounted() {
+        this.setCurrentRoutePath();
+        // this.setRouteIndex();
+    }
 });

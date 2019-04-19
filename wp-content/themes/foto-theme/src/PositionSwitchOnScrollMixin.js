@@ -22,6 +22,9 @@ export default Vue.mixin({
 
             this.currentBlockNumber = currentBlockIndex + 1;
         },
+        scrollToTop: function () {
+            window.scrollTo(0, 0)
+        },
         setBlocksCoordinates: function () {
             let checkIsBlocksSetted = setInterval(() => {
                 let blocks = document.getElementsByClassName(this.blockClassName);

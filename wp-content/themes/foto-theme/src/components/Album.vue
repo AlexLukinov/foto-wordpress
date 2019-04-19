@@ -71,9 +71,6 @@
                 this.album = window.albums[index];
                 this.previousAlbumId = index === 0 ? albumsIds.slice(-1).pop() : albumsIds[index - 1];
                 this.nextAlbumId = index === albumsIds.length - 1 ? albumsIds[0] : albumsIds[index + 1];
-                // this.album = window.albums.filter(album => {
-                //     return album.id == this.$route.params.albumId;
-                // })[0];
 
                 this.postId = this.album.post_id;
 
@@ -87,7 +84,7 @@
                             photoDiv.classList.add('photo-item');
                         }
                     });
-                }, 0);
+                }, 100);
             },
             initGlobalVars: function () {
                 let checkIsUploaded = setInterval(() => {

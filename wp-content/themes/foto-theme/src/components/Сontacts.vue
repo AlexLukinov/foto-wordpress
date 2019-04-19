@@ -1,6 +1,24 @@
 <template>
     <div class="page contacts-page" :class="$mq">
         <header-with-back></header-with-back>
+
+        <div class="slide_line" :class="$mq">
+            <span class="slide_line_span">0{{ currentBlockNumber }}</span>
+            <div class="slide-progress"></div>
+            <span class="slide_line_span">0{{ blocksCount }}</span>
+        </div>
+
+        <div class="scroll-element" :class="$mq" :key="key">
+            <div v-if="!isAtTheBottom">
+                <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
+                <div class="text-element">SCROLL</div>
+            </div>
+            <div v-if="isAtTheBottom" @click="scrollToTop">
+                <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Букетное бюро">
+                <div class="text-element">TO TOP</div>
+            </div>
+        </div>
+
         <div class="about-page-block" :class="$mq">
             <div class="content-left m-dn" :class="$mq">
                 <div class="contacts-block-p" :class="$mq">
@@ -73,15 +91,6 @@
                 <div class="album-line" :class="$mq"></div>
                 <div class="see-album-circle" :class="$mq"></div>
                 <div class="horizontal-divider" :class="$mq"></div>
-            </div>
-            <div class="slide_line" :class="$mq">
-                <span class="slide_line_span">01</span>
-                <div class="slide-progress"></div>
-                <span class="slide_line_span" >02</span>
-            </div>
-            <div class="scroll-element" :class="$mq">
-                <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
-                <div class="text-element">SCROLL</div>
             </div>
         </div>
         <div class="page-contacts-block-info" :class="$mq">
@@ -202,15 +211,6 @@
                     </div>
                 </div>
             </div>
-            <div class="slide_line slide_line-media" :class="$mq">
-                <span class="slide_line_span">02</span>
-                <div class="slide-progress"></div>
-                <span class="slide_line_span" >02</span>
-            </div>
-            <div class="scroll-element" :class="$mq">
-                <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Букетное бюро">
-                <div class="text-element">TO TOP</div>
-            </div>
         </div>
         <div class="media-block" :class="$mq">
             <div class="media-block-columns columns-border-top" :class="$mq">
@@ -220,10 +220,15 @@
     </div>
 </template>
 <script>
+    import blockCounterOnScroll from '../PositionSwitchOnScrollMixin';
+
     export default {
+        mixins: [blockCounterOnScroll],
         data() {
             return {
                 showModal: false,
+                isAtTheBottom: false,
+                blockClassName: 'about-page-block',
             };
         },
     }
@@ -277,7 +282,7 @@
         justify-content: space-between;
         align-items: center;
         height: 20%;
-        position: absolute;
+        position: fixed;
         left: 4%;
         width: 20px;
         &.mobile {
@@ -303,7 +308,7 @@
         justify-content: space-around;
         align-items: center;
         transform: rotate(90deg);
-        position: absolute;
+        position: fixed;
         right: 0;
         bottom: 10vh;
         height: max-content;

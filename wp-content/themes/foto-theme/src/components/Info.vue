@@ -155,7 +155,7 @@
             </div>
         </div>
         <div class="scroll-element" :class="$mq">
-            <div class="arrow-around arrow-rotate" @click="toggleIsActive('developers')">
+            <div class="arrow-around arrow-rotate" @click="$emit('returnBack')">
                 <img class="around" src="/wp-content/themes/foto-theme/src/assets/img/around.png" alt="Букетное бюро">
                 <img class="arrow arrow-left" src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Букетное бюро">
             </div>
