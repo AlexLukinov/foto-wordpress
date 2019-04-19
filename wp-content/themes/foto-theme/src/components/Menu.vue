@@ -181,17 +181,17 @@
                         <div class="developers" :class="$mq">
                             <div class="nav-item" :class="$mq">DEVELOPERS</div>
                             <div class="developers-list">
-                                <a href="" class="a-text" :class="$mq">Web design:<br>
+                                <a href="https://www.instagram.com/helen.dsgn/" class="a-text" :class="$mq">Web design:<br>
                                     <span class="developers-name" :class="$mq">
                                       Helen Tihomolova
                                    </span>
                                 </a>
-                                <a href="" class="a-text" :class="$mq">Front end:<br>
+                                <a href="https://www.instagram.com/kate_codes/" class="a-text" :class="$mq">Front end:<br>
                                     <span class="developers-name" :class="$mq">
                                        Ekaterina Lukinova
                                    </span>
                                 </a>
-                                <a href="" class="a-text" :class="$mq">Back end:<br>
+                                <a href="https://www.instagram.com/kate_codes/" class="a-text" :class="$mq">Back end:<br>
                                     <span class="developers-name" :class="$mq">
                                        Alexey Lukinov
                                    </span>

@@ -184,5 +184,15 @@ a .text-element:hover {
     margin-top: 3vh;
   }
 }
+.menu-icon .text-element{
+  cursor: pointer;
+}
+.menu-icon:hover .text-element, .text-element-back:hover {
+  color: #997a5f;
+}
+button:hover .nav-item {
+  color: #997a5f;
+}
+
 
 
