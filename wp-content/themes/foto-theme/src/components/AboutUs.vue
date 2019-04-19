@@ -232,7 +232,7 @@
                             <div class="div-around" :class="$mq"></div>
                         </div>
                     </router-link>
-                </div>
+                </a>
             </div>
         </div>
         <div class="about-page-block column-reverse" :class="$mq">
@@ -262,15 +262,6 @@
             </div>
             <div class="content-left text-why" :class="$mq">
                 <div class="text-about text-why" :class="$mq">Why us?</div>
-            </div>
-            <div class="slide_line" :class="$mq">
-                <span class="slide_line_span">05</span>
-                <div class="slide-progress"></div>
-                <span class="slide_line_span" >05</span>
-            </div>
-            <div class="scroll-element" :class="$mq">
-                <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Буектное бюро">
-                <div class="text-element">TO TOP</div>
             </div>
         </div>
     </div>
