@@ -30,6 +30,11 @@
             <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
             <div class="text-element">SCROLL</div>
         </div>
+        <div class="media-block" :class="$mq">
+            <div class="media-block-columns columns-border-top" :class="$mq">
+                <img src="/wp-content/themes/foto-theme/src/assets/img/preview.png" :class="$mq" alt="Букетное бюро">
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -216,5 +221,38 @@
     .article-date {
         border-left: 1px solid;
         padding-left: 2%;
+    }
+    .media-block {
+        width: 80%;
+        height: 70%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .media-block-columns {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 30%;
+        &.mobile {
+            height: 100%;
+        }
+    }
+    .columns-border-top {
+        border-top: 1px solid #dacfb1;
+        &.mobile {
+            margin-top: 5vh;
+        }
+    }
+    .columns-border-top img {
+        width: 15%;
+        margin: 4%;
+        &.mobile {
+            width: 35%;
+            margin: 3%;
+        }
     }
 </style>

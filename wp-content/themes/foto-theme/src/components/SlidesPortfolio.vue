@@ -399,12 +399,6 @@
             opacity: 0;
         }
     }
-    /*.pageanim-enter-active {*/
-    /*animation: pageanim ease 1s;*/
-    /*}*/
-    /*.pageanim-leave-active {*/
-    /*animation: pageanimout ease 1s;*/
-    /*}*/
     .portfolio-footer {
         display: flex;
         justify-content: space-between;
@@ -502,7 +496,7 @@
             opacity: 1;
         }
         5% {
-            opacity: 0.3;
+            opacity: 0.9;
         }
 
         100% {

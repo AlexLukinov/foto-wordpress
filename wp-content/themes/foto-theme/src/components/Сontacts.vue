@@ -63,8 +63,8 @@
                     <p :class="$mq">СОЦИАЛЬНЫЕ СЕТИ</p>
                     <div class="contacts" :class="$mq">
                         <a href="" class="a-text" :class="$mq">Facebook</a>
-                        <a href="" class="a-text" :class="$mq">Vk</a>
-                        <a href="" class="a-text" :class="$mq">Instagram</a>
+                        <a href="https://vk.com/buketnoe_buro" rel="nofolow" class="a-text" :class="$mq">Vk</a>
+                        <a href="https://www.instagram.com/buketnoe_buro/" rel="nofolow" class="a-text" :class="$mq">Instagram</a>
                     </div>
                 </div>
             </div>
@@ -80,7 +80,7 @@
                 <span class="slide_line_span" >02</span>
             </div>
             <div class="scroll-element" :class="$mq">
-                <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
+                <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
                 <div class="text-element">SCROLL</div>
             </div>
         </div>
@@ -170,7 +170,7 @@
                 <div class="media-block-columns media-block-photo" :class="$mq">
                     <div class="photo-container">
                         <a href="#" class="photo-a">
-                            <img src="/wp-content/themes/foto-theme/src/assets/img/instagram-photo1.jpg" alt="@buketnoe_buro">
+                            <img src="/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/1.jpg" alt="@buketnoe_buro">
                         </a>
                         <div class="eye-open">
                             <img src="/wp-content/themes/foto-theme/src/assets/img/eye-open.png" alt="@buketnoe_buro">
@@ -178,7 +178,7 @@
                     </div>
                     <div class="photo-container">
                         <a href="#" class="photo-a">
-                            <img src="/wp-content/themes/foto-theme/src/assets/img/instagram-photo2.jpg" alt="@buketnoe_buro">
+                            <img src="/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/6.jpg" alt="@buketnoe_buro">
                         </a>
                         <div class="eye-open">
                             <img src="/wp-content/themes/foto-theme/src/assets/img/eye-open.png" alt="@buketnoe_buro">
@@ -186,7 +186,7 @@
                     </div>
                     <div class="photo-container">
                         <a href="#" class="photo-a">
-                            <img src="/wp-content/themes/foto-theme/src/assets/img/instagram-photo3.jpg" alt="@buketnoe_buro">
+                            <img src="/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/14.jpg" alt="@buketnoe_buro">
                         </a>
                         <div class="eye-open">
                             <img src="/wp-content/themes/foto-theme/src/assets/img/eye-open.png" alt="@buketnoe_buro">
@@ -194,7 +194,7 @@
                     </div>
                     <div class="photo-container">
                         <a href="#" class="photo-a">
-                            <img src="/wp-content/themes/foto-theme/src/assets/img/instagram-photo4.jpg" alt="@buketnoe_buro">
+                            <img src="/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/7.jpg" alt="@buketnoe_buro">
                         </a>
                         <div class="eye-open">
                             <img src="/wp-content/themes/foto-theme/src/assets/img/eye-open.png" alt="@buketnoe_buro">
@@ -208,13 +208,13 @@
                 <span class="slide_line_span" >02</span>
             </div>
             <div class="scroll-element" :class="$mq">
-                <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Буектное бюро">
+                <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Букетное бюро">
                 <div class="text-element">TO TOP</div>
             </div>
         </div>
         <div class="media-block" :class="$mq">
             <div class="media-block-columns columns-border-top" :class="$mq">
-                <img src="/wp-content/themes/foto-theme/src/assets/img/preview.png" :class="$mq" alt="Буектное бюро">
+                <img src="/wp-content/themes/foto-theme/src/assets/img/preview.png" :class="$mq" alt="Букетное бюро">
             </div>
         </div>
     </div>
@@ -683,7 +683,7 @@
             margin-left: 10%;
         }
     }
-    button {
-
+    a #card:hover {
+        color: #dacfb1;
     }
 </style>

@@ -22,7 +22,7 @@
                         <router-link to="/portfolio" class="nav-link nav-link-header" :class="$mq">
                             <span class="nav-link-text">Портфолио</span>
                             <div class="arrow-around arrow-rotate">
-                                <img class="arrow arrow-right" src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
+                                <img class="arrow arrow-right" src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
                                 <div class="div-around"></div>
                             </div>
                         </router-link>
@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="scroll-element" :class="$mq">
-                <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
+                <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
                 <div class="text-element">SCROLL</div>
             </div>
         </div>
@@ -65,7 +65,7 @@
                     <router-link to="/contacts" class="nav-link" >
                         <span class="nav-link-text" :class="$mq">Наши контакты</span>
                         <div class="arrow-around arrow-rotate" :class="$mq">
-                            <img class="arrow arrow-right" src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
+                            <img class="arrow arrow-right" src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
                             <div class="div-around"></div>
                         </div>
                     </router-link>
@@ -114,7 +114,7 @@
                         <div class="arrow-around arrow-rotate">
                             <img class="arrow arrow-right"
                                  :class="$mq"
-                                 src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
+                                 src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
                             <div class="div-around" :class="$mq"></div>
                         </div>
                     </div>
@@ -128,7 +128,7 @@
                         <div class="arrow-around arrow-rotate">
                             <img class="arrow arrow-right"
                                  :class="$mq"
-                                 src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
+                                 src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
                             <div class="div-around" :class="$mq"></div>
                         </div>
                     </div>
@@ -143,7 +143,7 @@
                         <div class="arrow-around arrow-rotate">
                             <img class="arrow arrow-right"
                                  :class="$mq"
-                                 src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
+                                 src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
                             <div class="div-around" :class="$mq"></div>
                         </div>
                     </div>
@@ -157,7 +157,7 @@
                         <div class="arrow-around arrow-rotate">
                             <img class="arrow arrow-right"
                                  :class="$mq"
-                                 src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
+                                 src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
                             <div class="div-around" :class="$mq"></div>
                         </div>
                     </div>
@@ -178,7 +178,7 @@
                         <div class="arrow-around arrow-rotate">
                             <img class="arrow arrow-right"
                                  :class="$mq"
-                                 src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
+                                 src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
                             <div class="div-around" :class="$mq"></div>
                         </div>
                     </div>
@@ -192,7 +192,7 @@
                         <div class="arrow-around arrow-rotate">
                             <img class="arrow arrow-right"
                                  :class="$mq"
-                                 src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
+                                 src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
                             <div class="div-around" :class="$mq"></div>
                         </div>
                     </div>
@@ -206,7 +206,7 @@
                         <div class="arrow-around arrow-rotate">
                             <img class="arrow arrow-right"
                                  :class="$mq"
-                                 src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
+                                 src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
                             <div class="div-around" :class="$mq"></div>
                         </div>
                     </div>
@@ -220,7 +220,7 @@
                         <div class="arrow-around arrow-rotate">
                             <img class="arrow arrow-right"
                                  :class="$mq"
-                                 src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
+                                 src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
                             <div class="div-around" :class="$mq"></div>
                         </div>
                     </div>
@@ -243,10 +243,10 @@
                         <a class="nav-link-text" href="#" :class="$mq">Даниил и Анна</a> -
                         жених и невеста, клиенты студии БУКЕТНОЕ БЮРО
                     </span>
-                    <router-link to="/contacts" class="nav-link">
+                    <router-link to="/blog" class="nav-link">
                         <span class="nav-link-text" :class="$mq">Наши истории</span>
                         <div class="arrow-around arrow-rotate" :class="$mq">
-                            <img class="arrow arrow-right" src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
+                            <img class="arrow arrow-right" src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
                             <div class="div-around" :class="$mq"></div>
                         </div>
                     </router-link>
@@ -254,6 +254,11 @@
             </div>
             <div class="content-left text-why" :class="$mq">
                 <div class="text-about text-why" :class="$mq">Why us?</div>
+            </div>
+        </div>
+        <div class="media-block" :class="$mq">
+            <div class="media-block-columns columns-border-top" :class="$mq">
+                <img src="/wp-content/themes/foto-theme/src/assets/img/preview.png" :class="$mq" alt="Букетное бюро">
             </div>
         </div>
     </div>
@@ -643,6 +648,39 @@
     .column-reverse {
         &.mobile {
             flex-direction: column-reverse;
+        }
+    }
+    .media-block {
+        width: 80%;
+        height: 70%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .media-block-columns {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 30%;
+        &.mobile {
+            height: 100%;
+        }
+    }
+    .columns-border-top {
+        border-top: 1px solid #dacfb1;
+        &.mobile {
+            margin-top: 5vh;
+        }
+    }
+    .columns-border-top img {
+        width: 15%;
+        margin: 4%;
+        &.mobile {
+            width: 35%;
+            margin: 3%;
         }
     }
 </style>

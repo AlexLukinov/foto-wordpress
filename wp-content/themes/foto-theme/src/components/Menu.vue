@@ -151,9 +151,11 @@
                            </router-link>
                        </div>
                        <div class="contacts" :class="$mq">
-                           <a href="" class="a-text" :class="$mq">Facebook</a>
-                           <a href="" class="a-text" :class="$mq">Vk</a>
-                           <a href="" class="a-text mr-0" :class="$mq">Instagram</a>
+                           <a href="https://www.facebook.com/1001533783217153/photos/basw.AbqmKB7-eBPfkBXSIb7EVpPaM5VY3U6F1puasdm8VRdWZlfYhpNUxgV4Uk7kRJhhDoLtM6e9oeQNpClaxKD1oGUfc7gSGTUmfh8lA6s67EUhqyxlwpzKnPI0zvZpeygUKFhHTnbH_0V2ZxJ_QKsTtGrZa_ZOlKs_r54upKMmYfyRSo4uxprZ7pvYONgI1EHESeZzT4QzagF_5u_0rdmA8m7khuMjv59lkO1CbwOvtUkslQ.10205715277309416.10205715277549422.10205715276669400.1086050148098849.10205715278189438.10205715276029384/1086050148098849/?type=1&opaqueCursor=AboD63VT2BzK4X6OAFtOGR5tpHT03WWVmSdm60YARt9tsiiTBTYDsNnm9SrweCzCyxKT01X2nPKhugRuPw_4A4O-XX_27eirjF0Hrh0K0U2QJTWN88RebeRSMTOL9LIf_Yk0_vo9KJPeT3BNfZVRVuvxUwNx56C-W4VnB1kpsfYMBXwVwzwZs2GXEoEwfMdcaC2NcMGi2RoMHNPlTM7AA-qWFj33y13qUSzRYMgfoOInVyh4KJO7qkj1KrX2g3Ljhx7srS5fjvjsQ9G2OYK6QRlOl_K8_UG53v0AoOalgXzT0PzpU4OH4PfEaYdzYan4onQGceKTP4NvbUtHPDOpvw_gVcGd4_trHIiJI44sjzZoWJAOLVVoCUnYFPIJuFVu594EHo6rDBzKNAHEIR87hYlyLDdgqwYMCIp8WGz6qBgmpwtSxVPBZEgQ0Hasof2yRdZYVL1a3La93H6X94Py46iJLMj_2AeRak7vwz6zrk899JAbYXadIDWDfC47Obz6CgfkHNJc7uoSGTdsvwNSmGs-rT3r6_3yFDhODGMgdc6a2QddEYfj4kT3EtpHj5KE-w5agJjKSIf6c5USAbkA8qP-2dQpc725jQkcwvoRPL6Atw&theater"
+                              rel="nofolow"
+                              class="a-text" :class="$mq">Facebook</a>
+                           <a href="https://vk.com/buketnoe_buro" rel="nofolow" class="a-text" :class="$mq">Vk</a>
+                           <a href="https://www.instagram.com/buketnoe_buro/" rel="nofolow" class="a-text mr-0" :class="$mq">Instagram</a>
                        </div>
                    </div>
                    <div class="menu-right-column" :class="$mq">
