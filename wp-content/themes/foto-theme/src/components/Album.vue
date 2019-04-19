@@ -173,8 +173,8 @@
         }
     }
     .horizontal-photo {
-        width: 96%;
-        border: 1px solid #dacfb1;
+        width: 91%;
+        border: 0px solid #dacfb1;
         padding: 1.5%;
         margin: 1%;
     }

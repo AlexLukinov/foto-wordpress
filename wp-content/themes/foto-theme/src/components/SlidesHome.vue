@@ -96,9 +96,9 @@
         mounted: function () {
             this.height = this.$refs['filledLine'].clientHeight;
 
-            setInterval(() => {
-                this.next();
-            }, 3000)
+            // setInterval(() => {
+            //     this.next();
+            // }, 3000)
         }
     }
 
