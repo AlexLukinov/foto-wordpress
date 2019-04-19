@@ -2,213 +2,207 @@
     <transition name="menu-anim" mode="out-in">
         <div class="page page-menu" :class="$mq">
             <header-menu-mobile></header-menu-mobile>
-               <div class="menu-list" :class="$mq">
-                   <div class="menu-left-column" :class="$mq">
-                       <div class="menu-header" :class="$mq">
-                           <div class="logo">
-                               <img class="menu-logo" src="/wp-content/themes/foto-theme/src/assets/img/logo.png" alt="Букетное Бюро">
-                           </div>
-                       </div>
-                       <div class="my-nav" :class="$mq">
-                           <router-link to="/">
-                               <button>
-                                   <span class="nav-item" :class="$mq">главная</span>
-                               </button>
-                           </router-link>
-                           <router-link to="/">
-                               <router-link to="/portfolio">
-                                   <button>
-                                       <span class="nav-item"
-                                             :class="$mq"
-                                             @click="toggleIsActive('services')">наши услуги
+            <div class="menu-list" :class="$mq">
+                <div class="menu-left-column" :class="$mq">
+                    <div class="menu-header" :class="$mq">
+                        <div class="logo">
+                            <img class="menu-logo" src="/wp-content/themes/foto-theme/src/assets/img/logo.png"
+                                 alt="Букетное Бюро">
+                        </div>
+                    </div>
+                    <div class="my-nav" :class="$mq">
+                        <router-link to="/">
+                            <button>
+                                <span class="nav-item" :class="$mq">главная</span>
+                            </button>
+                        </router-link>
+                        <button @click="toggleIsActive('services')">
+                               <span class="nav-item"
+                                     :class="$mq">наши услуги
+                                   <span class="nav-item-span">
+                                       <span class="vertical-line"
+                                             :style="lineServicesHeight">
+                                       </span>
+                                       <span class="horizontal-line"></span>
+                                   </span>
+                               </span>
+                        </button>
+                        <transition name="roll" mode="out-in">
+                            <div v-if="isActiveServices">
+                                <router-link to="/services/bouquets">
+                                    <button>
+                                        <span class="nav-item nav-item-inner" :class="$mq">
+                                            <span class="nav-item-span">
+                                                <span class="vertical-line" :class="$mq"></span>
+                                                <span class="horizontal-line" :class="$mq"></span>
+                                            </span>
+                                        Букеты и композиции
+                                        </span>
+                                    </button>
+                                </router-link>
+                                <router-link to="/services/weddings">
+                                    <button>
+                                       <span class="nav-item nav-item-inner" :class="$mq">
                                            <span class="nav-item-span">
-                                             <span @click="toggleIsActive('services')"
-                                                   class="vertical-line" :style="lineServicesHeight">
-                                             </span>
-                                             <span  class="horizontal-line"></span>
+                                             <span class="vertical-line" :class="$mq"></span>
+                                             <span class="horizontal-line" :class="$mq"></span>
                                            </span>
+                                           Свадебная флористика и декор
                                        </span>
-                                   </button>
-                               </router-link>
-                           </router-link>
-                           <transition name="roll" mode="out-in">
-                               <div v-if="isActiveServices">
-                                   <router-link to="/">
-                                       <button>
-                                   <span class="nav-item nav-item-inner" :class="$mq">
-                                       <span class="nav-item-span">
-                                         <span class="vertical-line" :class="$mq"></span>
-                                         <span class="horizontal-line" :class="$mq"></span>
+                                    </button>
+                                </router-link>
+                                <router-link to="/services/events">
+                                    <button>
+                                       <span class="nav-item nav-item-inner" :class="$mq">
+                                           <span class="nav-item-span">
+                                             <span class="vertical-line" :class="$mq"></span>
+                                             <span class="horizontal-line" :class="$mq"></span>
+                                           </span>
+                                           Оформление мероприятий
                                        </span>
-                                       Букеты и композиции
-                                   </span>
-                                       </button>
-                                   </router-link>
-                                   <router-link to="/">
-                                       <button>
-                                   <span class="nav-item nav-item-inner" :class="$mq">
-                                       <span class="nav-item-span">
-                                         <span class="vertical-line" :class="$mq"></span>
-                                         <span class="horizontal-line" :class="$mq"></span>
+                                    </button>
+                                </router-link>
+                                <router-link to="/services/corporate">
+                                    <button>
+                                       <span class="nav-item nav-item-inner" :class="$mq">
+                                           <span class="nav-item-span">
+                                             <span class="vertical-line" :class="$mq"></span>
+                                             <span class="horizontal-line" :class="$mq"></span>
+                                           </span>
+                                           Отели и корпоративные клиенты
                                        </span>
-                                       Свадебная флористика и декор
-                                   </span>
-                                       </button>
-                                   </router-link>
-                                   <router-link to="/">
-                                       <button>
-                                   <span class="nav-item nav-item-inner" :class="$mq">
-                                       <span class="nav-item-span">
-                                         <span class="vertical-line" :class="$mq"></span>
-                                         <span class="horizontal-line" :class="$mq"></span>
+                                    </button>
+                                </router-link>
+                                <router-link to="/services/funerals">
+                                    <button>
+                                       <span class="nav-item nav-item-inner" :class="$mq">
+                                           <span class="nav-item-span">
+                                             <span class="vertical-line" :class="$mq"></span>
+                                             <span class="horizontal-line" :class="$mq"></span>
+                                           </span>
+                                           Ритуальная флористика
                                        </span>
-                                       Оформление мероприятий
-                                   </span>
-                                       </button>
-                                   </router-link>
-                                   <router-link to="/">
-                                       <button>
-                                   <span class="nav-item nav-item-inner" :class="$mq">
-                                       <span class="nav-item-span">
-                                         <span class="vertical-line" :class="$mq"></span>
-                                         <span class="horizontal-line" :class="$mq"></span>
+                                    </button>
+                                </router-link>
+                                <router-link to="/services/master-class">
+                                    <button>
+                                       <span class="nav-item nav-item-inner" :class="$mq">
+                                           <span class="nav-item-span">
+                                             <span class="vertical-line" :class="$mq"></span>
+                                             <span class="horizontal-line" :class="$mq"></span>
+                                           </span>
+                                           Мастер-классы
                                        </span>
-                                       Отели и корпоративные клиенты
-                                   </span>
-                                       </button>
-                                   </router-link>
-                                   <router-link to="/">
-                                       <button>
-                                   <span class="nav-item nav-item-inner" :class="$mq">
-                                       <span class="nav-item-span">
-                                         <span class="vertical-line" :class="$mq"></span>
-                                         <span class="horizontal-line" :class="$mq"></span>
-                                       </span>
-                                       Ритуальная флористика
-                                   </span>
-                                       </button>
-                                   </router-link>
-                                   <router-link to="/">
-                                       <button>
-                                   <span class="nav-item nav-item-inner" :class="$mq">
-                                       <span class="nav-item-span">
-                                         <span class="vertical-line" :class="$mq"></span>
-                                         <span class="horizontal-line" :class="$mq"></span>
-                                       </span>
-                                       Мастер-классы
-                                   </span>
-                                       </button>
-                                   </router-link>
-                               </div>
-                           </transition>
-                           <router-link to="/aboutUs">
-                               <button>
-                                   <span class="nav-item" :class="$mq">о нас</span>
-                               </button>
-                           </router-link>
-                           <router-link to="/blog">
-                               <button>
-                                   <span class="nav-item"
-                                         :class="$mq"
-                                         @click="toggleIsActive('blog')" >блог
-                                       <span class="nav-item-span">
-                                         <span class="vertical-line" :style="lineBlogHeight"></span>
-                                         <span @click="toggleIsActive('blog')" class="horizontal-line"></span>
-                                       </span>
-                                   </span>
-                               </button>
-                           </router-link>
-                           <transition name="roll" mode="out-in">
-                               <div v-if="isActiveBlog">
-                                   <router-link to="/">
-                                       <button>
-                                   <span class="nav-item nav-item-inner" :class="$mq">
-                                       <span class="nav-item-span">
-                                         <span class="vertical-line" :class="$mq"></span>
-                                         <span class="horizontal-line" :class="$mq"></span>
-                                       </span>
-                                       Наши истории
-                                   </span>
-                                       </button>
-                                   </router-link>
-                                   <router-link to="/">
-                                       <button>
-                                   <span class="nav-item nav-item-inner" :class="$mq">
-                                       <span class="nav-item-span">
-                                        <span class="vertical-line" :class="$mq"></span>
-                                         <span class="horizontal-line" :class="$mq"></span>
-                                       </span>
-                                       Другие статьи
-                                   </span>
-                                       </button>
-                                   </router-link>
-                               </div>
-                           </transition>
-                           <router-link to="/contacts">
-                               <button>
-                                   <span class="nav-item" :class="$mq">контакты</span>
-                               </button>
-                           </router-link>
-                       </div>
-                       <div class="contacts" :class="$mq">
-                           <a href="https://www.facebook.com/1001533783217153/photos/basw.AbqmKB7-eBPfkBXSIb7EVpPaM5VY3U6F1puasdm8VRdWZlfYhpNUxgV4Uk7kRJhhDoLtM6e9oeQNpClaxKD1oGUfc7gSGTUmfh8lA6s67EUhqyxlwpzKnPI0zvZpeygUKFhHTnbH_0V2ZxJ_QKsTtGrZa_ZOlKs_r54upKMmYfyRSo4uxprZ7pvYONgI1EHESeZzT4QzagF_5u_0rdmA8m7khuMjv59lkO1CbwOvtUkslQ.10205715277309416.10205715277549422.10205715276669400.1086050148098849.10205715278189438.10205715276029384/1086050148098849/?type=1&opaqueCursor=AboD63VT2BzK4X6OAFtOGR5tpHT03WWVmSdm60YARt9tsiiTBTYDsNnm9SrweCzCyxKT01X2nPKhugRuPw_4A4O-XX_27eirjF0Hrh0K0U2QJTWN88RebeRSMTOL9LIf_Yk0_vo9KJPeT3BNfZVRVuvxUwNx56C-W4VnB1kpsfYMBXwVwzwZs2GXEoEwfMdcaC2NcMGi2RoMHNPlTM7AA-qWFj33y13qUSzRYMgfoOInVyh4KJO7qkj1KrX2g3Ljhx7srS5fjvjsQ9G2OYK6QRlOl_K8_UG53v0AoOalgXzT0PzpU4OH4PfEaYdzYan4onQGceKTP4NvbUtHPDOpvw_gVcGd4_trHIiJI44sjzZoWJAOLVVoCUnYFPIJuFVu594EHo6rDBzKNAHEIR87hYlyLDdgqwYMCIp8WGz6qBgmpwtSxVPBZEgQ0Hasof2yRdZYVL1a3La93H6X94Py46iJLMj_2AeRak7vwz6zrk899JAbYXadIDWDfC47Obz6CgfkHNJc7uoSGTdsvwNSmGs-rT3r6_3yFDhODGMgdc6a2QddEYfj4kT3EtpHj5KE-w5agJjKSIf6c5USAbkA8qP-2dQpc725jQkcwvoRPL6Atw&theater"
-                              rel="nofolow"
-                              class="a-text" :class="$mq">Facebook</a>
-                           <a href="https://vk.com/buketnoe_buro" rel="nofolow" class="a-text" :class="$mq">Vk</a>
-                           <a href="https://www.instagram.com/buketnoe_buro/" rel="nofolow" class="a-text mr-0" :class="$mq">Instagram</a>
-                       </div>
-                   </div>
-                   <div class="menu-right-column" :class="$mq">
-                       <img src="/wp-content/themes/foto-theme/src/assets/img/close.png"
-                            :class="$mq"
-                            class="menu-close"
-                            @click="closeClicked"
-                            alt="Букетное бюро">
-                       <div class="arrow-around arrow-rotate"
-                            :class="$mq"
-                            ref="menuArrow"
-                            @click="toggleIsActive('developers')">
-                           <div class="div-around" :class="$mq"></div>
-                           <img class="arrow arrow-left"
-                                :class="$mq"
-                                src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png"
-                                alt="Буектное бюро">
-                       </div>
-                       <div class="lang" :class="$mq">
-                           <span :class="$mq">en</span>
-                           <div class="lang-divider" :class="$mq"></div>
-                           <span class="lang-active" :class="$mq">ru</span>
-                       </div>
-                   </div>
-                   <transition name="slide-right" mode="out-in">
-                       <div class="developers-column"
-                            :class="$mq"
-                            v-if="isActiveDevelopers">
-                           <div class="developers" :class="$mq">
-                               <div class="nav-item" :class="$mq">DEVELOPERS</div>
-                               <div class="developers-list">
-                                   <a href="" class="a-text" :class="$mq">Web design:<br>
-                                       <span class="developers-name" :class="$mq">
+                                    </button>
+                                </router-link>
+                            </div>
+                        </transition>
+                        <router-link to="/aboutUs">
+                            <button>
+                                <span class="nav-item" :class="$mq">о нас</span>
+                            </button>
+                        </router-link>
+                        <button>
+                            <span class="nav-item"
+                                  :class="$mq"
+                                  @click="toggleIsActive('blog')">блог
+                                <span class="nav-item-span">
+                                    <span class="vertical-line" :style="lineBlogHeight"></span>
+                                    <span @click="toggleIsActive('blog')" class="horizontal-line"></span>
+                                </span>
+                            </span>
+                        </button>
+                        <transition name="roll" mode="out-in">
+                            <div v-if="isActiveBlog">
+                                <router-link to="/blog/our-stories">
+                                    <button>
+                                        <span class="nav-item nav-item-inner" :class="$mq">
+                                            <span class="nav-item-span">
+                                                <span class="vertical-line" :class="$mq"></span>
+                                                <span class="horizontal-line" :class="$mq"></span>
+                                            </span>
+                                            Наши истории
+                                        </span>
+                                    </button>
+                                </router-link>
+                                <router-link to="/blog/other-articles">
+                                    <button>
+                                        <span class="nav-item nav-item-inner" :class="$mq">
+                                            <span class="nav-item-span">
+                                                <span class="vertical-line" :class="$mq"></span>
+                                                <span class="horizontal-line" :class="$mq"></span>
+                                            </span>
+                                            Другие статьи
+                                        </span>
+                                    </button>
+                                </router-link>
+                            </div>
+                        </transition>
+                        <router-link to="/contacts">
+                            <button>
+                                <span class="nav-item" :class="$mq">контакты</span>
+                            </button>
+                        </router-link>
+                    </div>
+                    <div class="contacts" :class="$mq">
+                        <a href="https://www.facebook.com/1001533783217153/photos/basw.AbqmKB7-eBPfkBXSIb7EVpPaM5VY3U6F1puasdm8VRdWZlfYhpNUxgV4Uk7kRJhhDoLtM6e9oeQNpClaxKD1oGUfc7gSGTUmfh8lA6s67EUhqyxlwpzKnPI0zvZpeygUKFhHTnbH_0V2ZxJ_QKsTtGrZa_ZOlKs_r54upKMmYfyRSo4uxprZ7pvYONgI1EHESeZzT4QzagF_5u_0rdmA8m7khuMjv59lkO1CbwOvtUkslQ.10205715277309416.10205715277549422.10205715276669400.1086050148098849.10205715278189438.10205715276029384/1086050148098849/?type=1&opaqueCursor=AboD63VT2BzK4X6OAFtOGR5tpHT03WWVmSdm60YARt9tsiiTBTYDsNnm9SrweCzCyxKT01X2nPKhugRuPw_4A4O-XX_27eirjF0Hrh0K0U2QJTWN88RebeRSMTOL9LIf_Yk0_vo9KJPeT3BNfZVRVuvxUwNx56C-W4VnB1kpsfYMBXwVwzwZs2GXEoEwfMdcaC2NcMGi2RoMHNPlTM7AA-qWFj33y13qUSzRYMgfoOInVyh4KJO7qkj1KrX2g3Ljhx7srS5fjvjsQ9G2OYK6QRlOl_K8_UG53v0AoOalgXzT0PzpU4OH4PfEaYdzYan4onQGceKTP4NvbUtHPDOpvw_gVcGd4_trHIiJI44sjzZoWJAOLVVoCUnYFPIJuFVu594EHo6rDBzKNAHEIR87hYlyLDdgqwYMCIp8WGz6qBgmpwtSxVPBZEgQ0Hasof2yRdZYVL1a3La93H6X94Py46iJLMj_2AeRak7vwz6zrk899JAbYXadIDWDfC47Obz6CgfkHNJc7uoSGTdsvwNSmGs-rT3r6_3yFDhODGMgdc6a2QddEYfj4kT3EtpHj5KE-w5agJjKSIf6c5USAbkA8qP-2dQpc725jQkcwvoRPL6Atw&theater"
+                           rel="nofolow"
+                           class="a-text" :class="$mq">Facebook</a>
+                        <a href="https://vk.com/buketnoe_buro" rel="nofolow" class="a-text" :class="$mq">Vk</a>
+                        <a href="https://www.instagram.com/buketnoe_buro/" rel="nofolow" class="a-text mr-0" :class="$mq">Instagram</a>
+                    </div>
+                </div>
+                <div class="menu-right-column" :class="$mq">
+                    <img src="/wp-content/themes/foto-theme/src/assets/img/close.png"
+                         :class="$mq"
+                         class="menu-close"
+                         @click="closeClicked"
+                         alt="Букетное бюро">
+                    <div class="arrow-around arrow-rotate"
+                         :class="$mq"
+                         ref="menuArrow"
+                         @click="toggleIsActive('developers')">
+                        <div class="div-around" :class="$mq"></div>
+                        <img class="arrow arrow-left"
+                             :class="$mq"
+                             src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png"
+                             alt="Букетное бюро">
+                    </div>
+                    <div class="lang" :class="$mq">
+                        <span :class="$mq">en</span>
+                        <div class="lang-divider" :class="$mq"></div>
+                        <span class="lang-active" :class="$mq">ru</span>
+                    </div>
+                </div>
+                <transition name="slide-right" mode="out-in">
+                    <div class="developers-column"
+                         :class="$mq"
+                         v-if="isActiveDevelopers">
+                        <div class="developers" :class="$mq">
+                            <div class="nav-item" :class="$mq">DEVELOPERS</div>
+                            <div class="developers-list">
+                                <a href="" class="a-text" :class="$mq">Web design:<br>
+                                    <span class="developers-name" :class="$mq">
                                       Helen Tihomolova
                                    </span>
-                                   </a>
-                                   <a href="" class="a-text" :class="$mq">Front end:<br>
-                                       <span class="developers-name" :class="$mq">
+                                </a>
+                                <a href="" class="a-text" :class="$mq">Front end:<br>
+                                    <span class="developers-name" :class="$mq">
                                        Ekaterina Lukinova
                                    </span>
-                                   </a>
-                                   <a href="" class="a-text" :class="$mq">Back end:<br>
-                                       <span class="developers-name" :class="$mq">
+                                </a>
+                                <a href="" class="a-text" :class="$mq">Back end:<br>
+                                    <span class="developers-name" :class="$mq">
                                        Alexey Lukinov
                                    </span>
-                                   </a>
-                               </div>
-                               <span class="a-text" :class="$mq">2019</span>
+                                </a>
+                            </div>
+                            <span class="a-text" :class="$mq">2019</span>
 
-                           </div>
-                       </div>
-                   </transition>
-               </div>
+                        </div>
+                    </div>
+                </transition>
+            </div>
         </div>
     </transition>
 </template>

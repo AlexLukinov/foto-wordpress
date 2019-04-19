@@ -1,38 +1,31 @@
 <template>
     <div class="page blog-page article">
         <header-with-back></header-with-back>
-            <h3 class="h3-border-bottom blog-h3" :class="$mq">НАШИ ИСТОРИИ И ДРУГИЕ СТАТЬИ</h3>
-            <div class="gallery" id="gallery-blog">
-                <div class="image"
-                     :class="$mq"
-                     v-for="(post, index) in posts">
-                    <router-link :to="'/post/' + post.id">
-                        <img :src="post.article_photo.guid"
-                             :ref="index"
-                             class="fadeImg">
-                        <div class="catalog-name" :class="$mq">
-                            {{post.article_category.name}}
-                            <span class="article-date"> 17 января 2015</span>
-                        </div>
-                        <div class="photo-name" :class="$mq">{{post.title.rendered}}</div>
-                    </router-link>
-                </div>
+        <h3 class="h3-border-bottom blog-h3" :class="$mq">{{ blogSlides[currentNumber].header }}</h3>
+        <div class="gallery" id="gallery-blog">
+            <div class="image"
+                 :class="$mq"
+                 v-for="post in blogSlides[currentNumber].posts">
+                <router-link :to="'/post/' + post.id">
+                    <img :src="post.article_photo.guid"
+                         :ref="post.id"
+                         class="fadeImg">
+                    <div class="catalog-name" :class="$mq">{{post.article_category.name}}</div>
+                    <div class="photo-name" :class="$mq">{{post.title.rendered}}</div>
+                </router-link>
             </div>
-        <div class="text-element current-photo">
-            <span class="pagination-slide">53</span>/53
         </div>
-        <div class="slide_line" :class="$mq">
-            <span class="slide_line_span">01</span>
-            <div class="slide-progress"></div>
-            <span class="slide_line_span" >07</span>
-        </div>
-        <div class="scroll-element" :class="$mq">
-            <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
-            <div class="text-element">SCROLL</div>
-        </div>
-        <div class="media-block" :class="$mq">
-            <div class="media-block-columns columns-border-top" :class="$mq">
-                <img src="/wp-content/themes/foto-theme/src/assets/img/preview.png" :class="$mq" alt="Букетное бюро">
+        <div class="arrow-box arrow-box-footer" :class="$mq">
+            <div class="arrow-around arrow-rotate" @click="prev">
+                <div class="div-around"></div>
+                <img class="arrow arrow-left" src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Букетное бюро">
+            </div>
+            <div class="text-element current-photo">
+                <span class="pagination-slide">53</span>/53
+            </div>
+            <div class="arrow-around arrow-rotate" @click="next">
+                <img class="arrow arrow-right" src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
+                <div class="div-around"></div>
             </div>
         </div>
     </div>
@@ -41,38 +34,65 @@
     export default {
         data() {
             return {
-                posts: []
+                blogSlides: [
+                    {
+                        header: '',
+                        posts: [],
+                    }
+                ],
+                currentNumber: 0,
             }
         },
         methods: {
             setPosts: function () {
-                // this.posts = window.articlesCategories;
-                this.posts = window.posts;
+                this.blogSlides = [
+                    {
+                        header: 'НАШИ ИСТОРИИ И ДРУГИЕ СТАТЬИ',
+                        posts: window.posts
+                    },
+                    {
+                        header: 'НАШИ ИСТОРИИ',
+                        posts: _.find(window.categories, ['category.name', 'Наши истории']).posts,
+                    },
+                    {
+                        header: 'ДРУГИЕ СТАТЬИ',
+                        posts: _.find(window.categories, ['category.name', 'Другие статьи']).posts,
+                    },
+                ]
             },
             initGlobalVars: function () {
                 let checkIsUploaded = setInterval(() => {
-                    if (window.albums &&
-                        window.catalogs &&
-                        window.articlesCategories &&
-                        window.posts &&
-                        window.albums.length &&
-                        window.posts.length &&
-                        window.articlesCategories.length &&
-                        window.catalogs.length) {
+                    if (window.categories && window.posts && window.posts.length && window.categories.length) {
                         clearInterval(checkIsUploaded);
                         this.setPosts();
                     }
                 }, 20);
             },
-        },
-        computed: {
-            strokeWidth: function () {
-                let oneStep = 600 / this.data.slides.length;
-                return oneStep * (this.currentNumber + 1)
+            next: function () {
+                if (this.currentNumber < this.blogSlides.length - 1) {
+                    this.currentNumber += 1
+                } else {
+                    this.currentNumber = 0
+                }
+            },
+            prev: function () {
+                if (this.currentNumber > 0) {
+                    this.currentNumber -= 1
+                } else {
+                    this.currentNumber = this.blogSlides.length - 1
+                }
             },
         },
         mounted() {
             this.initGlobalVars();
+            switch (this.$route.params.category) {
+                case 'all': this.currentNumber = 0;
+                    break;
+                case 'our-stories': this.currentNumber = 1;
+                    break;
+                case 'other-articles': this.currentNumber = 2;
+                    break;
+            }
         }
     }
 

@@ -1,21 +1,42 @@
 <template>
-    <div class="page post-page article" :class="$mq">
+    <div class="page post-page article" :class="$mq" @wheel="onScroll">
         <header-with-back></header-with-back>
+
+        <div class="slide_line" :class="$mq">
+            <span class="slide_line_span">0{{ currentBlockNumber }}</span>
+            <div class="slide-progress"></div>
+            <span class="slide_line_span">0{{ blocksCount }}</span>
+        </div>
+
+        <div class="scroll-element" :class="$mq" :key="key">
+            <div v-if="!isAtTheBottom">
+                <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
+                <div class="text-element">SCROLL</div>
+            </div>
+            <div v-if="isAtTheBottom">
+                <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Букетное бюро">
+                <div class="text-element">TO TOP</div>
+            </div>
+        </div>
 
         <component :is="{template: content}"></component>
 
         <div class="arrow-box" :class="$mq">
-            <div class="arrow-around arrow-rotate" @click="prev">
-                <div class="div-around"></div>
-                <img class="arrow arrow-left" src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Буектное бюро">
-            </div>
+            <router-link :to="'/post/' + previousPostId">
+                <div class="arrow-around arrow-rotate" @click="prev">
+                    <div class="div-around"></div>
+                    <img class="arrow arrow-left" src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Букетное бюро">
+                </div>
+            </router-link>
             <router-link :to="'/album/' + post.album_id">
                 <button class="article-button" :class="$mq">Смотреть больше фото</button>
             </router-link>
-            <div class="arrow-around arrow-rotate" @click="next">
-                <img class="arrow arrow-right" src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
-                <div class="div-around"></div>
-            </div>
+            <router-link :to="'/post/' + nextPostId">
+                <div class="arrow-around arrow-rotate" @click="next">
+                    <img class="arrow arrow-right" src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
+                    <div class="div-around"></div>
+                </div>
+            </router-link>
         </div>
         <div class="footer-img" :class="$mq">
             <img src="/wp-content/themes/foto-theme/src/assets/img/preview.png" :class="$mq" alt="Букетное бюро">
@@ -24,8 +45,10 @@
 </template>
 <script>
     import PostContent from './PostContent.vue';
+    import blockCounterOnScroll from '../PositionSwitchOnScrollMixin';
 
     export default {
+        mixins: [blockCounterOnScroll],
         components: {
             PostContent
         },
@@ -34,7 +57,11 @@
                 post: {
                     album_id: ''
                 },
-                content: ''
+                isAtTheBottom: false,
+                content: '',
+                blockClassName: 'post-block',
+                previousPostId: 0,
+                nextPostId: 0,
             }
         },
         methods: {
@@ -45,20 +72,21 @@
 
             },
             setPost: function () {
-                this.post = window.posts.filter(post => {
-                    return post.id == this.$route.params.postId;
-                })[0];
+                let postsIds = window.posts.map(e => { return e.id; });
+                let index = postsIds.indexOf(parseInt(this.$route.params.postId));
+                this.post = window.posts[index];
                 this.content = this.post.content.rendered;
+                this.previousPostId = index === 0 ? postsIds.slice(-1).pop() : postsIds[index - 1];
+                this.nextPostId = index === postsIds.length - 1 ? postsIds[0] : postsIds[index + 1];
             },
             initGlobalVars: function () {
                 let checkIsUploaded = setInterval(() => {
-                    if (window.posts &&
-                        window.posts.length) {
+                    if (window.posts && window.posts.length) {
                         clearInterval(checkIsUploaded);
                         this.setPost();
                     }
                 }, 20);
-            }
+            },
         },
         watch: {
             '$route' (to, from) {
