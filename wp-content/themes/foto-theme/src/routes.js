@@ -22,7 +22,7 @@ export default new VueRouter ({
             component: AboutUs
         },
         {
-            path: '/blog',
+            path: '/blog/:category',
             component: Blog
         },
         {

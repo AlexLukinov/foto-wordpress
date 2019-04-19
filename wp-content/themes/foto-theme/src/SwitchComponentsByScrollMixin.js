@@ -9,9 +9,20 @@ export default Vue.mixin({
             isAtThePageBottom: false,
             deltaY: 0,
             scrollableRoutePaths: [
-                '/services/:service',
                 '/services/portfolio',
+                '/services/bouquets',
+                '/services/weddings',
+                '/services/events',
+                '/services/corporate',
+                '/services/funerals',
+                '/services/master-class',
+                '/services/:service',
+                // '/album',
+                // '/post',
                 '/blog',
+                '/blog/our-stories',
+                '/blog/other-articles',
+                '/blog/:category',
                 '/contacts',
                 '/aboutUs'
             ],
@@ -19,8 +30,9 @@ export default Vue.mixin({
                 '/',
                 '/services/:service',
                 '/services/portfolio',
+                '/blog/:category',
+                '/blog/all',
                 '/aboutUs',
-                '/blog',
                 '/contacts',
             ],
         };
@@ -100,6 +112,8 @@ export default Vue.mixin({
 
             if (route === '/services/:service') {
                 route = '/services/portfolio';
+            } else if (route === '/blog/:category') {
+                route = '/blog/all';
             }
 
             if (this.isRouteCanBeSwitched(route, comparePathIndex)) {
@@ -138,22 +152,39 @@ export default Vue.mixin({
                 let scrollHeight = document.body.scrollHeight;
 
                 // we at the top of the page
-                if (positionY <= innerHeight) {
-                    this.isAtThePageTop = true;
-                }
+                // if (positionY <= innerHeight) {
+                //     this.isAtThePageTop = true;
+                // } else {
+                //     this.isAtThePageTop = false;
+                // }
+                this.isAtThePageTop = positionY <= innerHeight;
 
-                // if delta positive it's mean that we definitely not at the top of the page
-                if (delta > 0) {
-                    this.isAtThePageTop = false;
-                }
+                // // if delta positive it's mean that we definitely not at the top of the page
+                // if (delta > 0) {
+                //     this.isAtThePageTop = false;
+                // }
 
                 // we at the bottom of the page
-                if (positionY >= scrollHeight) {
-                    this.isAtThePageBottom = true;
-                }
+                this.isAtThePageBottom = positionY >= scrollHeight;
+                EventBus.$emit('IS_SCROLLED_TO_BOTTOM', this.isAtThePageBottom);
+                // if (positionY >= scrollHeight) {
+                //     // if (this.currentRoutePath == '/album' || this.currentRoutePath == '/post') {
+                //     //     if (positionY >= document.body.scrollHeight) {
+                //     //         this.isAtThePageBottom = true;
+                //     //     }
+                //     // }
+                //
+                //     this.isAtThePageBottom = true;
+                // } else {
+                //     this.isAtThePageBottom = false;
+                // }
 
                 // if overall deltaY more than 150px then switch component
-                if (Math.abs(this.deltaY) > 250) {
+                if (
+                    Math.abs(this.deltaY) > 250 &&
+                    this.currentRoutePath !== '/post' &&
+                    this.currentRoutePath !== '/album'
+                ) {
                     // if we on scrollable page then switch if we at the bottom or at the top
                     // else switch on sign of delta
                     if (this.scrollableRoutePaths.includes(this.currentRoutePath)) {
@@ -183,7 +214,18 @@ export default Vue.mixin({
         },
         routeIndex: function () {
             let routeIndex = this.routes.findIndex(item => item.path === this.$route.path);
-            return routeIndex === -1 ? this.routes.findIndex(item => item.path === '/services/:service') : routeIndex;
+
+            if (routeIndex === -1) {
+                let currentUrl = window.location.pathname;
+
+                if (currentUrl.includes('services')) {
+                    return this.routes.findIndex(item => item.path === '/services/:service')
+                } else if (currentUrl.includes('blog')) {
+                    return this.routes.findIndex(item => item.path === '/blog/:category')
+                }
+            }
+
+            return routeIndex;
         },
         currentRoutePath: function () {
             let currentUrl = window.location.pathname;
@@ -194,9 +236,23 @@ export default Vue.mixin({
                 return '/album';
             } else if (currentUrl.includes('post')) {
                 return '/post';
+            } else if (currentUrl.includes('blog')) {
+                return '/blog/:category';
             } else if (this.routes[this.routeIndex]) {
                 return this.routes[this.routeIndex].path;
             }
         },
     },
+    // watch:{
+    //     $route (to, from){
+    //         if (to.path.includes('post') || to.path.includes('album')) {
+    //             setTimeout(() => {
+    //                 this.isAtThePageBottom = false;
+    //             }, 0);
+    //         }
+    //     }
+    // }
+    // mounted() {
+    //     EventBus.$on('NEED_SET_INITIAL_SCROLL_PARAMS', () => {this.setInitialScrollData()});
+    // }
 });

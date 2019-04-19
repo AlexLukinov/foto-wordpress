@@ -4,7 +4,7 @@
         <div class="horizontal-divider" :class="$mq"></div>
         <slides-portfolio></slides-portfolio>
         <div class="media-block-columns columns-border-top" :class="$mq">
-            <img src="/wp-content/themes/foto-theme/src/assets/img/preview.png" :class="$mq" alt="Буектное бюро">
+            <img src="/wp-content/themes/foto-theme/src/assets/img/preview.png" :class="$mq" alt="Букетное бюро">
         </div>
     </div>
 </template>

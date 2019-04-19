@@ -114,7 +114,7 @@
                         </button>
                         <transition name="roll" mode="out-in">
                             <div v-if="isActiveBlog">
-                                <router-link to="/blog/our-histories">
+                                <router-link to="/blog/our-stories">
                                     <button>
                                         <span class="nav-item nav-item-inner" :class="$mq">
                                             <span class="nav-item-span">
@@ -164,7 +164,7 @@
                         <img class="arrow arrow-left"
                              :class="$mq"
                              src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png"
-                             alt="Буектное бюро">
+                             alt="Букетное бюро">
                     </div>
                     <div class="lang" :class="$mq">
                         <span :class="$mq">en</span>

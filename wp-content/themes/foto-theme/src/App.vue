@@ -17,12 +17,12 @@
                 albums: [],
                 posts: [],
                 categories: [],
-                articlesByCategories: [],
+                postsByCategories: [],
                 albumsByCatalogs: [],
                 isCatalogsUploaded: false,
                 isAlbumsUploaded: false,
                 isPostsUploaded: false,
-                isArticlesCategoriesUploaded: false,
+                isPostsCategoriesUploaded: false,
             }
         },
         methods: {
@@ -49,42 +49,42 @@
                 window.albums = this.albums;
             },
             setCategories() {
-                let articlesByCategory = {};
+                let postsByCategory = {};
 
                 _.each(this.posts, post => {
                     post.article_category = _.find(this.categories, ['id', post.article_category[0]]);
                     post.title.rendered = post.title.rendered.replace(/&#038;/g, '&');
 
-                    if (articlesByCategory.hasOwnProperty(post.article_category.id)) {
-                        articlesByCategory[post.article_category.id].posts.push(post);
+                    if (postsByCategory.hasOwnProperty(post.article_category.id)) {
+                        postsByCategory[post.article_category.id].posts.push(post);
                     } else {
-                        articlesByCategory[post.article_category.id] = {category: post.article_category.id, posts: [post]};
+                        postsByCategory[post.article_category.id] = {category: post.article_category.id, posts: [post]};
                     }
                 });
 
-                this.articlesByCategories = _.values(articlesByCategory);
+                this.postsByCategories = _.values(postsByCategory);
 
-                _.each(this.articlesByCategories, article => {
-                    article.category = _.find(this.categories, ['id', article.category]);
+                _.each(this.postsByCategories, post => {
+                    post.category = _.find(this.categories, ['id', post.category]);
                 });
 
                 window.posts = this.posts;
-                window.articlesCategories = this.articlesByCategories;
+                window.categories = this.postsByCategories;
             },
-            getArticlesCategories() {
+            getPostsCategories() {
                 axios
                     .get(
                         SETTINGS.API_BASE_PATH + "article_category?per_page=100"
                     )
                     .then(response => {
-                        this.isArticlesCategoriesUploaded = true;
+                        this.isPostsCategoriesUploaded = true;
                         this.categories = response.data;
                     })
                     .catch(e => {
                         console.log(e);
                     });
             },
-            getArticles() {
+            getPosts() {
                 axios
                     .get(
                         SETTINGS.API_BASE_PATH + "article?per_page=100"
@@ -125,7 +125,7 @@
             },
             checkIsAllDataUploaded() {
                 let checkIsUploaded = setInterval(() => {
-                    if (this.isCatalogsUploaded && this.isAlbumsUploaded && this.isPostsUploaded && this.isArticlesCategoriesUploaded) {
+                    if (this.isCatalogsUploaded && this.isAlbumsUploaded && this.isPostsUploaded && this.isPostsCategoriesUploaded) {
                         this.setCatalog();
                         this.setCategories();
                         clearInterval(checkIsUploaded);
@@ -136,8 +136,8 @@
         mounted() {
             this.getCatalogs();
             this.getAlbums();
-            this.getArticles();
-            this.getArticlesCategories();
+            this.getPosts();
+            this.getPostsCategories();
 
             this.checkIsAllDataUploaded();
         }

@@ -25,20 +25,6 @@ import Album from './components/Album.vue'
 import Vue2TouchEvents from 'vue2-touch-events'
 import switchByScroll from './SwitchComponentsByScrollMixin'
 
-router.beforeEach(function (to, from, next) {
-  setTimeout(() => {
-    window.scrollTo(0, 0);
-  }, 0);
-
-  if (to.path == '/') {
-    document.body.style['overflow-y'] = "hidden";
-  } else {
-    document.body.style['overflow-y'] = "scroll";
-  }
-
-  next();
-});
-
 Vue.use(Vue2TouchEvents);
 Vue.use(VueRouter);
 Vue.use(VueMq, {
@@ -51,6 +37,24 @@ Vue.use(VueMq, {
 });
 
 window.EventBus = new Vue();
+
+router.beforeEach(function (to, from, next) {
+  setTimeout(() => {
+    window.scrollTo(0, 0);
+  }, 0);
+
+  if (to.path == '/') {
+    document.body.style['overflow-y'] = "hidden";
+  } else {
+    document.body.style['overflow-y'] = "scroll";
+  }
+
+  // if (to.path.includes('post') || to.path.includes('album')) {
+  //   EventBus.$emit('NEED_SET_INITIAL_SCROLL_PARAMS');
+  // }
+
+  next();
+});
 
 Vue.component('info', Info);
 Vue.component('post', Post);

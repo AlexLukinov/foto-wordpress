@@ -21,20 +21,24 @@
         </div>
 
         <div class="arrow-box" :class="$mq">
-            <div class="arrow-around arrow-rotate" @click="prev">
-                <div class="div-around"></div>
-                <img class="arrow arrow-left" src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Буектное бюро">
-            </div>
+            <router-link :to="'/album/' + previousAlbumId">
+                <div class="arrow-around arrow-rotate" @click="prev">
+                    <div class="div-around"></div>
+                    <img class="arrow arrow-left" src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Букетное бюро">
+                </div>
+            </router-link>
             <router-link v-if="postId.length" :to="'/post/' + postId">
                 <button :class="$mq">Смотреть статью</button>
             </router-link>
-            <div class="arrow-around arrow-rotate" @click="next">
-                <img class="arrow arrow-right" src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
-                <div class="div-around"></div>
-            </div>
+            <router-link :to="'/album/' + nextAlbumId">
+                <div class="arrow-around arrow-rotate" @click="next">
+                    <img class="arrow arrow-right" src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
+                    <div class="div-around"></div>
+                </div>
+            </router-link>
         </div>
         <div class="footer-img" :class="$mq">
-            <img src="/wp-content/themes/foto-theme/src/assets/img/preview.png" :class="$mq" alt="Буектное бюро">
+            <img src="/wp-content/themes/foto-theme/src/assets/img/preview.png" :class="$mq" alt="Букетное бюро">
         </div>
     </div>
 </template>
@@ -49,7 +53,9 @@
                     photographer: '',
                     photoes: []
                 },
-                postId: ''
+                postId: '',
+                previousAlbumId: 0,
+                nextAlbumId: 0,
             };
         },
         methods: {
@@ -60,9 +66,14 @@
 
             },
             setAlbum: function () {
-                this.album = window.albums.filter(album => {
-                    return album.id == this.$route.params.albumId;
-                })[0];
+                let albumsIds = window.albums.map(e => { return e.id; });
+                let index = albumsIds.indexOf(parseInt(this.$route.params.albumId));
+                this.album = window.albums[index];
+                this.previousAlbumId = index === 0 ? albumsIds.slice(-1).pop() : albumsIds[index - 1];
+                this.nextAlbumId = index === albumsIds.length - 1 ? albumsIds[0] : albumsIds[index + 1];
+                // this.album = window.albums.filter(album => {
+                //     return album.id == this.$route.params.albumId;
+                // })[0];
 
                 this.postId = this.album.post_id;
 

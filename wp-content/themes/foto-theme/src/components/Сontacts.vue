@@ -80,7 +80,7 @@
                 <span class="slide_line_span" >02</span>
             </div>
             <div class="scroll-element" :class="$mq">
-                <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
+                <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
                 <div class="text-element">SCROLL</div>
             </div>
         </div>
@@ -208,13 +208,13 @@
                 <span class="slide_line_span" >02</span>
             </div>
             <div class="scroll-element" :class="$mq">
-                <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Буектное бюро">
+                <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Букетное бюро">
                 <div class="text-element">TO TOP</div>
             </div>
         </div>
         <div class="media-block" :class="$mq">
             <div class="media-block-columns columns-border-top" :class="$mq">
-                <img src="/wp-content/themes/foto-theme/src/assets/img/preview.png" :class="$mq" alt="Буектное бюро">
+                <img src="/wp-content/themes/foto-theme/src/assets/img/preview.png" :class="$mq" alt="Букетное бюро">
             </div>
         </div>
     </div>

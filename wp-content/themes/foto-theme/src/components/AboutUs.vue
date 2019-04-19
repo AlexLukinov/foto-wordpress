@@ -1,5 +1,23 @@
 <template>
-    <div class="page about-us_page">
+    <div class="page about-us_page" @wheel="onScroll">
+
+        <div class="slide_line" :class="$mq">
+            <span class="slide_line_span">0{{ currentBlockNumber }}</span>
+            <div class="slide-progress"></div>
+            <span class="slide_line_span">0{{ blocksCount }}</span>
+        </div>
+
+        <div class="scroll-element" :class="$mq" :key="key">
+            <div v-if="!isAtTheBottom">
+                <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
+                <div class="text-element">SCROLL</div>
+            </div>
+            <div v-if="isAtTheBottom">
+                <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Букетное бюро">
+                <div class="text-element">TO TOP</div>
+            </div>
+        </div>
+
         <div class="about-page-block">
             <header-with-back></header-with-back>
             <div class="page-slides" :class="$mq">
@@ -22,21 +40,12 @@
                         <router-link to="/portfolio" class="nav-link nav-link-header" :class="$mq">
                             <span class="nav-link-text">Портфолио</span>
                             <div class="arrow-around arrow-rotate">
-                                <img class="arrow arrow-right" src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
+                                <img class="arrow arrow-right" src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
                                 <div class="div-around"></div>
                             </div>
                         </router-link>
                     </div>
                 </transition>
-                <div class="slide_line" :class="$mq">
-                    <span class="slide_line_span">01</span>
-                    <div class="slide-progress"></div>
-                    <span class="slide_line_span" >05</span>
-                </div>
-            </div>
-            <div class="scroll-element" :class="$mq">
-                <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
-                <div class="text-element">SCROLL</div>
             </div>
         </div>
         <div class="about-page-block" :class="$mq">
@@ -65,20 +74,11 @@
                     <router-link to="/contacts" class="nav-link" >
                         <span class="nav-link-text" :class="$mq">Наши контакты</span>
                         <div class="arrow-around arrow-rotate" :class="$mq">
-                            <img class="arrow arrow-right" src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
+                            <img class="arrow arrow-right" src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
                             <div class="div-around"></div>
                         </div>
                     </router-link>
                 </div>
-            </div>
-            <div class="slide_line" :class="$mq">
-                <span class="slide_line_span">02</span>
-                <div class="slide-progress"></div>
-                <span class="slide_line_span" >05</span>
-            </div>
-            <div class="scroll-element" :class="$mq">
-                <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
-                <div class="text-element">SCROLL</div>
             </div>
         </div>
         <div class="about-page-block bcg-image" :class="$mq">
@@ -108,15 +108,6 @@
                     Внимание к деталям и перфекционизм в исполнении - это о нас.
                 </p>
             </div>
-                <div class="slide_line" :class="$mq">
-                    <span class="slide_line_span">03</span>
-                    <div class="slide-progress"></div>
-                    <span class="slide_line_span" >05</span>
-                </div>
-            <div class="scroll-element" :class="$mq">
-                <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
-                <div class="text-element">SCROLL</div>
-            </div>
         </div>
         <div class="about-page-block" :class="$mq">
             <div class="content-left" :class="$mq">
@@ -132,7 +123,7 @@
                         <div class="arrow-around arrow-rotate">
                             <img class="arrow arrow-right"
                                  :class="$mq"
-                                 src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
+                                 src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
                             <div class="div-around" :class="$mq"></div>
                         </div>
                     </router-link>
@@ -145,7 +136,7 @@
                         <div class="arrow-around arrow-rotate">
                             <img class="arrow arrow-right"
                                  :class="$mq"
-                                 src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
+                                 src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
                             <div class="div-around" :class="$mq"></div>
                         </div>
                     </router-link>
@@ -159,7 +150,7 @@
                         <div class="arrow-around arrow-rotate">
                             <img class="arrow arrow-right"
                                  :class="$mq"
-                                 src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
+                                 src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
                             <div class="div-around" :class="$mq"></div>
                         </div>
                     </router-link>
@@ -173,7 +164,7 @@
                         <div class="arrow-around arrow-rotate">
                             <img class="arrow arrow-right"
                                  :class="$mq"
-                                 src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
+                                 src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
                             <div class="div-around" :class="$mq"></div>
                         </div>
                     </router-link>
@@ -194,7 +185,7 @@
                         <div class="arrow-around arrow-rotate">
                             <img class="arrow arrow-right"
                                  :class="$mq"
-                                 src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
+                                 src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
                             <div class="div-around" :class="$mq"></div>
                         </div>
                     </router-link>
@@ -207,7 +198,7 @@
                         <div class="arrow-around arrow-rotate">
                             <img class="arrow arrow-right"
                                  :class="$mq"
-                                 src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
+                                 src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
                             <div class="div-around" :class="$mq"></div>
                         </div>
                     </router-link>
@@ -220,7 +211,7 @@
                         <div class="arrow-around arrow-rotate">
                             <img class="arrow arrow-right"
                                  :class="$mq"
-                                 src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
+                                 src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
                             <div class="div-around" :class="$mq"></div>
                         </div>
                     </router-link>
@@ -233,20 +224,11 @@
                         <div class="arrow-around arrow-rotate">
                             <img class="arrow arrow-right"
                                  :class="$mq"
-                                 src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
+                                 src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
                             <div class="div-around" :class="$mq"></div>
                         </div>
                     </router-link>
                 </div>
-            </div>
-            <div class="slide_line" :class="$mq">
-                <span class="slide_line_span">04</span>
-                <div class="slide-progress"></div>
-                <span class="slide_line_span" >05</span>
-            </div>
-            <div class="scroll-element" :class="$mq">
-                <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
-                <div class="text-element">SCROLL</div>
             </div>
         </div>
         <div class="about-page-block column-reverse" :class="$mq">
@@ -268,7 +250,7 @@
                     <router-link to="/contacts" class="nav-link">
                         <span class="nav-link-text" :class="$mq">Наши истории</span>
                         <div class="arrow-around arrow-rotate" :class="$mq">
-                            <img class="arrow arrow-right" src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
+                            <img class="arrow arrow-right" src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
                             <div class="div-around" :class="$mq"></div>
                         </div>
                     </router-link>
@@ -277,22 +259,18 @@
             <div class="content-left text-why" :class="$mq">
                 <div class="text-about text-why" :class="$mq">Why us?</div>
             </div>
-            <div class="slide_line" :class="$mq">
-                <span class="slide_line_span">05</span>
-                <div class="slide-progress"></div>
-                <span class="slide_line_span" >05</span>
-            </div>
-            <div class="scroll-element" :class="$mq">
-                <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Буектное бюро">
-                <div class="text-element">TO TOP</div>
-            </div>
         </div>
     </div>
 </template>
 <script>
+    import blockCounterOnScroll from '../PositionSwitchOnScrollMixin';
+
     export default {
+        mixins: [blockCounterOnScroll],
         data() {
             return {
+                blockClassName: 'about-page-block',
+                isAtTheBottom: false,
             };
         },
         methods: {

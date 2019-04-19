@@ -15,10 +15,10 @@
             <div class="arrow-box" :class="$mq">
                 <div class="arrow-around arrow-rotate" @click="prev">
                     <div class="div-around"></div>
-                    <img class="arrow arrow-left" src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Буектное бюро">
+                    <img class="arrow arrow-left" src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Букетное бюро">
                 </div>
                 <div class="arrow-around arrow-rotate" @click="next">
-                    <img class="arrow arrow-right" src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
+                    <img class="arrow arrow-right" src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
                     <div class="div-around"></div>
                 </div>
             </div>
@@ -66,13 +66,13 @@
         <div class="arrow-box arrow-box-footer" :class="$mq">
             <div class="arrow-around arrow-rotate" @click="prev">
                 <div class="div-around"></div>
-                <img class="arrow arrow-left" src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Буектное бюро">
+                <img class="arrow arrow-left" src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Букетное бюро">
             </div>
             <div class="text-element current-photo">
                 <span class="pagination-slide">53</span>/53
             </div>
             <div class="arrow-around arrow-rotate" @click="next">
-                <img class="arrow arrow-right" src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Буектное бюро">
+                <img class="arrow arrow-right" src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
                 <div class="div-around"></div>
             </div>
         </div>
