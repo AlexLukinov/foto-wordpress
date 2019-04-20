@@ -3,5 +3,6 @@ export default {
   // This is likely determined by how many dispatched actions you have below
   // in the created() method
   LOADING_SEGMENTS: 2,
-  API_BASE_PATH: "/index.php/wp-json/wp/v2/"
+  API_BASE_PATH: "/index.php/wp-json/wp/v2/",
+  API_CUSTOM_NAMESPACE_BASE_PATH: "/index.php/wp-json/buro/v1/"
 };

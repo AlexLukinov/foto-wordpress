@@ -1,10 +1,21 @@
 <template>
     <div class="page contacts-page" :class="$mq" @wheel="onScroll">
+        <modal-order v-if="showModal" @close="showModal = false" :modalMessage.sync="modalMessage">{{ modalMessage }}</modal-order>
         <header-with-back></header-with-back>
         <div class="slide_line" :class="$mq">
             <span class="slide_line_span">0{{ currentBlockNumber }}</span>
             <div class="slide-progress"></div>
             <span class="slide_line_span">0{{ blocksCount }}</span>
+        </div>
+        <div>
+            <div class="scroll-element" v-if="!isAtTheBottom">
+                <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
+                <div class="text-element">SCROLL</div>
+            </div>
+            <div class="scroll-element" v-if="isAtTheBottom" @click="scrollToTop">
+                <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Букетное бюро">
+                <div class="text-element">TO TOP</div>
+            </div>
         </div>
         <div>
             <div class="scroll-element" :class="$mq" v-if="!isAtTheBottom">
@@ -27,31 +38,30 @@
                 <div class="contacts-form">
                     <div class="contacts-input-block">
                         <div class="modal-input" :class="$mq">
-                            <input type="text" placeholder="Имя">
+                            <input type="text" placeholder="Имя" v-model="name">
                         </div>
                         <div class="modal-input" :class="$mq">
-                            <input type="email" placeholder="Email">
+                            <input type="email" placeholder="Email" v-model="email">
                         </div>
                     </div>
                     <div class="contacts-input-block">
                         <div class="modal-input" :class="$mq">
-                            <input type="text" placeholder="Телефон">
+                            <input type="text" placeholder="Телефон" v-model="phone">
                         </div>
                         <div class="modal-input" :class="$mq">
-                            <input type="email" placeholder="Город">
+                            <input type="email" placeholder="Город" v-model="city">
                         </div>
                     </div>
                     <div class="contacts-textarea-block">
-                        <textarea rows="10" cols="45" name="text" placeholder="Сообщение"></textarea>
+                        <textarea rows="10" cols="45" name="text" placeholder="Сообщение" v-model="text"></textarea>
                     </div>
                     <div class="contacts-input-block">
                         <div class="modal-input input-submit" :class="$mq">
                             <button type="submit"
                                     :class="$mq"
-                                    @click="showModal = true">
+                                    @click="handleReviewSend">
                                 Отправить
                             </button>
-                            <modal-order v-show="showModal" @close="showModal = false"></modal-order>
                         </div>
                     </div>
                 </div>
@@ -160,7 +170,6 @@
                                     @click="showModal = true">
                                 Отправить
                             </button>
-                            <modal-order v-show="showModal" @close="showModal = false"></modal-order>
                         </div>
                     </div>
                 </div>
@@ -218,6 +227,8 @@
     </div>
 </template>
 <script>
+    import axios from 'axios';
+    import SETTINGS from "../settings";
     import blockCounterOnScroll from '../PositionSwitchOnScrollMixin';
 
     export default {
@@ -225,10 +236,48 @@
         data() {
             return {
                 showModal: false,
+                modalMessage: '',
                 isAtTheBottom: false,
                 blockClassName: 'about-page-block',
+                name: '',
+                phone: '',
+                email: '',
+                city: '',
+                text: ''
             };
         },
+        methods: {
+            handleReviewSend: function () {
+                axios
+                    .post(
+                        SETTINGS.API_CUSTOM_NAMESPACE_BASE_PATH + "create-review", {
+                            name: this.name,
+                            phone: this.phone,
+                            email: this.email,
+                            city: this.city,
+                            text: this.text
+                        }
+                    )
+                    .then(response => {
+                        if(response) {
+                            this.modalMessage = 'Наш менеджер обработает его и свяжется с Вами по телефону или электронной почте.'
+                        } else {
+                            this.modalMessage = 'К сожалению Ваш отзыв не был сохранен. Свяжитесь с нами по телефону или по электронной почте.'
+                        }
+
+                        this.showModal = true;
+
+                        this.name = '';
+                        this.phone = '';
+                        this.email = '';
+                        this.city = '';
+                        this.text = '';
+                    })
+                    .catch(e => {
+                        console.log(e);
+                    });
+            }
+        }
     }
 </script>
 

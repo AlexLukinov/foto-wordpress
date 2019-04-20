@@ -26,3 +26,32 @@ function load_vue_scripts() {
 	);
 }
 add_action( 'wp_enqueue_scripts', 'load_vue_scripts', 100 );
+
+
+add_action('rest_api_init', function () {
+    register_rest_route('buro/v1', '/create-review', array(
+        'methods' => 'POST',
+        'callback' => 'create_review',
+    ));
+});
+
+function create_review(WP_REST_Request $request) {
+    $name = $request['name'];
+    $email = $request['email'];
+    $city = $request['city'];
+    $text = $request['text'];
+    $phone = $request['phone'];
+
+    $message = <<<HTML
+        <p>Имя: $name</p>
+        <p>Email: $email</p>
+        <p>Город: $city</p>
+        <p>Телефон: $phone</p>
+        <p>Текст отзыва: $text</p>
+HTML;
+
+
+    $response = wp_mail('buketnoe_buro@mail.ru', 'Новый отзыв', $message);
+
+    return $response;
+}

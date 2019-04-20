@@ -5,8 +5,8 @@
             <div class="modal-container" :class="$mq">
                 <div class="modal-content" :class="$mq">
                     <h3 :class="$mq">Благодарим за ваше сообщение</h3>
-                    <p :class="$mq">Наш менеджер обработает его и свяжется
-                        с Вами по телефону или электронной почте.
+                    <p :class="$mq">
+                        {{ modalMessage }}
                     </p>
                     <p :class="$mq">Оставайтесь на связи!</p>
                     <button class="modal-default-button"
@@ -21,6 +21,9 @@
 </template>
 <script>
     export default {
+        props: [
+            'modalMessage'
+        ],
         data() {
           return {}
         },
