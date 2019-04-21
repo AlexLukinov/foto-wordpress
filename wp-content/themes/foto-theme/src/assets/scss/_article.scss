@@ -96,7 +96,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 50%;
+    width: 60%;
     font-size: 1.1vw;
     font-family: "ArnoProCaption";
     letter-spacing: 1px;
@@ -338,3 +338,23 @@
 .post-block-width60 .content-left-100 {
   margin-bottom: 20vh;
 }
+.share {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 42%;
+}
+.share span svg {
+  width: 0.9vw;
+  height: auto;
+}
+.share ul {
+  display: flex;
+  justify-content: flex-start;
+  position: absolute;
+  font-size: 1.3vw;
+}
+.share ul li {
+  margin: 20px 20px 0 0;
+}
+
