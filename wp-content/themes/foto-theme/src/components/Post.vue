@@ -19,6 +19,50 @@
             </div>
         </div>
 
+        <div class="post-block block-height100" :class="$mq">
+            <div class="post-block-width67 block-caption" :class="$mq">
+                <div class="post-content-left" :class="$mq">
+                    <div class="name-page" :class="$mq">BLOG > НАШИ ИСТОРИИ</div>
+                    <div class="post-name" :class="$mq">
+                        {{ post.title.rendered }}
+                    </div>
+                    <div class="post-info" :class="$mq">
+                        <div class="date">{{ post.article_date }}</div>
+                        <div class="share">
+                            Поделиться: <span><i @click="isShareButtonsShowed = !isShareButtonsShowed" class="fas fa-share-alt"></i></span>
+                            <ul v-if="isShareButtonsShowed">
+                                <li>
+                                    <a :href="'https://vk.com/share.php?url=' + encodeURI('http://foto.test/post/' + post.id)" class="social-vk" target="_blank">
+                                        <i class="fab fa-vk" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a :href="'https://www.facebook.com/sharer.php?u=' + encodeURI('http://foto.test/post/' + post.id) + '&t=' + encodeURIComponent(post.title.rendered)" class="social-fb" target="_blank">
+                                        <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a :href="'http://pinterest.com/pin/create/button/?url=' + encodeURI('http://foto.test/post/' + post.id) + '&media=' + encodeURI(post.article_photo.guid) + '&description=' + encodeURIComponent(post.title.rendered)" class="pin-it-button" count-layout="horizontal">
+                                        <i class="fab fa-pinterest-p" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a :href="'whatsapp://send?text=http://foto.test/post/' + post.id" data-action="share/whatsapp/share">
+                                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-content-right text-end" :class="$mq">
+                    <p class="pw125" :class="$mq">
+                        {{ post.epigraph }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
         <component :is="{template: content}"></component>
 
         <div class="arrow-box" :class="$mq">
@@ -62,6 +106,7 @@
                 blockClassName: 'post-block',
                 previousPostId: 0,
                 nextPostId: 0,
+                isShareButtonsShowed: false
             }
         },
         methods: {
@@ -84,6 +129,7 @@
                     if (window.posts && window.posts.length) {
                         clearInterval(checkIsUploaded);
                         this.setPost();
+                        console.log(this.post)
                     }
                 }, 20);
             },
