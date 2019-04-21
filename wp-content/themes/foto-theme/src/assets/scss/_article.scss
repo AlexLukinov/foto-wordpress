@@ -216,6 +216,7 @@
     justify-content: flex-end;
   }
   p {
+    letter-spacing: 0;
     font-family: $blog-p;
     width: 90%;
     &.mobile {
