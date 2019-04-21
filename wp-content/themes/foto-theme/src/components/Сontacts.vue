@@ -24,7 +24,7 @@
             </div>
             <div class="scroll-element" :class="$mq" v-if="isAtTheBottom" @click="scrollToTop">
                 <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Букетное бюро">
-                <div class="text-element">TO TOP</div>
+                <div class="text-element to-top">TO TOP</div>
             </div>
         </div>
 
@@ -185,7 +185,9 @@
                 </div>
                 <div class="media-block-columns media-block-photo" :class="$mq">
                     <div class="photo-container">
-                        <a href="#" class="photo-a">
+                        <a href="https://www.instagram.com/p/BssU1vPl7S5/?utm_source=ig_share_sheet&igshid=u8ffgx12os4"
+                           rel="nofollow"
+                           class="photo-a">
                             <img src="/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/1.jpg" alt="@buketnoe_buro">
                         </a>
                         <div class="eye-open">
@@ -193,7 +195,9 @@
                         </div>
                     </div>
                     <div class="photo-container">
-                        <a href="#" class="photo-a">
+                        <a href="https://www.instagram.com/p/BtLtGpjF-WX/?utm_source=ig_share_sheet&igshid=f1pj04i77jy6"
+                           rel="nofollow"
+                           class="photo-a">
                             <img src="/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/6.jpg" alt="@buketnoe_buro">
                         </a>
                         <div class="eye-open">
@@ -201,7 +205,9 @@
                         </div>
                     </div>
                     <div class="photo-container">
-                        <a href="#" class="photo-a">
+                        <a href="https://www.instagram.com/p/BlHmoiWgK4A/?utm_source=ig_share_sheet&igshid=ks6h7ai1quki"
+                           rel="nofollow"
+                           class="photo-a">
                             <img src="/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/14.jpg" alt="@buketnoe_buro">
                         </a>
                         <div class="eye-open">
@@ -209,7 +215,9 @@
                         </div>
                     </div>
                     <div class="photo-container">
-                        <a href="#" class="photo-a">
+                        <a href="https://www.instagram.com/p/BpOk_XxlDS4/?utm_source=ig_share_sheet&igshid=156o3cy5u2yc5"
+                           rel="nofollow"
+                           class="photo-a">
                             <img src="/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/7.jpg" alt="@buketnoe_buro">
                         </a>
                         <div class="eye-open">
@@ -578,12 +586,10 @@
     }
     .eye-open {
         position: absolute;
-        top: 40%;
-        left: 45%;
-        width: 60px;
-        height: 60px;
-        background-color: #ffffff;
-        border-radius: 100%;
+        top: 0%;
+        left: 0%;
+        height: 100%;
+        width: 100%;
         justify-content: center;
         align-items: center;
         display: none;
@@ -591,11 +597,11 @@
         transition: all 1s linear;
     }
     .eye-open img {
-        width: 60%;
+        width: 25%;
     }
     .photo-container:hover .eye-open {
         display: flex;
-        opacity: 0.7;
+        opacity: 1;
         transition: all 1s linear;
     }
     .columns-border-top {
@@ -729,6 +735,7 @@
     .input-margin-top {
         &.mobile {
             margin-top: 8px;
+            margin-left: 1%;
         }
     }
     .block-p-margin-left {

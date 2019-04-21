@@ -96,9 +96,9 @@
         mounted: function () {
             this.height = this.$refs['filledLine'].clientHeight;
 
-            setInterval(() => {
-                this.next();
-            }, 3000)
+            // setInterval(() => {
+            //     this.next();
+            // }, 3000)
         }
     }
 
@@ -133,7 +133,7 @@
         border-left: 1px solid #dacfb1;
         &.mobile {
             width: 90%;
-            height: 30%;
+            height: auto;
             border-left: none;
             margin-left: 5%;
         }
@@ -149,8 +149,8 @@
         font-weight: normal;
         width: 72%;
         &.mobile {
-            margin-top: 5vh;
-            margin-bottom: 7.5vh;
+            margin-top: 3vh;
+            margin-bottom: 2.5vh;
             font-size: 6vh;
             margin-left: 0;
         }

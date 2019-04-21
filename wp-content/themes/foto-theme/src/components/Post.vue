@@ -15,7 +15,7 @@
             </div>
             <div class="scroll-element" :class="$mq" v-if="isAtTheBottom" @click="scrollToTop">
                 <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Букетное бюро">
-                <div class="text-element">TO TOP</div>
+                <div class="text-element to-top">TO TOP</div>
             </div>
         </div>
 
@@ -292,6 +292,7 @@
         left: 4%;
         top: 45vh;
         width: 20px;
+        z-index: 3;
         &.mobile {
             display: none;
         }
@@ -319,6 +320,7 @@
         right: 0;
         bottom: 10vh;
         height: max-content;
+        z-index: 3;
         &.mobile {
             display: none;
         }

@@ -1,6 +1,6 @@
 <template>
     <div class="header" :class="$mq">
-        <div class="text-element call" :class="$mq">CALL</div>
+        <a href="tel:+7-978-214-45-05" class="text-element call" :class="$mq">CALL</a>
         <router-link to="/" class="logo-wrap" :class="$mq">
             <img class="logo" src="/wp-content/themes/foto-theme/src/assets/img/logo.png" alt="Букетное бюро">
         </router-link>
@@ -79,7 +79,7 @@
         justify-content: center;
         align-items: center;
     }
-    .call {
+    a.call {
         display: none;
             &.mobile {
                 display: flex;
