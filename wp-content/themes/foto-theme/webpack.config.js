@@ -1,10 +1,12 @@
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const webpack = require("webpack");
 const path = require("path");
+const autoprefixer = require('autoprefixer');
 
 module.exports = {
   entry: {
-    index: "./src/app.js"
+    index: "./src/app.js",
+    "index.min": "./src/app.js"
   },
   stats: { warnings: false }, // Hide warnings
   output: {
@@ -13,6 +15,24 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.vue$/,
+        loader: "vue-loader",
+        options: {
+          loaders: {
+            'scss': [
+              'vue-style-loader',
+              'css-loader',
+              'sass-loader'
+            ],
+            'sass': [
+              'vue-style-loader',
+              'css-loader',
+              'sass-loader?indentedSyntax'
+            ]
+          }
+        }
+      },
       {
         test: /\.js$/,
         exclude: /(node_modules)/,
@@ -45,8 +65,21 @@ module.exports = {
         use: ExtractTextPlugin.extract({
           fallback: "style-loader",
           use: [
-            { loader: "css-loader", options: { importLoaders: 1 } },
-            "postcss-loader"
+            {
+              loader: "css-loader",
+              options: { importLoaders: 1 }
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: [
+                  autoprefixer({
+                    browsers:['ie >= 8', 'last 4 version']
+                  })
+                ],
+                sourceMap: true
+              }
+            },
           ]
         })
       },
@@ -65,24 +98,6 @@ module.exports = {
           'css-loader',
           'sass-loader?indentedSyntax'
         ],
-      },
-      {
-        test: /\.vue$/,
-        loader: "vue-loader",
-        options: {
-          loaders: {
-            'scss': [
-              'vue-style-loader',
-              'css-loader',
-              'sass-loader'
-            ],
-            'sass': [
-              'vue-style-loader',
-              'css-loader',
-              'sass-loader?indentedSyntax'
-            ]
-          }
-        }
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
