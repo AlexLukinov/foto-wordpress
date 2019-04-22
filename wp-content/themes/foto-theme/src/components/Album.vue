@@ -174,9 +174,13 @@
     }
     .horizontal-photo {
         width: 91%;
-        border: 0px solid #dacfb1;
+        border: 1px solid #dacfb1;
         padding: 1.5%;
         margin: 1%;
+        &.mobile {
+            width: 96%;
+            padding: 2.5%;
+        }
     }
     .photo-item img, .horizontal-photo img {
         width: 100%;

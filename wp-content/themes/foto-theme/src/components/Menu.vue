@@ -73,28 +73,28 @@
                                        </span>
                                     </button>
                                 </router-link>
-                                <router-link to="/services/funerals">
-                                    <button>
-                                       <span class="nav-item nav-item-inner" :class="$mq">
-                                           <span class="nav-item-span">
-                                             <span class="vertical-line" :class="$mq"></span>
-                                             <span class="horizontal-line" :class="$mq"></span>
-                                           </span>
-                                           Ритуальная флористика
-                                       </span>
-                                    </button>
-                                </router-link>
-                                <router-link to="/services/master-class">
-                                    <button>
-                                       <span class="nav-item nav-item-inner" :class="$mq">
-                                           <span class="nav-item-span">
-                                             <span class="vertical-line" :class="$mq"></span>
-                                             <span class="horizontal-line" :class="$mq"></span>
-                                           </span>
-                                           Мастер-классы
-                                       </span>
-                                    </button>
-                                </router-link>
+                                <!--<router-link to="/services/funerals">-->
+                                    <!--<button>-->
+                                       <!--<span class="nav-item nav-item-inner" :class="$mq">-->
+                                           <!--<span class="nav-item-span">-->
+                                             <!--<span class="vertical-line" :class="$mq"></span>-->
+                                             <!--<span class="horizontal-line" :class="$mq"></span>-->
+                                           <!--</span>-->
+                                           <!--Ритуальная флористика-->
+                                       <!--</span>-->
+                                    <!--</button>-->
+                                <!--</router-link>-->
+                                <!--<router-link to="/services/master-class">-->
+                                    <!--<button>-->
+                                       <!--<span class="nav-item nav-item-inner" :class="$mq">-->
+                                           <!--<span class="nav-item-span">-->
+                                             <!--<span class="vertical-line" :class="$mq"></span>-->
+                                             <!--<span class="horizontal-line" :class="$mq"></span>-->
+                                           <!--</span>-->
+                                           <!--Мастер-классы-->
+                                       <!--</span>-->
+                                    <!--</button>-->
+                                <!--</router-link>-->
                             </div>
                         </transition>
                         <router-link to="/aboutUs">
@@ -350,7 +350,7 @@
         &.mobile {
             position: absolute;
             width: 82%;
-            top: 88vh;
+            top: 86vh;
             left: 8%;
         }
     }

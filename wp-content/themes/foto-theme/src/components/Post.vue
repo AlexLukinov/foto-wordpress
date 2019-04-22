@@ -28,10 +28,11 @@
                     </div>
                     <div class="post-info" :class="$mq">
                         <div class="date">{{ post.article_date }}</div>
-                        <div class="share">
+                        <div class="share" :class="$mq">
                             Поделиться: <span @click="isShareButtonsShowed = !isShareButtonsShowed">
 
                             <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                                 :class="$mq"
                                  width="1152.000000pt" height="1280.000000pt" viewBox="0 0 1152.000000 1280.000000"
                                  preserveAspectRatio="xMidYMid meet">
 <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)"
@@ -55,7 +56,7 @@
 </g>
 </svg>
                         </span>
-                            <ul v-if="isShareButtonsShowed">
+                            <ul v-if="isShareButtonsShowed" :class="$mq">
                                 <li>
                                     <a :href="'https://vk.com/share.php?url=' + encodeURI('http://foto.test/post/' + post.id)" class="social-vk" target="_blank">
                                         <i class="fab fa-vk" aria-hidden="true"></i>
@@ -81,7 +82,7 @@
                     </div>
                 </div>
                 <div class="post-content-right text-end" :class="$mq">
-                    <div v-html="post.epigraph"></div>
+                    <div class="epigraph" :class="$mq" v-html="post.epigraph"></div>
                 </div>
             </div>
         </div>
@@ -398,6 +399,7 @@
         width: 125%;
         &.mobile {
             width: 100%;
+            font-size: 2.2vh;
         }
     }
     .pw100 {
@@ -459,4 +461,34 @@
             font-size: 2.2vh;
         }
     }
+    .share {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        width: 42%;
+        &.mobile {
+            width: 46%;
+        }
+    }
+    .share span svg {
+        width: 0.9vw;
+        height: auto;
+        cursor: pointer;
+        &.mobile {
+            width: 3vw;
+        }
+    }
+    .share ul {
+        display: flex;
+        justify-content: flex-start;
+        position: absolute;
+        font-size: 1.3vw;
+        &.mobile {
+            font-size: 1.8vh;
+        }
+    }
+    .share ul li {
+        margin: 20px 20px 0 0;
+    }
+
 </style>
