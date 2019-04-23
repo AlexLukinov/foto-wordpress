@@ -70,14 +70,14 @@ module.exports = {
               options: { importLoaders: 1 }
             },
             {
-              loader: 'postcss-loader',
+              loader: "postcss-loader",
               options: {
+                ident: 'postcss',
                 plugins: [
-                  autoprefixer({
-                    browsers:['ie >= 8', 'last 4 version']
-                  })
-                ],
-                sourceMap: true
+                  require('autoprefixer')({
+                    'browsers': ['> 1%', 'last 2 versions']
+                  }),
+                ]
               }
             },
           ]
@@ -88,6 +88,17 @@ module.exports = {
         use: [
           'vue-style-loader',
           'css-loader',
+          {
+            loader: "postcss-loader",
+            options: {
+              ident: 'postcss',
+              plugins: [
+                require('autoprefixer')({
+                  'browsers': ['> 1%', 'last 2 versions']
+                }),
+              ]
+            }
+          },
           'sass-loader'
         ],
       },
@@ -96,6 +107,17 @@ module.exports = {
         use: [
           'vue-style-loader',
           'css-loader',
+          {
+            loader: "postcss-loader",
+            options: {
+              ident: 'postcss',
+              plugins: [
+                require('autoprefixer')({
+                  'browsers': ['> 1%', 'last 2 versions']
+                }),
+              ]
+            }
+          },
           'sass-loader?indentedSyntax'
         ],
       },
