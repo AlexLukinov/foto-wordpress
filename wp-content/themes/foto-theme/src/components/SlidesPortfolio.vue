@@ -50,7 +50,7 @@
             <div class="gallery" id="gallery-portfolio">
                 <div class="image"
                      :class="$mq"
-                     v-for="album in portfolioSlides[currentNumber].albums">
+                     v-for="album in currentPageAlbums">
                     <router-link :to="'/album/' + album.id">
                         <img @mouseover="mouseOnPhoto(album.id)"
                              @mouseleave="mouseLeavePhoto(album.id)"
@@ -63,15 +63,15 @@
                 </div>
             </div>
         </div>
-        <div class="arrow-box arrow-box-footer" :class="$mq">
-            <div class="arrow-around arrow-rotate" @click="prev">
+        <div v-if="pagesCount > 9" class="arrow-box arrow-box-footer" :class="$mq">
+            <div class="arrow-around arrow-rotate" @click="prevAlbumsPage">
                 <div class="div-around"></div>
                 <img class="arrow arrow-left" src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Букетное бюро">
             </div>
-            <div class="text-element current-photo" :class="$mq">
-                <span class="pagination-slide" :class="$mq">53</span>/53
+            <div class="text-element current-photo">
+                <span class="pagination-slide">{{ currentPageAlbumsCount }}</span>/{{ pagesCount }}
             </div>
-            <div class="arrow-around arrow-rotate" @click="next">
+            <div class="arrow-around arrow-rotate" @click="nextAlbumsPage">
                 <img class="arrow arrow-right" src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
                 <div class="div-around"></div>
             </div>
@@ -100,6 +100,11 @@
                     }
                 ],
                 currentNumber: 0,
+                currentPage: 1,
+                pagesCount: 1,
+                currentPageAlbums: [],
+                currentPageAlbumsCount: 1,
+                allAlbums: [],
                 timer: null,
                 showInfo: false,
                 showAlbum: false,
@@ -127,6 +132,16 @@
                     this.currentNumber = this.portfolioSlides.length - 1
                 }
                 EventBus.$emit('SLIDE_CHANGED', this.currentNumber);
+            },
+            prevAlbumsPage: function () {
+                if (this.currentPage > 1) {
+                    this.currentPage--;
+                }
+            },
+            nextAlbumsPage: function () {
+                if (this.currentPage * 9 < this.pagesCount) {
+                    this.currentPage++;
+                }
             },
             scrollMeTo(refName) {
                 var element = this.$refs[refName];
@@ -228,8 +243,34 @@
                             mainText: 'main text',
                         }
                     },
-                ]
-            }
+                ];
+
+                this.setPagesData();
+            },
+            setPagesData: function () {
+                this.setAllAlbums();
+                this.setPagesCount();
+                this.setCurrentPageAlbums();
+                this.setCurrentPageAlbumsCount();
+            },
+            setPagesCount: function () {
+                this.pagesCount = this.allAlbums ? this.allAlbums.length : 0;
+            },
+            setCurrentPageAlbums: function () {
+                let albumsArrayIndex = this.currentPage - 1;
+
+                this.currentPageAlbums = this.allAlbums.slice(albumsArrayIndex * 9, (albumsArrayIndex + 1) * 9);
+            },
+            setCurrentPageAlbumsCount: function () {
+                if (this.allAlbums.length <= 9) {
+                    this.currentPageAlbumsCount = this.allAlbums.length;
+                }
+
+                this.currentPageAlbumsCount = this.currentPage * 9;
+            },
+            setAllAlbums: function () {
+                this.allAlbums = this.portfolioSlides[currentNumber].albums;
+            },
         },
         computed: {
             strokeWidth: function () {
@@ -243,7 +284,7 @@
                     case 1: return 'flowers';
                         break;
                 }
-            }
+            },
         },
         mounted() {
             EventBus.$on('close', () => {
