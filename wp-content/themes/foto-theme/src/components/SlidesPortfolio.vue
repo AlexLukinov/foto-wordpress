@@ -68,8 +68,8 @@
                 <div class="div-around"></div>
                 <img class="arrow arrow-left" src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Букетное бюро">
             </div>
-            <div class="text-element current-photo">
-                <span class="pagination-slide">53</span>/53
+            <div class="text-element current-photo" :class="$mq">
+                <span class="pagination-slide" :class="$mq">53</span>/53
             </div>
             <div class="arrow-around arrow-rotate" @click="next">
                 <img class="arrow arrow-right" src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
@@ -297,7 +297,7 @@
         color: #333333;
         letter-spacing: 1px;
         &.mobile {
-            width: 60%;
+            width: 62%;
             font-size: 2.5vh;
             text-align: center;
         }
@@ -576,5 +576,8 @@
     .arrow-box-footer {
         position: static;
         width: 30%;
+        &.mobile {
+            width: 75%;
+        }
     }
 </style>

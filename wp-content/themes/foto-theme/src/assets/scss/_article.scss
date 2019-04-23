@@ -60,7 +60,8 @@
     &.mobile {
       width: 100%;
       height: auto;
-      margin-top: 5vh;
+      margin-top: 2vh;
+      margin-bottom: 2vh;
     }
   }
   .name-page {
@@ -112,6 +113,7 @@
     &.mobile {
       flex-direction: column;
       align-items: flex-start;
+      width: 80%;
     }
   }
   .info {
@@ -299,7 +301,7 @@
     width: 60%;
     margin: auto;
     &.mobile {
-      width: 90%;
+      width: 95%;
     }
   }
   .block-height-auto {
@@ -338,23 +340,8 @@
 .post-block-width60 .content-left-100 {
   margin-bottom: 20vh;
 }
-.share {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  width: 42%;
-}
-.share span svg {
-  width: 0.9vw;
-  height: auto;
-}
-.share ul {
-  display: flex;
-  justify-content: flex-start;
-  position: absolute;
-  font-size: 1.3vw;
-}
-.share ul li {
-  margin: 20px 20px 0 0;
+.epigraph.mobile p.pw125 {
+  font-size: 2.2vh;
+  width: 100%;
 }
 

@@ -98,7 +98,7 @@
 
             setInterval(() => {
                 this.next();
-            }, 3000)
+            }, 5000)
         }
     }
 
@@ -245,10 +245,10 @@
     }
 
     .myanim-enter-active {
-        animation: myanim ease 1s;
+        animation: myanim ease 2s;
     }
     .myanim-leave-active {
-        animation: myanimout ease 1s;
+        animation: myanimout ease 2s;
     }
     @keyframes myanim {
         0% {

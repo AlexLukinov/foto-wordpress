@@ -430,6 +430,7 @@
         letter-spacing: 0;
         &.mobile {
             font-size: 1.7vh;
+            line-height: 2;
         }
     }
     .slide_line {
