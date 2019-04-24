@@ -63,7 +63,7 @@
                 </div>
             </div>
         </div>
-        <div v-if="allAlbums.length > 9" class="arrow-box arrow-box-footer" :class="$mq">
+        <div v-if="$mq !== 'mobile'" class="arrow-box arrow-box-footer" :class="$mq">
             <div class="arrow-around arrow-rotate" @click="prev">
                 <div class="div-around"></div>
                 <img class="arrow arrow-left" src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Букетное бюро">
@@ -260,10 +260,14 @@
             setAlbumsOnPage: function () {
                 let albumsArrayIndex = this.currentPage - 1;
 
-                if (this.currentPage * 9 > this.allAlbums.length) {
+                if (this.$mq === 'mobile') {
                     this.albumsOnPage = this.allAlbums;
                 } else {
-                    this.albumsOnPage = this.allAlbums.slice(0, (albumsArrayIndex + 1) * 9);
+                    if (this.currentPage * 9 > this.allAlbums.length) {
+                        this.albumsOnPage = this.allAlbums;
+                    } else {
+                        this.albumsOnPage = this.allAlbums.slice(0, (albumsArrayIndex + 1) * 9);
+                    }
                 }
             },
             setAlbumsCountOnPage: function () {
