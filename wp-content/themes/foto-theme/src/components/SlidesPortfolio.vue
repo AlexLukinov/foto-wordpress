@@ -50,7 +50,7 @@
             <div class="gallery" id="gallery-portfolio">
                 <div class="image"
                      :class="$mq"
-                     v-for="album in currentPageAlbums">
+                     v-for="album in albumsOnPage">
                     <router-link :to="'/album/' + album.id">
                         <img @mouseover="mouseOnPhoto(album.id)"
                              @mouseleave="mouseLeavePhoto(album.id)"
@@ -63,15 +63,15 @@
                 </div>
             </div>
         </div>
-        <div v-if="pagesCount > 9" class="arrow-box arrow-box-footer" :class="$mq">
-            <div class="arrow-around arrow-rotate" @click="prevAlbumsPage">
+        <div v-if="allAlbums.length > 9" class="arrow-box arrow-box-footer" :class="$mq">
+            <div class="arrow-around arrow-rotate" @click="prev">
                 <div class="div-around"></div>
                 <img class="arrow arrow-left" src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Букетное бюро">
             </div>
             <div class="text-element current-photo">
-                <span class="pagination-slide">{{ currentPageAlbumsCount }}</span>/{{ pagesCount }}
+                <span class="pagination-slide">{{ albumsCountOnPage }}</span>/{{ allAlbums.length }}
             </div>
-            <div class="arrow-around arrow-rotate" @click="nextAlbumsPage">
+            <div class="arrow-around arrow-rotate" @click="next">
                 <img class="arrow arrow-right" src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
                 <div class="div-around"></div>
             </div>
@@ -101,9 +101,8 @@
                 ],
                 currentNumber: 0,
                 currentPage: 1,
-                pagesCount: 1,
-                currentPageAlbums: [],
-                currentPageAlbumsCount: 1,
+                albumsOnPage: [],
+                albumsCountOnPage: 1,
                 allAlbums: [],
                 timer: null,
                 showInfo: false,
@@ -124,6 +123,11 @@
                     this.currentNumber = 0
                 }
                 EventBus.$emit('SLIDE_CHANGED', this.currentNumber);
+
+                setTimeout(() => {
+                    this.setAllAlbums();
+                    this.setPagesData();
+                });
             },
             prev: function () {
                 if (this.currentNumber > 0) {
@@ -132,16 +136,15 @@
                     this.currentNumber = this.portfolioSlides.length - 1
                 }
                 EventBus.$emit('SLIDE_CHANGED', this.currentNumber);
-            },
-            prevAlbumsPage: function () {
-                if (this.currentPage > 1) {
-                    this.currentPage--;
-                }
+
+                setTimeout(() => {
+                    this.setAllAlbums();
+                    this.setPagesData();
+                });
             },
             nextAlbumsPage: function () {
-                if (this.currentPage * 9 < this.pagesCount) {
-                    this.currentPage++;
-                }
+                this.currentPage++;
+                this.setPagesData();
             },
             scrollMeTo(refName) {
                 var element = this.$refs[refName];
@@ -154,6 +157,8 @@
                     if (window.albums && window.catalogs && window.albums.length && window.catalogs.length) {
                         clearInterval(checkIsUploaded);
                         this.setAlbums();
+                        this.setAllAlbums();
+                        this.setPagesData();
                     }
                 }, 20);
             },
@@ -248,42 +253,38 @@
                 this.setPagesData();
             },
             setPagesData: function () {
-                this.setAllAlbums();
-                this.setPagesCount();
-                this.setCurrentPageAlbums();
-                this.setCurrentPageAlbumsCount();
+                this.setAlbumsOnPage();
+                this.setAlbumsCountOnPage();
+                this.currentPage = 1;
             },
-            setPagesCount: function () {
-                this.pagesCount = this.allAlbums ? this.allAlbums.length : 0;
-            },
-            setCurrentPageAlbums: function () {
+            setAlbumsOnPage: function () {
                 let albumsArrayIndex = this.currentPage - 1;
 
-                this.currentPageAlbums = this.allAlbums.slice(albumsArrayIndex * 9, (albumsArrayIndex + 1) * 9);
-            },
-            setCurrentPageAlbumsCount: function () {
-                if (this.allAlbums.length <= 9) {
-                    this.currentPageAlbumsCount = this.allAlbums.length;
+                if (this.currentPage * 9 > this.allAlbums.length) {
+                    this.albumsOnPage = this.allAlbums;
+                } else {
+                    this.albumsOnPage = this.allAlbums.slice(0, (albumsArrayIndex + 1) * 9);
                 }
+            },
+            setAlbumsCountOnPage: function () {
+                // if (this.allAlbums.length <= 9) {
+                //     this.albumsCountOnPage = this.allAlbums.length;
+                // }
 
-                this.currentPageAlbumsCount = this.currentPage * 9;
+                if (this.currentPage * 9 > this.allAlbums.length) {
+                    this.albumsCountOnPage = this.allAlbums.length;
+                } else {
+                    this.albumsCountOnPage = this.currentPage * 9;
+                }
             },
             setAllAlbums: function () {
-                this.allAlbums = this.portfolioSlides[currentNumber].albums;
+                this.allAlbums = this.portfolioSlides[this.currentNumber].albums;
             },
         },
         computed: {
             strokeWidth: function () {
                 let oneStep = 600 / this.data.slides.length;
                 return oneStep * (this.currentNumber + 1)
-            },
-            infoType: function () {
-                switch (this.currentNumber) {
-                    case 0: return 'portfolio';
-                        break;
-                    case 1: return 'flowers';
-                        break;
-                }
             },
         },
         mounted() {
@@ -292,6 +293,7 @@
             });
 
             this.initGlobalVars();
+
             switch (this.$route.params.service) {
                 case 'portfolio': this.currentNumber = 0;
                     break;
@@ -308,6 +310,14 @@
                 case 'master-class': this.currentNumber = 6;
                     break;
             }
+
+            EventBus.$on('IS_SCROLLED_TO_BOTTOM', isScrolledToBottom => {
+                if (isScrolledToBottom) {
+                    ++this.currentPage;
+
+                    this.setPagesData();
+                }
+            });
         }
     }
 

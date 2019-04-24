@@ -49,9 +49,7 @@ router.beforeEach(function (to, from, next) {
     document.body.style['overflow-y'] = "scroll";
   }
 
-  // if (to.path.includes('post') || to.path.includes('album')) {
   EventBus.$emit('ROUTE_CHANGED');
-  // }
 
   next();
 });

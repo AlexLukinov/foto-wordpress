@@ -165,7 +165,7 @@ export default Vue.mixin({
 
                 // if isAtThePageBottom changed it's mean that we need to reset deltaY for new calculation
                 // else we add positionY to deltaY for accumulate and switch component at saturation
-                this.isAtThePageBottom = positionY >= scrollHeight;
+                this.isAtThePageBottom = positionY + 1 >= scrollHeight;
                 oldIsAtThePageBottom === this.isAtThePageBottom ? this.deltaY += parseInt(delta) : this.deltaY = 0;
 
                 // emit isAtThePageBottom to handle it in PositionSwitchOnScrollMixin
@@ -253,11 +253,9 @@ export default Vue.mixin({
     watch:{
         $route (to, from){
             this.setCurrentRoutePath();
-            // this.setRouteIndex();
         }
     },
     mounted() {
         this.setCurrentRoutePath();
-        // this.setRouteIndex();
     }
 });
