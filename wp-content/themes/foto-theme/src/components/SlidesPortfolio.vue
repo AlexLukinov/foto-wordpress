@@ -24,7 +24,7 @@
             </div>
             <div class="portfolio-footer" :class="$mq">
                 <div class="text-element" :class="$mq">
-                    <span class="pagination-slide">0{{currentNumber+1}}</span>/05
+                    <span class="pagination-slide">0{{currentNumber+1}}</span>/07
                 </div>
                 <div class="info text-element"
                      :class="$mq"
@@ -204,30 +204,30 @@
                             mainText: 'main text',
                         }
                     },
-                    // {
-                    //     header: {
-                    //         caption: 'Ритуальная флористика',
-                    //         photo: '/wp-content/themes/foto-theme/src/assets/img/portfolio-slider6.jpg',
-                    //         backgroundText: 'Funeral'
-                    //     },
-                    //     albums: _.find(window.catalogs, ['catalog.name', 'Ритуальная флористика']).albums,
-                    //     info: {
-                    //         header: 'header text',
-                    //         mainText: 'main text',
-                    //     }
-                    // },
-                    // {
-                    //     header: {
-                    //         caption: 'Мастер-классы',
-                    //         photo: '/wp-content/themes/foto-theme/src/assets/img/portfolio-slider6.jpg',
-                    //         backgroundText: 'Workshops'
-                    //     },
-                    //     albums: [],
-                    //     info: {
-                    //         header: 'header text',
-                    //         mainText: 'main text',
-                    //     }
-                    // },
+                    {
+                        header: {
+                            caption: 'Ритуальная флористика',
+                            photo: '/wp-content/themes/foto-theme/src/assets/img/portfolio-slider6.jpg',
+                            backgroundText: 'Funeral'
+                        },
+                        albums: _.find(window.catalogs, ['catalog.name', 'Ритуальная флористика']).albums,
+                        info: {
+                            header: 'header text',
+                            mainText: 'main text',
+                        }
+                    },
+                    {
+                        header: {
+                            caption: 'Мастер-классы',
+                            photo: '/wp-content/themes/foto-theme/src/assets/img/portfolio-slider7.jpg',
+                            backgroundText: 'Workshops'
+                        },
+                        albums: [],
+                        info: {
+                            header: 'header text',
+                            mainText: 'main text',
+                        }
+                    },
                 ]
             }
         },
@@ -274,21 +274,38 @@
 <style lang="scss" scoped>
     @import "../assets/scss/variables";
     .slides-portfolio {
+        width: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
+        -ms-flex-pack: distribute;
         justify-content: space-around;
     }
     .page-slides {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
+        -ms-flex-pack: distribute;
         justify-content: space-around;
         width: 90%;
         height: auto;
         margin-top: 10vh;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
         &.mobile {
-            margin-top: 3vh;
+            margin-top: 1vh;
         }
     }
     .portfolio-caption {
@@ -300,6 +317,10 @@
             width: 62%;
             font-size: 2.5vh;
             text-align: center;
+            height: 7vh;
+            align-items: flex-end;
+            display: flex;
+            justify-content: center;
         }
     }
     span.slides_text {
@@ -321,7 +342,8 @@
         &.mobile {
             width: 50%;
             height: 40vh;
-            margin-top: 12vh;
+            margin-top: 8vh;
+            align-items: flex-end;
         }
     }
     .image-slides img {
@@ -336,7 +358,7 @@
         width: 80%;
         z-index: -1;
         &.mobile {
-            top: 44vh;
+            top: 40vh;
         }
     }
     .slide-container::before {
@@ -345,13 +367,13 @@
     }
     .arrow-box {
         position: absolute;
-        top: 43%;
+        top: 43vh;
         right: 5%;
         display: flex;
         justify-content: space-between;
         width: 90%;
         &.mobile {
-            top: 77vh;
+            top: 70vh;
         }
     }
     a.slide-a {
@@ -424,9 +446,9 @@
         &.mobile {
             flex-direction: column-reverse;
             width: 20%;
-            height: 55vh;
+            height: 50vh;
             position: absolute;
-            top: 25vh;
+            top: 23vh;
         }
     }
     .see-album {
@@ -439,7 +461,7 @@
         width: 20%;
         height: auto;
         &.mobile {
-            top: 85vh;
+            top: 79vh;
         }
     }
     .see-album button {
@@ -578,6 +600,12 @@
         width: 30%;
         &.mobile {
             width: 75%;
+        }
+    }
+    .text-element.info {
+        cursor: pointer;
+        &.mobile {
+            padding-top:1vh;
         }
     }
 </style>

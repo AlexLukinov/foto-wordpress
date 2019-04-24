@@ -164,7 +164,9 @@
 </script>
 
 <style lang="scss" scoped>
-
+    #app {
+        position: relative;
+    }
     .router-anim-enter-active {
         animation: going 2s;
     }

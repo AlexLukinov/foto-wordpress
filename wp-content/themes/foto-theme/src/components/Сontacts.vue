@@ -184,46 +184,34 @@
                     <div class="text-element" :class="$mq">@buketnoe_buro</div>
                 </div>
                 <div class="media-block-columns media-block-photo" :class="$mq">
-                    <div class="photo-container">
-                        <a href="https://www.instagram.com/p/BssU1vPl7S5/?utm_source=ig_share_sheet&igshid=u8ffgx12os4"
-                           rel="nofollow"
-                           class="photo-a">
-                            <img src="/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/1.jpg" alt="@buketnoe_buro">
-                        </a>
+                    <a href="https://www.instagram.com/p/BssU1vPl7S5/?utm_source=ig_share_sheet&igshid=u8ffgx12os4"
+                       rel="nofollow" class="photo-container">
+                        <img src="/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/1.jpg" alt="@buketnoe_buro">
                         <div class="eye-open">
                             <img src="/wp-content/themes/foto-theme/src/assets/img/eye-open.png" alt="@buketnoe_buro">
                         </div>
-                    </div>
-                    <div class="photo-container">
-                        <a href="https://www.instagram.com/p/BtLtGpjF-WX/?utm_source=ig_share_sheet&igshid=f1pj04i77jy6"
-                           rel="nofollow"
-                           class="photo-a">
-                            <img src="/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/6.jpg" alt="@buketnoe_buro">
-                        </a>
+                    </a>
+                    <a href="https://www.instagram.com/p/BtLtGpjF-WX/?utm_source=ig_share_sheet&igshid=f1pj04i77jy6"
+                       rel="nofollow" class="photo-container">
+                        <img src="/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/6.jpg" alt="@buketnoe_buro">
                         <div class="eye-open">
                             <img src="/wp-content/themes/foto-theme/src/assets/img/eye-open.png" alt="@buketnoe_buro">
                         </div>
-                    </div>
-                    <div class="photo-container">
-                        <a href="https://www.instagram.com/p/BlHmoiWgK4A/?utm_source=ig_share_sheet&igshid=ks6h7ai1quki"
-                           rel="nofollow"
-                           class="photo-a">
-                            <img src="/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/14.jpg" alt="@buketnoe_buro">
-                        </a>
+                    </a>
+                    <a href="https://www.instagram.com/p/BlHmoiWgK4A/?utm_source=ig_share_sheet&igshid=ks6h7ai1quki"
+                       rel="nofollow" class="photo-container">
+                       <img src="/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/14.jpg" alt="@buketnoe_buro">
                         <div class="eye-open">
                             <img src="/wp-content/themes/foto-theme/src/assets/img/eye-open.png" alt="@buketnoe_buro">
                         </div>
-                    </div>
-                    <div class="photo-container">
-                        <a href="https://www.instagram.com/p/BpOk_XxlDS4/?utm_source=ig_share_sheet&igshid=156o3cy5u2yc5"
-                           rel="nofollow"
-                           class="photo-a">
-                            <img src="/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/7.jpg" alt="@buketnoe_buro">
-                        </a>
+                    </a>
+                    <a href="https://www.instagram.com/p/BpOk_XxlDS4/?utm_source=ig_share_sheet&igshid=156o3cy5u2yc5"
+                       rel="nofollow" class="photo-container">
+                        <img src="/wp-content/themes/foto-theme/src/assets/img/portfolio-gallery/7.jpg" alt="@buketnoe_buro">
                         <div class="eye-open">
                             <img src="/wp-content/themes/foto-theme/src/assets/img/eye-open.png" alt="@buketnoe_buro">
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -581,7 +569,7 @@
         width: 23%;
         height: auto;
     }
-    .photo-container .photo-a img {
+    .photo-container img {
         width: 100%;
     }
     .eye-open {
