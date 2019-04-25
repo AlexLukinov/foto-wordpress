@@ -27,7 +27,7 @@
                     <img class="arrow arrow-left" src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Букетное бюро">
                 </div>
             </router-link>
-            <router-link v-if="postId.length" :to="'/post/' + postId">
+            <router-link v-if="isPostLink" :to="'/post/' + postId">
                 <button :class="$mq">Смотреть статью</button>
             </router-link>
             <router-link :to="'/album/' + nextAlbumId">
@@ -53,9 +53,10 @@
                     photographer: '',
                     photoes: []
                 },
-                postId: '',
+                postId: 0,
                 previousAlbumId: 0,
                 nextAlbumId: 0,
+                isPostLink: false
             };
         },
         methods: {
@@ -73,6 +74,10 @@
                 this.nextAlbumId = index === albumsIds.length - 1 ? albumsIds[0] : albumsIds[index + 1];
 
                 this.postId = this.album.post_id;
+
+                if (this.postId !== '0' && this.postId.length) {
+                    this.isPostLink = true;
+                }
 
                 setTimeout(()=> {
                     _.each(this.album.photoes, photo => {
