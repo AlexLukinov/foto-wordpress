@@ -24,10 +24,10 @@ define( 'FS_METHOD', 'direct' );
 define( 'DB_NAME', 'foto' );
 
 /** MySQL database username */
-define( 'DB_USER', 'admin' );
+define( 'DB_USER', 'mysql' );
 
 /** MySQL database password */
-define( 'DB_PASSWORD', 'jkKut734Jdk*fD34' );
+define( 'DB_PASSWORD', 'mysql' );
 
 /** MySQL hostname */
 define( 'DB_HOST', 'localhost' );

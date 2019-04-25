@@ -34,7 +34,7 @@
                         <h3 class="slides_text_description" :class="$mq">
                             БУКЕТНОЕ БЮРО - команда профессионалов, влюбленных в свое дело и в красоту цветов.
                         </h3>
-                        <router-link to="/portfolio" class="nav-link nav-link-header" :class="$mq">
+                        <router-link to="/services/portfolio" class="nav-link nav-link-header" :class="$mq">
                             <span class="nav-link-text">Портфолио</span>
                             <div class="arrow-around arrow-rotate">
                                 <img class="arrow arrow-right" src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">

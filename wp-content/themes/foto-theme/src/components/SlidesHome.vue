@@ -153,6 +153,7 @@
             margin-bottom: 2.5vh;
             font-size: 6vh;
             margin-left: 0;
+            width: 83%;
         }
     }
     .slides_text_description {
