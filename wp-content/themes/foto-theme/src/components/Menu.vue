@@ -228,7 +228,11 @@
                      this.isActiveBlog = !this.isActiveBlog;
                      break;
                  case 'developers':
-                     this.$refs.menuArrow.style.transform = 'rotate(180deg)';
+                     if (this.isActiveDevelopers) {
+                         this.$refs.menuArrow.style.transform = 'rotate(360deg)';
+                     } else {
+                         this.$refs.menuArrow.style.transform = 'rotate(180deg)';
+                     }
                      this.isActiveDevelopers = !this.isActiveDevelopers;
                      break;
              }

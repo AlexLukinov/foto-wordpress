@@ -63,7 +63,7 @@
                 </div>
             </div>
         </div>
-        <div v-if="$mq !== 'mobile'" class="arrow-box arrow-box-footer" :class="$mq">
+        <div class="arrow-box arrow-box-footer" :class="$mq">
             <div class="arrow-around arrow-rotate" @click="prev">
                 <div class="div-around"></div>
                 <img class="arrow arrow-left" src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Букетное бюро">
@@ -255,13 +255,14 @@
             setPagesData: function () {
                 this.setAlbumsOnPage();
                 this.setAlbumsCountOnPage();
-                this.currentPage = 1;
+                // this.currentPage = 1;
             },
             setAlbumsOnPage: function () {
                 let albumsArrayIndex = this.currentPage - 1;
 
                 if (this.$mq === 'mobile') {
                     this.albumsOnPage = this.allAlbums;
+                    this.albumsCountOnPage = this.allAlbums.length;
                 } else {
                     if (this.currentPage * 9 > this.allAlbums.length) {
                         this.albumsOnPage = this.allAlbums;
@@ -269,16 +270,21 @@
                         this.albumsOnPage = this.allAlbums.slice(0, (albumsArrayIndex + 1) * 9);
                     }
                 }
+                console.log(this.currentPage)
             },
             setAlbumsCountOnPage: function () {
                 // if (this.allAlbums.length <= 9) {
                 //     this.albumsCountOnPage = this.allAlbums.length;
                 // }
 
-                if (this.currentPage * 9 > this.allAlbums.length) {
+                if (this.$mq === 'mobile') {
                     this.albumsCountOnPage = this.allAlbums.length;
                 } else {
-                    this.albumsCountOnPage = this.currentPage * 9;
+                    if (this.currentPage * 9 > this.allAlbums.length) {
+                        this.albumsCountOnPage = this.allAlbums.length;
+                    } else {
+                        this.albumsCountOnPage = this.currentPage * 9;
+                    }
                 }
             },
             setAllAlbums: function () {
