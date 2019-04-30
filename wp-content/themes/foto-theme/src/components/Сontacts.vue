@@ -292,7 +292,7 @@
         align-items: center;
         &.mobile {
             height: auto;
-            margin-top: 8vh;
+            margin-top: 7vh;
             flex-direction: column;
         }
     }
