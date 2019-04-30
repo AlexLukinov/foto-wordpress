@@ -1,10 +1,14 @@
 <template>
     <div class="page about-us_page" @wheel="onScroll">
+
         <div class="slide_line" :class="$mq">
-            <span class="slide_line_span">0{{ currentBlockNumber }}</span>
-            <div class="slide-progress"></div>
-            <span class="slide_line_span">0{{ blocksCount }}</span>
+            <span class="slide_line_span">{{ currentBlockNumber < 10 ? '0' + currentBlockNumber : currentBlockNumber }}</span>
+            <div class="line-beige">
+                <div class="slide-progress" :style="fillStyle"></div>
+            </div>
+            <span class="slide_line_span">{{ blocksCount < 10 ? '0' + blocksCount : blocksCount }}</span>
         </div>
+
         <div>
             <div class="scroll-element" :class="$mq" v-if="!isAtTheBottom">
                 <img src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
@@ -283,14 +287,19 @@
                 blockClassName: 'about-page-block',
                 isAtTheBottom: false,
             };
-        },
-        methods: {
-        },
+        }
     }
 </script>
 
 <style lang="scss" scoped>
     @import "../assets/scss/variables";
+    .line-beige {
+        position: relative;
+        z-index: 0;
+        width: 1px;
+        height: 100%;
+        background-color: #dacfb1;
+    }
     .about-us_page {
         background-color: #fcfcfc;
         height: auto;

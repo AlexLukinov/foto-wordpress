@@ -12,10 +12,10 @@
                  v-for="number in [currentNumber]">
                 <div class="name-page" :class="$mq">Home</div>
                 <transition name="myanim" mode="out-in">
-                <h2 class="slides_text"
-                    v-bind:key="number"
-                    :class="$mq">{{data.slides_text[currentNumber-1]}}
-                </h2>
+                    <h2 class="slides_text"
+                        v-bind:key="number"
+                        :class="$mq">{{data.slides_text[currentNumber-1]}}
+                    </h2>
                 </transition>
 
                 <h3 class="slides_text_description" :class="$mq">Добро пожаловать в студию флористики
@@ -59,8 +59,7 @@
                 currentNumber: 1,
                 timer: null,
                 activeLiIndex: null,
-                progress: 1,
-                filledLineHeight: null
+                progress: 1
             }
         },
         methods: {

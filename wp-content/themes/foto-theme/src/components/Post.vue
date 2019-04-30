@@ -3,9 +3,11 @@
         <header-with-back></header-with-back>
 
         <div class="slide_line" :class="$mq">
-            <span class="slide_line_span">0{{ currentBlockNumber }}</span>
-            <div class="slide-progress"></div>
-            <span class="slide_line_span">0{{ blocksCount }}</span>
+            <span class="slide_line_span">{{ currentBlockNumber < 10 ? '0' + currentBlockNumber : currentBlockNumber }}</span>
+            <div class="line-beige" id="filled-line">
+                <div class="slide-progress" :style="fillStyle"></div>
+            </div>
+            <span class="slide_line_span">{{ blocksCount < 10 ? '0' + blocksCount : blocksCount }}</span>
         </div>
 
         <div>
@@ -153,7 +155,6 @@
                     if (window.posts && window.posts.length) {
                         clearInterval(checkIsUploaded);
                         this.setPost();
-                        console.log(this.post)
                     }
                 }, 20);
             },
@@ -164,13 +165,25 @@
             }
         },
         mounted() {
+            // EventBus.$on('BLOCK_CHANGED', blockNumber => {
+            //     this.progress = blockNumber;
+            // });
+
             this.initGlobalVars();
+            // this.height = this.$refs['filledLine'].clientHeight;
         }
     }
 </script>
 
 <style lang="scss" scoped>
     @import "../assets/scss/variables";
+    .line-beige {
+        position: relative;
+        z-index: 0;
+        width: 1px;
+        height: 100%;
+        background-color: #dacfb1;
+    }
     .post-page {
         background-color: #fcfcfc;
         height: auto;

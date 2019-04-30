@@ -6,7 +6,9 @@ export default Vue.mixin({
             blocksCoordinates: [],
             currentBlockNumber: 1,
             blocksCount: 0,
-            blockClassName: ''
+            blockClassName: '',
+            progress: 1,
+            progressLineHeight: 0
         };
     },
     methods: {
@@ -19,6 +21,11 @@ export default Vue.mixin({
                     currentBlockIndex = index;
                 }
             });
+
+            if (this.currentBlockNumber !== currentBlockIndex + 1) {
+                this.progress = currentBlockIndex + 1;
+                document.getElementById('filled-line').setAttribute('style', 'height:' + this.progressLineHeight + 'px');
+            }
 
             this.currentBlockNumber = currentBlockIndex + 1;
         },
@@ -43,6 +50,11 @@ export default Vue.mixin({
             }, 100);
         }
     },
+    computed: {
+        fillStyle() {
+            return `height: ${this.progress * this.progressLineHeight / this.blocksCount }px`;
+        },
+    },
     watch: {
         '$route' (to, from) {
             this.setBlocksCoordinates();
@@ -51,5 +63,14 @@ export default Vue.mixin({
     mounted() {
         this.setBlocksCoordinates();
         EventBus.$on('IS_SCROLLED_TO_BOTTOM', isAtTheBottom => {this.isAtTheBottom = isAtTheBottom});
+
+        this.progress = this.currentBlockNumber;
+
+        let initProgressHeight = setInterval(() => {
+            if (document.getElementById('filled-line')) {
+                this.progressLineHeight = document.getElementById('filled-line').offsetHeight;
+                clearInterval(initProgressHeight);
+            }
+        }, 100);
     }
 });
