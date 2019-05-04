@@ -239,7 +239,7 @@
          },
          closeClicked: function () {
              EventBus.$emit('close');
-         }
+         },
      },
      computed: {
          lineServicesHeight: function () {
@@ -248,6 +248,11 @@
          lineBlogHeight: function () {
              return `height: ${this.isActiveBlog ? 0 : 11}px`;
          },
+     },
+     mounted() {
+         EventBus.$on('MENU_BACK_CLICKED', () => {
+            this.showTopMenu = false;
+         });
      }
  }
 </script>

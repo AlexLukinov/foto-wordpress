@@ -58,28 +58,63 @@
 </g>
 </svg>
                         </span>
-                            <ul v-if="isShareButtonsShowed" :class="$mq">
-                                <li>
-                                    <a :href="'https://vk.com/share.php?url=' + encodeURI('http://foto.test/post/' + post.id)" class="social-vk" target="_blank">
-                                        <i class="fab fa-vk" aria-hidden="true"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a :href="'https://www.facebook.com/sharer.php?u=' + encodeURI('http://foto.test/post/' + post.id) + '&t=' + encodeURIComponent(post.title.rendered)" class="social-fb" target="_blank">
-                                        <i class="fab fa-facebook-f" aria-hidden="true"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a :href="'http://pinterest.com/pin/create/button/?url=' + encodeURI('http://foto.test/post/' + post.id) + '&media=' + encodeURI(post.article_photo.guid) + '&description=' + encodeURIComponent(post.title.rendered)" class="pin-it-button" count-layout="horizontal">
-                                        <i class="fab fa-pinterest-p" aria-hidden="true"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a :href="'whatsapp://send?text=http://foto.test/post/' + post.id" data-action="share/whatsapp/share">
-                                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
-                                    </a>
-                                </li>
+
+
+                            <ul id="menu-ul" v-if="isShareButtonsShowed" :class="$mq">
+                                <social-sharing :url="url"
+                                                :title="post.title.rendered"
+                                                inline-template>
+                                    <div class="menu-ul-div">
+                                        <network network="facebook">
+<!--                                            <i class="fa fa-facebook"></i> Facebook-->
+                                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                                        </network>
+                                        <network network="pinterest">
+<!--                                            <i class="fa fa-pinterest"></i> Pinterest-->
+                                            <i class="fab fa-pinterest-p" aria-hidden="true"></i>
+                                        </network>
+                                        <network network="vk">
+<!--                                            <i class="fa fa-vk"></i> VKontakte-->
+                                            <i class="fab fa-vk" aria-hidden="true"></i>
+                                        </network>
+                                        <network network="whatsapp">
+<!--                                            <i class="fa fa-whatsapp"></i> Whatsapp-->
+                                            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                                        </network>
+                                    </div>
+                                </social-sharing>
                             </ul>
+
+
+<!--                            <ul v-if="isShareButtonsShowed" :class="$mq">-->
+<!--                                    <social-sharing url="https://vuejs.org/" inline-template>-->
+<!--                                        <div>-->
+<!--                                            <li>-->
+<!--                                                <network network="vk">-->
+<!--                                                    <i class="fab fa-vk" aria-hidden="true"></i>-->
+<!--                                                </network>-->
+<!--                                                &lt;!&ndash;                                    <a :href="'https://vk.com/share.php?url=' + encodeURI('http://foto.test/post/' + post.id)" class="social-vk" target="_blank">&ndash;&gt;-->
+<!--                                                &lt;!&ndash;                                        <i class="fab fa-vk" aria-hidden="true"></i>&ndash;&gt;-->
+<!--                                                &lt;!&ndash;                                    </a>&ndash;&gt;-->
+<!--                                            </li>-->
+<!--                                            <li>-->
+<!--                                                <a :href="'https://www.facebook.com/sharer.php?u=' + encodeURI('http://foto.test/post/' + post.id) + '&t=' + encodeURIComponent(post.title.rendered)" class="social-fb" target="_blank">-->
+<!--                                                    <i class="fab fa-facebook-f" aria-hidden="true"></i>-->
+<!--                                                </a>-->
+<!--                                            </li>-->
+<!--                                            <li>-->
+<!--                                                <a :href="'http://pinterest.com/pin/create/button/?url=' + encodeURI('http://foto.test/post/' + post.id) + '&media=' + encodeURI(post.article_photo.guid) + '&description=' + encodeURIComponent(post.title.rendered)" class="pin-it-button" count-layout="horizontal">-->
+<!--                                                    <i class="fab fa-pinterest-p" aria-hidden="true"></i>-->
+<!--                                                </a>-->
+<!--                                            </li>-->
+<!--                                            <li>-->
+<!--                                                <a :href="'whatsapp://send?text=http://foto.test/post/' + post.id" data-action="share/whatsapp/share">-->
+<!--                                                    <i class="fab fa-whatsapp" aria-hidden="true"></i>-->
+<!--                                                </a>-->
+<!--                                            </li>-->
+<!--                                        </div>-->
+<!--                                    </social-sharing>-->
+<!--                            </ul>-->
                         </div>
                     </div>
                 </div>
@@ -159,6 +194,11 @@
                     }
                 }, 20);
             },
+        },
+        computed: {
+            url: function () {
+                return window.location;
+            }
         },
         watch: {
             '$route' (to, from) {
@@ -492,17 +532,31 @@
             width: 3vw;
         }
     }
-    .share ul {
+    #menu-ul {
+        /*display: flex;*/
+        /*justify-content: flex-start;*/
+        /*position: absolute;*/
+        /*font-size: 1.3vw;*/
+        /*&.mobile {*/
+        /*    font-size: 1.8vh;*/
+        /*}*/
         display: flex;
-        justify-content: flex-start;
+        justify-content: space-between !important;
         position: absolute;
         font-size: 1.3vw;
+        width: 25%;
+        margin-top: 27px;
         &.mobile {
             font-size: 1.8vh;
         }
     }
-    .share ul li {
-        margin: 20px 20px 0 0;
+    .menu-ul-div {
+        cursor: pointer;
+    }
+    .menu-ul-div {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
     }
 
 </style>

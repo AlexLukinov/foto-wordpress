@@ -21,7 +21,7 @@
                 <img class="arrow arrow-left" src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Букетное бюро">
             </div>
             <div class="text-element current-photo" :class="$mq">
-                <span class="pagination-slide">53</span>/53
+                <span class="pagination-slide">09</span>/09
             </div>
             <div class="arrow-around arrow-rotate" @click="next">
                 <img class="arrow arrow-right" src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
@@ -45,8 +45,8 @@
                         posts: [],
                     }
                 ],
-                currentNumber: 0,
-                backgroundColor: '#f4f1eb'
+                currentNumber: 0
+
             }
         },
         methods: {

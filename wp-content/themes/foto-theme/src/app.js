@@ -23,7 +23,9 @@ import Album from './components/Album.vue'
 import Vue2TouchEvents from 'vue2-touch-events'
 import switchByScroll from './SwitchComponentsByScrollMixin'
 import vueTopprogress from 'vue-top-progress'
+var SocialSharing = require('vue-social-sharing');
 
+Vue.use(SocialSharing);
 Vue.use(vueTopprogress);
 Vue.use(Vue2TouchEvents);
 Vue.use(VueRouter);

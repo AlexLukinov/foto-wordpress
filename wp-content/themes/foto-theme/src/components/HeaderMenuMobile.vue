@@ -1,6 +1,6 @@
 <template>
     <div class="menu-header" :class="$mq">
-        <div  class="text-element text-element-back" :class="$mq">
+        <div @click="closeMenu" class="text-element text-element-back" :class="$mq">
             BACK
         </div>
         <router-link to="/" class="logo-wrap" :class="$mq">
@@ -16,7 +16,11 @@
 </template>
 <script>
     export default {
-
+        methods: {
+            closeMenu() {
+                EventBus.$emit('MENU_BACK_CLICKED');
+            }
+        }
     }
 </script>
 
