@@ -132,7 +132,8 @@
                 blockClassName: 'post-block',
                 previousPostId: 0,
                 nextPostId: 0,
-                isShareButtonsShowed: false
+                isShareButtonsShowed: false,
+                backgroundColor: 'white'
             }
         },
         methods: {

@@ -1,7 +1,31 @@
 <template>
     <div class="page info_page" :class="$mq">
         <header-with-back></header-with-back>
-        <div v-if="isPortfolio" class="info-block" :class="$mq">sadfasdf</div>
+        <div v-if="isPortfolio" class="info-block" :class="$mq"><div class="info-content-left" :class="$mq">
+            <h2 class="info-h2" :class="$mq">Букетное<br>бюро</h2>
+            <div class="info-text-block" :class="$mq">
+                <div class="info-ul info-ul-mob" :class="$mq">
+                   Студия флористики и декора
+                </div>
+                <h3 :class="$mq">Цветы по поводу и без</h3>
+                <div class="info-ul" :class="$mq">
+                    - букеты и композиции<br>
+                    - свадебная флористика<br>
+                    - оформление мероприятий<br>
+                    - отели и корпоративные клиенты<br>
+                    - ритуальная флористика<br>
+                    - мастер-классы<br>
+                </div>
+            </div>
+        </div>
+            <div class="info-content-right" :class="$mq">
+                <div class="info-ul" :class="$mq">
+                    Работаем по всему Крыму.<br>
+                    По вопросам сотрудничества buketnoe_buro@mail.ru<br>
+                    Мы всегда на связи по тел. + 7 (978) 214 45 05<br>
+                    Нас легко найти в ТК НОВЫЙ БУЛЬВАР
+                </div>
+            </div></div>
         <div v-if="isFlowers" class="info-block" :class="$mq">
             <div class="info-content-left" :class="$mq">
                 <h2 class="info-h2" :class="$mq">Букеты &<br> композиции</h2>

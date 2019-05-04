@@ -37,6 +37,11 @@ export default Vue.mixin({
             ],
             currentRoutePath: '/',
             // routeIndex: 0
+            menuHeight: 0,
+            isHandleMenu: false,
+            menuElement: undefined,
+            backgroundColor: undefined,
+            headerWrapperStyles: ''
         };
     },
     methods: {
@@ -155,6 +160,18 @@ export default Vue.mixin({
                 // get delta of scroll event and add it to aggregate property deltaY
                 let delta = event.deltaY;
 
+                if (this.isHandleMenu) {
+                    if (delta > 0) {
+                        // this.menuElement.style.cssText = "top: -" + this.menuHeight + "px; border-bottom: none;";
+                        this.menuHideInlineStyleString();
+                        this.menuElement.style.cssText = this.headerWrapperStyles;
+                    } else {
+                        // this.menuElement.style.cssText = "top: 0px; border-bottom: 1px solid #dacfb1";
+                        this.menuShowInlineStyleString();
+                        this.menuElement.style.cssText = this.headerWrapperStyles;
+                    }
+                }
+
                 // if isAtThePageTop changed it's mean that we need to reset deltaY for new calculation
                 // else we add positionY to deltaY for accumulate and switch component at saturation
                 this.isAtThePageTop = positionY <= innerHeight;
@@ -228,6 +245,32 @@ export default Vue.mixin({
             }
 
             this.routeIndex = routeIndex;
+        },
+        setMenuHeight() {
+            if (document.getElementById('header-wrapper')) {
+                this.isHandleMenu = true;
+                this.menuElement = document.getElementById('header-wrapper');
+                this.menuHeight = this.menuElement.clientHeight;
+                // this.menuElement.style.backgroundColor = this.backgroudColor;
+            }
+        },
+        setBackgroundColor() {
+            if (this.currentRoutePath.includes('aboutUs') ||
+                this.currentRoutePath.includes('post') ||
+                this.currentRoutePath.includes('contact')
+            ) {
+                this.backgroundColor = '#fcfcfc';
+            } else {
+                this.backgroundColor = '#f4f1eb';
+            }
+        },
+        menuHideInlineStyleString: function () {
+            this.setBackgroundColor();
+            this.headerWrapperStyles = "background-color: " + this.backgroundColor + "; top: -" + this.menuHeight + "px; border-bottom: none;";
+        },
+        menuShowInlineStyleString: function () {
+            this.setBackgroundColor();
+            this.headerWrapperStyles = "background-color:  " + this.backgroundColor + "; top: 0px; border-bottom: #dacfb1";
         }
     },
     computed: {
@@ -249,13 +292,31 @@ export default Vue.mixin({
 
             return routeIndex;
         },
+        // menuInlineStyleString: function () {
+        //     console.log(this.backgroudColor)
+        //     return `background-color: ${this.backgroundColor}; top: 0px;`;
+
+            // return "top: 0px;"
+        // }
     },
     watch:{
         $route (to, from){
             this.setCurrentRoutePath();
+            setTimeout(() => {this.setMenuHeight();}, 2000);
         }
     },
     mounted() {
         this.setCurrentRoutePath();
+        setTimeout(() => {
+            this.setMenuHeight();
+            console.log('from mounted')
+            this.setBackgroundColor();
+        }, 2000);
+        // this.$on('ROUTE_CHANGED', () => {
+        //     setTimeout(() => {
+        //         console.log('from event')
+        //         this.setBackgroundColor();
+        //     }, 2000);
+        // });
     }
 });

@@ -108,6 +108,7 @@
                 allAlbums: [],
                 timer: null,
                 showAlbum: false,
+                // backgroundColor: '#f4f1eb',
             }
         },
         methods: {
@@ -335,6 +336,9 @@
 </script>
 <style lang="scss" scoped>
     @import "../assets/scss/variables";
+    #header-wrapper {
+        background-color: #f4f1eb !important;
+    }
     .slides-portfolio {
         width: 100%;
         display: -webkit-box;

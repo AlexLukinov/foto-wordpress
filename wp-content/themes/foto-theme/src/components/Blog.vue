@@ -46,6 +46,7 @@
                     }
                 ],
                 currentNumber: 0,
+                backgroundColor: '#f4f1eb'
             }
         },
         methods: {

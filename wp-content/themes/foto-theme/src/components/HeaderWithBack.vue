@@ -1,5 +1,5 @@
 <template>
-    <div class="header-wrapper" :class="$mq">
+    <div class="header-wrapper" ref="headerWrapper" id="header-wrapper" :class="$mq" :style="{ backgroudColor: backgroundColor }">
         <div class="header" :class="$mq">
             <div @click="backClicked" class="text-element text-element-back" :class="$mq">
                 BACK
@@ -60,7 +60,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: #f4f1eb;
+        transition: top 0.3s;
         &.mobile {
             height: 7vh;
         }
