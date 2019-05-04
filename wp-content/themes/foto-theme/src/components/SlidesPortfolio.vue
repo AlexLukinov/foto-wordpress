@@ -26,11 +26,13 @@
                 <div class="text-element" :class="$mq">
                     <span class="pagination-slide">0{{currentNumber+1}}</span>/07
                 </div>
-                <div class="info text-element"
-                     :class="$mq"
-                     id="show-info"
-                     @click="showInfo = true"
-                >INFO</div>
+                <router-link :to="'/info/' + this.currentNumber">
+                    <div class="info text-element"
+                         :class="$mq"
+                         id="show-info"
+                         @click="showInfo = true"
+                    >INFO</div>
+                </router-link>
             </div>
             <div class="see-album" :class="$mq">
                 <button class="text-element"
@@ -77,7 +79,7 @@
             </div>
         </div>
 
-        <info v-show="showInfo" @returnBack="showInfo = false" class="animated fadeIn"></info>
+<!--        <info v-show="showInfo" @returnBack="showInfo = false" class="animated fadeIn"></info>-->
 <!--        <album v-show="showAlbum"></album>-->
     </div>
 </template>
@@ -105,7 +107,6 @@
                 albumsCountOnPage: 1,
                 allAlbums: [],
                 timer: null,
-                showInfo: false,
                 showAlbum: false,
             }
         },

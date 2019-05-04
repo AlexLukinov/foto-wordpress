@@ -6,6 +6,7 @@ import Contacts from  './components/Сontacts.vue'
 import Blog from  './components/Blog.vue'
 import Album from './components/Album.vue'
 import Post from './components/Post.vue'
+import Info from './components/Info.vue'
 
 export default new VueRouter ({
     routes: [
@@ -37,7 +38,10 @@ export default new VueRouter ({
             path: '/post/:postId',
             component: Post
         },
-
-        ],
+        {
+            path: '/info/:catalogId',
+            component: Info
+        }
+    ],
     mode: 'history'
 })

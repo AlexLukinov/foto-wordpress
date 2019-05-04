@@ -155,7 +155,7 @@
             </div>
         </div>
         <div class="scroll-element" :class="$mq">
-            <div class="arrow-around arrow-rotate" @click="$emit('returnBack')">
+            <div class="arrow-around arrow-rotate" @click="backClicked">
                 <img class="around" src="/wp-content/themes/foto-theme/src/assets/img/around.png" alt="Букетное бюро">
                 <img class="arrow arrow-left" src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Букетное бюро">
             </div>
@@ -184,30 +184,31 @@
                 this.isCorporate = false;
                 this.isFuneral = false;
                 this.isWorkshops = false;
+            },
+            backClicked: function () {
+                this.$router.go(-1);
             }
         },
         mounted() {
-            EventBus.$on('SLIDE_CHANGED', slideNumber => {
-                this.makeAllFalse();
+            this.makeAllFalse();
 
-                switch (slideNumber) {
-                    case 0: this.isPortfolio = true;
-                        break;
-                    case 1: this.isFlowers = true;
-                        break;
-                    case 2: this.isWeddings = true;
-                        break;
-                    case 3: this.isEvents = true;
-                        break;
-                    case 4: this.isCorporate = true;
-                        break;
-                    case 5: this.isFuneral = true;
-                        break;
-                    case 6: this.isWorkshops = true;
-                        break;
-                    default: this.isPortfolio = true;
-                }
-            });
+            switch (this.$route.params.catalogId) {
+                case '0': this.isPortfolio = true;
+                    break;
+                case '1': this.isFlowers = true;
+                    break;
+                case '2': this.isWeddings = true;
+                    break;
+                case '3': this.isEvents = true;
+                    break;
+                case '4': this.isCorporate = true;
+                    break;
+                case '5': this.isFuneral = true;
+                    break;
+                case '6': this.isWorkshops = true;
+                    break;
+                default: this.isPortfolio = true;
+            }
         }
     }
 </script>
