@@ -4,14 +4,14 @@
         <router-link to="/" class="logo-wrap" :class="$mq">
             <img class="logo" src="/wp-content/themes/foto-theme/src/assets/img/logo.png" alt="Букетное бюро">
         </router-link>
-            <div class="menu-icon" :class="$mq">
-                <div class="toggleTopMenu">
-                        <div class="main-item menu text-element"
-                             @click="showTopMenu = !showTopMenu"  :class="$mq">
-                           MENU
-                        </div>
+        <div class="menu-icon" :class="$mq">
+            <div class="toggleTopMenu">
+                <div class="main-item menu text-element"
+                     @click="showTopMenu = !showTopMenu" :class="$mq">
+                    MENU
                 </div>
             </div>
+        </div>
         <my-menu v-show="showTopMenu"></my-menu>
     </div>
 </template>
@@ -46,6 +46,7 @@
 
 <style lang="scss" scoped>
     @import "../assets/scss/variables";
+
     .header {
         z-index: 3;
         display: flex;
