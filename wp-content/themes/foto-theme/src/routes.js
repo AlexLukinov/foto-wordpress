@@ -36,7 +36,15 @@ export default new VueRouter ({
         },
         {
             path: '/post/:postId',
-            component: Post
+            component: Post,
+            meta: {
+                metaTags: [
+                    {
+                        property: 'og:description',
+                        content: 'The about page of our example app.'
+                    }
+                ]
+            }
         },
         {
             path: '/info/:catalogId',

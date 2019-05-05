@@ -207,20 +207,20 @@
         },
         mounted() {
             this.initGlobalVars();
-            let checkIsPostLoaded = setInterval(() => {
-                if (this.post.title) {
-                    // let metaTag = '<meta name="og:title" content="' + this.post.title.rendered + '">';
-                    // document.querySelector('meta[name="og-title"]').setAttribute("content", metaTag);
-                    document.querySelector('meta[property="og:title"]').setAttribute("content", this.post.title.rendered);
-                    document.querySelector('meta[property="og:image"]').setAttribute("content", this.post.article_photo.guid);
-                    // post.article_photo.guid
-                    // var meta = document.createElement('meta');
-                    // meta.property = "og:title";
-                    // meta.content = this.post.title.rendered;
-                    // document.getElementsByTagName('head')[0].appendChild(meta);
-                    clearInterval(checkIsPostLoaded);
-                }
-            }, 100);
+            // let checkIsPostLoaded = setInterval(() => {
+            //     if (this.post.title) {
+            //         // let metaTag = '<meta name="og:title" content="' + this.post.title.rendered + '">';
+            //         // document.querySelector('meta[name="og-title"]').setAttribute("content", metaTag);
+            //         document.querySelector('meta[property="og:title"]').setAttribute("content", this.post.title.rendered);
+            //         document.querySelector('meta[property="og:image"]').setAttribute("content", this.post.article_photo.guid);
+            //         // post.article_photo.guid
+            //         // var meta = document.createElement('meta');
+            //         // meta.property = "og:title";
+            //         // meta.content = this.post.title.rendered;
+            //         // document.getElementsByTagName('head')[0].appendChild(meta);
+            //         clearInterval(checkIsPostLoaded);
+            //     }
+            // }, 100);
         }
     }
 </script>
