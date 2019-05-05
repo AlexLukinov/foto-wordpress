@@ -2,6 +2,7 @@
     <div class="page blog-page article">
         <header-with-back></header-with-back>
         <h3 class="h3-border-bottom blog-h3" :class="$mq">{{ blogSlides[currentNumber].header }}</h3>
+        <p>{{ headerWrapperStyles }}</p>
         <div class="gallery" id="gallery-blog">
             <div class="image"
                  :class="$mq"
@@ -21,7 +22,7 @@
                 <img class="arrow arrow-left" src="/wp-content/themes/foto-theme/src/assets/img/arrow-left.png" alt="Букетное бюро">
             </div>
             <div class="text-element current-photo" :class="$mq">
-                <span class="pagination-slide">09</span>/09
+                <span class="pagination-slide">{{ blogSlides[currentNumber].count > 9 ? blogSlides[currentNumber].count : '0' + blogSlides[currentNumber].count }}</span>/{{ blogSlides[currentNumber].count > 9 ? blogSlides[currentNumber].count : '0' + blogSlides[currentNumber].count }}
             </div>
             <div class="arrow-around arrow-rotate" @click="next">
                 <img class="arrow arrow-right" src="/wp-content/themes/foto-theme/src/assets/img/arrow-right.png" alt="Букетное бюро">
@@ -54,15 +55,18 @@
                 this.blogSlides = [
                     {
                         header: 'НАШИ ИСТОРИИ И ДРУГИЕ СТАТЬИ',
-                        posts: window.posts
+                        posts: window.posts,
+                        count: 13
                     },
                     {
                         header: 'НАШИ ИСТОРИИ',
                         posts: _.find(window.categories, ['category.name', 'Наши истории']).posts,
+                        count: 12
                     },
                     {
                         header: 'ДРУГИЕ СТАТЬИ',
                         posts: _.find(window.categories, ['category.name', 'Другие статьи']).posts,
+                        count: 1
                     },
                 ]
             },

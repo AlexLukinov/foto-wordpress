@@ -17,8 +17,6 @@ export default Vue.mixin({
                 '/services/funerals',
                 '/services/master-class',
                 '/services/:service',
-                // '/album',
-                // '/post',
                 '/blog',
                 '/blog/our-stories',
                 '/blog/other-articles',
@@ -36,7 +34,6 @@ export default Vue.mixin({
                 '/contacts',
             ],
             currentRoutePath: '/',
-            // routeIndex: 0
             menuHeight: 0,
             isHandleMenu: false,
             menuElement: undefined,
@@ -251,7 +248,6 @@ export default Vue.mixin({
                 this.isHandleMenu = true;
                 this.menuElement = document.getElementById('header-wrapper');
                 this.menuHeight = this.menuElement.clientHeight;
-                // this.menuElement.style.backgroundColor = this.backgroudColor;
             }
         },
         setBackgroundColor() {
@@ -292,31 +288,20 @@ export default Vue.mixin({
 
             return routeIndex;
         },
-        // menuInlineStyleString: function () {
-        //     console.log(this.backgroudColor)
-        //     return `background-color: ${this.backgroundColor}; top: 0px;`;
-
-            // return "top: 0px;"
-        // }
     },
     watch:{
         $route (to, from){
             this.setCurrentRoutePath();
-            setTimeout(() => {this.setMenuHeight();}, 2000);
+            setTimeout(() => {
+                this.setMenuHeight();
+            }, 2000);
         }
     },
     mounted() {
         this.setCurrentRoutePath();
         setTimeout(() => {
             this.setMenuHeight();
-            console.log('from mounted')
             this.setBackgroundColor();
         }, 2000);
-        // this.$on('ROUTE_CHANGED', () => {
-        //     setTimeout(() => {
-        //         console.log('from event')
-        //         this.setBackgroundColor();
-        //     }, 2000);
-        // });
     }
 });
